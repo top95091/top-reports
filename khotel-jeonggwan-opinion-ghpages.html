@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K호텔매니지먼트 정관 참고의견</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: A4-feel report column on white paper; navy header band with the 45° roof slab, navy pillar bars before section titles. Light-fixed per 디파 기업 보고서 규정. */
+:root{
+  --blue:#2A398D; --navy:#141B36; --navy-mid:#232D53; --navy-soft:#3C4A75;
+  --gold:#AF9146; --paper:#FFFFFF; --tint:#F4F5FA; --line:#DDE0EC; --ink:#1B2033; --muted:#5A6180;
+  --font:"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  color-scheme:light;
+}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:15.5px;line-height:1.75;}
+.top{background:var(--navy);color:#FFFFFF;position:relative;overflow:hidden;}
+.top::after{content:"";position:absolute;right:-90px;top:-90px;width:320px;height:320px;background:var(--blue);transform:rotate(45deg);opacity:.85;}
+.cover{max-width:880px;margin:0 auto;padding-inline:24px;padding-block:56px 64px;position:relative;z-index:1;}
+.cover::before{content:"";display:block;width:6px;height:44px;background:#FFFFFF;margin-bottom:22px;}
+.cover-eyebrow{font-size:13px;letter-spacing:.08em;color:#C9CEE6;}
+.cover h1{color:#FFFFFF;margin:.5em 0 .7em;font-size:clamp(26px,5vw,40px);}
+.cover-meta{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:14px;color:#DDE1F2;border-top:1px solid rgba(255,255,255,.22);padding-top:16px;}
+.top-inner{max-width:880px;margin:0 auto;padding-inline:24px;padding-block:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:1;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand svg{width:18px;height:auto;}
+.brand span{font-weight:500;letter-spacing:.02em;font-size:15px;}
+.doc-tag{font-size:12.5px;letter-spacing:.08em;color:#C9CEE6;}
+.wrap{max-width:880px;margin:0 auto;padding-inline:24px;padding-block:48px 64px;}
+.eyebrow{font-size:12.5px;letter-spacing:.1em;color:var(--blue);font-weight:700;}
+h1{font-size:clamp(24px,4.2vw,34px);line-height:1.35;margin:.4em 0 .3em;color:var(--navy);text-wrap:balance;font-weight:700;}
+.meta{color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:6px 18px;}
+.letter{margin-top:36px;background:var(--tint);border-radius:4px;padding:26px 28px;}
+.letter p{margin:0 0 .9em;max-width:68ch;}
+.letter p:last-child{margin-bottom:0;}
+.letter strong{color:var(--navy);}
+section{margin-top:56px;}
+h2{display:flex;align-items:flex-start;gap:14px;font-size:21px;line-height:1.45;color:var(--navy);margin:0 0 14px;text-wrap:balance;}
+h2::before{content:"";flex:0 0 6px;align-self:stretch;min-height:26px;background:var(--blue);}
+h2 .no{color:var(--blue);font-variant-numeric:tabular-nums;}
+h3{font-size:16.5px;color:var(--navy-mid);margin:28px 0 10px;}
+p.lead{max-width:70ch;margin:0 0 18px;}
+.analogy{border-left:3px solid var(--line);padding:4px 0 4px 16px;color:var(--navy-soft);margin:0 0 18px;max-width:68ch;}
+.tbl{overflow-x:auto;margin:6px 0 4px;}
+table{width:100%;border-collapse:collapse;font-size:14.5px;line-height:1.6;min-width:560px;}
+th{background:var(--navy-mid);color:#FFFFFF;font-weight:500;text-align:left;padding:10px 12px;font-size:13.5px;}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+tr:nth-child(even) td{background:#FAFBFD;}
+td:first-child{font-weight:500;color:var(--navy);}
+.law{color:var(--muted);font-size:13px;white-space:nowrap;}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;white-space:nowrap;}
+.p1{background:var(--blue);color:#FFFFFF;}
+.p2{background:#E3E6F3;color:var(--blue);}
+.p3{background:#F0F1F5;color:var(--navy-soft);}
+ul,ol{padding-left:1.3em;margin:0 0 12px;max-width:70ch;}
+li{margin:4px 0;}
+.num{color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums;}
+.qs{counter-reset:q;list-style:none;padding:0;display:grid;gap:10px;}
+.qs li{counter-increment:q;display:grid;grid-template-columns:34px 1fr;gap:10px;background:var(--tint);padding:12px 16px;border-radius:4px;margin:0;}
+.qs li::before{content:"Q" counter(q);color:var(--blue);font-weight:700;}
+.closing{margin-top:64px;border-top:2px solid var(--navy);padding-top:28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;}
+.closing p{margin:0;max-width:60ch;}
+.contact{font-size:14px;color:var(--muted);text-align:right;}
+.contact b{color:var(--navy);font-size:15px;}
+.note{margin-top:32px;font-size:12.5px;color:var(--muted);line-height:1.65;}
+.motto{margin-top:6px;font-size:12.5px;color:var(--navy-soft);letter-spacing:.03em;}
+@media (max-width:640px){
+  .wrap{padding-block:32px 48px;padding-inline:16px;}
+  .top-inner{padding-inline:16px;}
+  .letter{padding:20px 18px;}
+  .closing{grid-template-columns:1fr;}
+  .contact{text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <svg viewBox="0 0 143 277" fill="#FFFFFF" aria-label="The Oracle Partners"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>
+      <span>The Oracle Partners</span>
+    </div>
+    <div class="doc-tag">크로스체크 참고자료 · 2026.10.10</div>
+  </div>
+  <div class="cover">
+    <div class="cover-eyebrow">세인트존스호텔 사업자 협동조합 · 정관 제정 참고자료</div>
+    <h1>(가칭) K호텔매니지먼트<br>정관 수정안 크로스체크</h1>
+    <div class="cover-meta"><span>받는 분 · 이인욱 조합장님 및 집행부</span><span>드리는 분 · 조합원 고영권</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="letter">
+    <p>조합장님, 늦은 밤까지 사무실에서 정관 보완 작업을 해 주신 데 깊이 감사드립니다. 승소 배상금의 자본금 활용과 모체조합 67% 경영권 확보라는 어려운 과제를 정관에 담으시려는 고민이 수정안 곳곳에서 느껴졌습니다.</p>
+    <p>저도 조합원의 한 사람으로서 크로스체크에 조금이나마 보탬이 되고자, 상법 기준에서 한 번 더 살펴보면 좋을 부분을 <strong>참고 사항</strong>으로 정리해 드립니다. 결론을 드리는 자료가 아니라, 전문가 자문을 받으실 때 <strong>무엇을 먼저 여쭤보면 좋을지 미리 추려 둔 체크리스트</strong>로 봐 주시면 감사하겠습니다.</p>
+    <p>조합장님 말씀처럼 비용이 들더라도 전문가 검토를 거친 뒤 조합 전체 표결에 부치는 방향에 적극 공감합니다.</p>
+  </div>
+
+  <section>
+    <h2><span>한눈에 보기</span></h2>
+    <p class="lead">자문 시 아래 순서로 살펴보시면 시간을 아끼실 수 있을 것 같습니다. 「우선 검토」는 등기나 경영권 구조에 직접 영향을 주는 항목입니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>검토 순서</th><th>내용</th><th>관련 조항</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill p1">우선 검토</span></td><td>67% 의결권을 더 단단하게 지키는 구조</td><td>제5조, 제5조의2</td></tr>
+        <tr><td><span class="pill p1">우선 검토</span></td><td>상법 강행규정과 맞춰 볼 조항</td><td>제8조, 제12조, 제13조</td></tr>
+        <tr><td><span class="pill p1">우선 검토</span></td><td>설립등기에 필요한 기재사항 보충</td><td>정관 전체</td></tr>
+        <tr><td><span class="pill p2">함께 검토</span></td><td>승소금 출자 절차의 실무 정리</td><td>제5조의2~4</td></tr>
+        <tr><td><span class="pill p2">함께 검토</span></td><td>조합 통제와 경영 안정의 균형</td><td>제5조, 제8조, 제9조</td></tr>
+        <tr><td><span class="pill p2">함께 검토</span></td><td>용어·산식을 명확히 정의</td><td>제6조의2, 제11조, 제15조</td></tr>
+        <tr><td><span class="pill p3">다듬기</span></td><td>스톡옵션 조항 보완</td><td>제8조의2</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span><span class="no">1.</span> 67% 의결권을 더 단단하게 지키는 구조</span></h2>
+    <p class="lead">이번 수정안의 핵심인 67% 확보가 지금은 원고 주주님들의 <strong>의결권 위임계약</strong>에 기대고 있어, 구조 자체로 보장되는 방식을 함께 검토해 보시면 좋겠습니다.</p>
+    <p class="analogy">쉽게 비유하면, 집주인(원고 주주)이 열쇠(의결권)를 관리인(조합)에게 맡겨 둔 상태와 비슷합니다. 맡긴 열쇠는 집주인이 원하면 언제든 돌려받을 수 있어서, 처음부터 관리인 명의로 열쇠를 갖는 방법도 있는지 살펴볼 만합니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>살펴볼 점</th><th>내용</th></tr></thead>
+      <tbody>
+        <tr><td>조합의 직접 지분</td><td>설립 자본금 1억 원(10만 주) 외에 승소금 출자분은 원고 개인 명의로 발행됩니다. 예를 들어 승소금 출자가 <span class="num">20억 원(200만 주)</span>이면 조합의 직접 지분은 약 <span class="num">4.8%</span>가 됩니다.</td></tr>
+        <tr><td>위임의 철회 가능성</td><td>위임계약은 언제든 해지할 수 있어(민법 제689조), 해지 시 의결권은 원고 주주님께 돌아갑니다.</td></tr>
+        <tr><td>정관상 위임 기간</td><td>제5조의2 4항(3년 일괄 위임, 자동연장)은 주주 고유권과 관련되어 효력이 다투어질 수 있습니다. 별도 주주간계약으로 옮기는 방안을 여쭤보시면 좋겠습니다.</td></tr>
+        <tr><td>위임장 제출 방식</td><td>의결권 대리행사는 총회마다 위임장(대리권 증명서면)을 내는 것이 원칙입니다(상법 제368조 2항).</td></tr>
+        <tr><td>추가 발행 한도</td><td>제5조 1항의 추가 증자 한도 200만 주가 승소금 규모에 따라 부족할 수 있어, 수권주식(2,000만 주)과 맞춰 보시면 좋겠습니다.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>함께 비교해 보실 만한 대안</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>대안</th><th>방식</th><th>좋은 점</th><th>살필 점</th></tr></thead>
+      <tbody>
+        <tr><td>A. 조합 경유 출자</td><td>원고가 승소금을 조합에 출자하고, 조합이 회사 주식을 직접 보유</td><td>67%가 구조적으로 확보됩니다</td><td>원고는 조합 출자자가 됩니다. 조합 정관에 자회사 출자 근거가 필요합니다</td></tr>
+        <tr><td>B. 의결권 없는 우선주</td><td>원고에게 배당을 우선 받는 무의결권 주식 발행(상법 제344조의3)</td><td>배당은 원고께, 경영권은 조합에. 수정안 취지와 가장 가깝습니다</td><td>발행주식총수의 1/4 한도가 있습니다</td></tr>
+        <tr><td>C. 주식 신탁</td><td>원고 주식을 조합에 신탁하고 배당 수익권은 원고가 보유</td><td>의결권이 명확히 조합에 모입니다</td><td>신탁업 인가 해당 여부 확인이 필요합니다</td></tr>
+        <tr><td>D. 현행 + 계약 보강</td><td>주주간계약에 위약금, 조합 우선매수권 등을 추가</td><td>현재 구조를 거의 그대로 유지합니다</td><td>철회 가능성은 남습니다</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span><span class="no">2.</span> 상법 강행규정과 맞춰 볼 조항</span></h2>
+    <p class="lead">경영 안정과 조합 협조를 위한 좋은 취지의 조항들인데, 상법에서 정관으로 바꿀 수 없게 정한 부분과 겹쳐 표현을 조정하면 취지를 더 확실히 살릴 수 있습니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>조항</th><th>참고 사항</th><th>근거</th><th>조정 방향 예시</th></tr></thead>
+      <tbody>
+        <tr><td>제8조 2항 해임 제한</td><td>이사는 주주총회 특별결의로 언제든 해임할 수 있도록 상법이 정하고 있습니다</td><td class="law">상법 제385조</td><td>"해임할 수 있으나, 정당한 사유가 없으면 손해를 배상한다"</td></tr>
+        <tr><td>제8조 3항 해임 시 보상</td><td>잔여 임기 보수에 1년 연봉을 더하는 부분은 과도한 보상으로 다투어질 수 있습니다</td><td class="law">상법 제385조</td><td>잔여 임기 보수 범위로 정리</td></tr>
+        <tr><td>제8조 1항 우선 재선임</td><td>주주총회의 의결 결과를 정관으로 미리 정하기는 어렵습니다</td><td class="law">주주 의결권</td><td>"재선임 후보로 우선 추천한다"</td></tr>
+        <tr><td>제12조 조합 회신 의무</td><td>회사 정관은 회사 밖의 조합을 직접 구속하기 어렵습니다</td><td class="law">정관의 효력 범위</td><td>조합 정관 또는 회사-조합 협약서로 이관</td></tr>
+        <tr><td>제13조 2항 자료 요구</td><td>주주의 재무제표 열람권과 3% 이상 주주의 회계장부 열람권은 법으로 보장됩니다</td><td class="law">상법 제448조·제466조</td><td>"법령이 정한 범위 내에서" 문구 추가</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span><span class="no">3.</span> 설립등기에 필요한 기재사항 보충</span></h2>
+    <p class="lead">상법 제289조가 정한 필수 기재사항 중 두 가지를 보충하시면 설립등기가 원활할 것 같습니다.</p>
+    <ul>
+      <li><strong>공고방법</strong> (예: "회사의 공고는 홈페이지에 게재하며, 게재할 수 없을 때는 ○○신문에 게재한다")</li>
+      <li><strong>발기인의 성명·주민등록번호·주소</strong></li>
+    </ul>
+    <p class="lead">이와 함께 주주총회(소집·결의방법·의장), 이사회 결의방법, 대표이사 선정 방법, 감사의 직무, 명의개서·기준일, 준비금, 정관 변경 조항도 표준정관을 참고해 넣어 두시면 운영할 때 편합니다.</p>
+  </section>
+
+  <section>
+    <h2><span><span class="no">4.</span> 승소금 출자 절차의 실무 정리</span></h2>
+    <p class="lead">출자 비율과 절차는 원고별 <strong>개별 출자약정서</strong>에 담고, 정관에는 근거만 두시면 원고님들 동의를 받기도 수월하고 분쟁 여지도 줄어듭니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>살펴볼 점</th><th>내용</th><th>보완 예시</th></tr></thead>
+      <tbody>
+        <tr><td>원고 개인 재산</td><td>판결금은 원고 개인 재산이라 출자 비율(70%)은 각자의 동의로 정해집니다</td><td>비율·절차는 개별 출자약정서로</td></tr>
+        <tr><td>입금 방식</td><td>회사 계좌로 바로 입금하려면 원고의 지급지시서가 필요하고, 판결 채권 자체를 출자하면 현물출자로 검사인 조사 대상이 됩니다</td><td>원고 수령 후 현금 납입 또는 지급지시 방식 명시 (상법 제421조·제422조)</td></tr>
+        <tr><td>주주 등재 시점</td><td>신주는 이사회 결의 → 납입 → 납입기일 다음날 효력 발생 → 변경등기 순서로 진행됩니다</td><td>절차 순서대로 문구 정리 (상법 제416조·제423조)</td></tr>
+        <tr><td>제3자 배정 사유</td><td>제3자 배정은 회사의 경영상 목적이 있을 때 가능합니다</td><td>"운영자금 확보" 등 목적 명시 (상법 제418조 2항)</td></tr>
+        <tr><td>공제 기준</td><td>"1/10 공제"가 실제 소송비용과 다를 수 있고, 세금 처리 순서도 정해 두면 좋습니다</td><td>"실제 소송비용 및 제세공과금 공제 후"</td></tr>
+        <tr><td>표기</td><td>제5조의4 본문의 "제5종의2"</td><td>"제5조의2"</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span><span class="no">5.</span> 조합 통제와 경영 안정의 균형</span></h2>
+    <p class="lead">수정안은 조합의 경영권 확보(제5조)와 전문경영인의 소신 경영 보장(제8조·제9조·제13조)을 함께 담고 있습니다. 두 취지가 모두 살도록, 조합원님들이 안심하실 수 있는 견제 장치를 짝으로 두시면 좋겠습니다. 우리 조합이 출발한 이유가 수익 배분의 투명성이었던 만큼, 이 부분이 조합원 설득에도 큰 힘이 될 것 같습니다.</p>
+    <ol>
+      <li><strong>성과 기준의 대칭</strong> — 연임 우선 기준(영업이익률 4.5%)과 함께, 예를 들어 "2년 연속 ○% 미만이면 재신임 절차"를 둡니다.</li>
+      <li><strong>객실별 정산 내역 공개</strong> — 분기마다 구분소유자 전원에게 객실별 매출·비용·임대료 산정 근거를 제공합니다.</li>
+      <li><strong>외부감사 구체화</strong> — 제13조의 "정기적 외부 회계감사"를 "매년 회계법인 감사"로 명시합니다.</li>
+      <li><strong>감사의 독립성</strong> — 감사는 조합이 추천하되 대표이사와 특수관계인은 제외합니다.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span><span class="no">6.</span> 용어·산식을 명확히 정의</span></h2>
+    <p class="lead">나중에 해석이 갈리지 않도록 아래 항목은 별표나 별첨으로 정리해 두시면 좋겠습니다.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>조항</th><th>참고 사항</th><th>보완 예시</th></tr></thead>
+      <tbody>
+        <tr><td>제6조의2 4항, 제8조 1항 영업이익률 4.5%</td><td>"분양가 대비 영업이익률"은 매출 대비 개념인 영업이익률과 분양가 대비 수익률이 섞여 있습니다</td><td>별표 산식 예: (임차료 차감 전 영업이익) ÷ (조합원 객실 분양가 총액)</td></tr>
+        <tr><td>제6조의2·제7조 "주주총회(모체조합 총회)"</td><td>이사 선임은 회사 주주총회의 권한입니다(상법 제382조)</td><td>"조합 총회 결의를 거쳐 조합이 회사 주주총회에서 의결권을 행사한다"</td></tr>
+        <tr><td>제6조의2 1항 이사 유고 시</td><td>대표이사 직무대행은 가능하지만 이사 자리 자체의 대행은 어렵습니다</td><td>결원 시 임시이사 선임 절차 준용 (상법 제386조)</td></tr>
+        <tr><td>제6조의2 4항 총지배인 연임</td><td>총지배인은 고용(위임)계약으로 정하는 것이 일반적입니다</td><td>계약서로 이관</td></tr>
+        <tr><td>제11조 1항 8.18 투표 확정안</td><td>외부 문서를 인용만 하면 내용 확인이 어렵습니다</td><td>별첨 첨부 또는 산식 본문 기재</td></tr>
+        <tr><td>제15조 유보금 40억 원</td><td>임대료에서 적립하면 구분소유자 몫, 회사 이익에서 적립하면 법인세 대상으로 성격이 달라집니다</td><td>법적 성격과 반환 조건 명시, 세무 자문</td></tr>
+        <tr><td>제7조 2항 추천위원회</td><td>"3인 이상" 부분의 문장 구조가 복잡합니다</td><td>자격·인원·선정 방법을 항목별로 정리</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span><span class="no">7.</span> 스톡옵션 조항 보완</span></h2>
+    <p class="lead">10% 한도와 2년 재직 요건은 상법(제340조의2·제340조의4)에 잘 맞게 되어 있습니다. 두 가지만 더해 두시면 좋겠습니다.</p>
+    <ul>
+      <li>10% 이상 주주와 그 특수관계인, 이사·감사 선임에 사실상 영향력이 있는 분은 부여 대상에서 제외된다는 점 명시</li>
+      <li>스톡옵션 10%와 외부투자를 합치면 67% 유지선에 닿을 수 있으므로 「스톡옵션 + 외부투자 합계 상한」 설정</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span><span class="no">8.</span> 정관과 함께 준비하면 좋을 것</span></h2>
+    <div class="tbl"><table>
+      <thead><tr><th>항목</th><th>이유</th></tr></thead>
+      <tbody>
+        <tr><td>관광숙박업 등록 (강릉시)</td><td>신규 운영사의 호텔업 등록 요건과 기존 운영사 등록과의 관계 확인</td></tr>
+        <tr><td>조합 정관 정비</td><td>조합의 자회사 출자·주식 보유 근거, 의결권 행사 절차(대의원회 또는 총회)</td></tr>
+        <tr><td>3단 문서 구조</td><td>① 회사 정관(법정 사항) ② 주주간계약(의결권·우선매수권) ③ 회사-조합 협약서(협조 의무·임대 조건)</td></tr>
+        <tr><td>비조합원 객실 소유자</td><td>같은 임대 조건 적용 여부를 미리 정해 두면 이후 협의가 수월합니다</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span>전문가 자문 시 여쭤보면 좋을 질문</span></h2>
+    <ol class="qs">
+      <li>원고 주식의 의결권을 조합에 안정적으로 모으려면 대안 A~D 중 어떤 구조가 적합한가요?</li>
+      <li>제8조(해임 제한·보상)와 제12조·제13조를 취지는 살리면서 유효하게 바꾸려면 어떻게 표현해야 하나요?</li>
+      <li>승소금 출자는 지급지시·현금 납입 중 어떤 방식이 절차상 간단하고, 세금은 어떻게 처리되나요?</li>
+      <li>유보금 40억 원은 회계·세무상 어떤 성격으로 두는 것이 조합원께 유리한가요?</li>
+      <li>정관 외에 주주간계약과 회사-조합 협약서에는 각각 무엇을 담아야 하나요?</li>
+    </ol>
+  </section>
+
+  <div class="closing">
+    <p>조합장님과 집행부의 수고 덕분에 우리 조합이 한 걸음씩 나아가고 있습니다. 위 내용은 작업 중 크로스체크에 참고하시도록 정리한 자료이니, 필요한 부분만 골라 쓰셔도 충분합니다.</p>
+  </div>
+
+  <p class="note">본 자료는 2026년 10월 9일자 정관 수정안을 바탕으로 작성한 참고 의견이며, 법률 자문이 아닙니다. 최종 문안은 상법 전문 변호사 또는 법무사의 검토를 거쳐 확정하시기를 권해 드립니다.</p>
+</main>
+</body>
+</html>
