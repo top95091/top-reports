@@ -129,6 +129,8 @@ tr.hl td{background:var(--tint)}
 .pf .dom{font-size:.95em;color:var(--blue);font-weight:700;word-break:break-all}
 .pf h3{font-size:1.25em;color:var(--navy)}
 .pf p{font-size:1em;line-height:1.55;color:var(--ink)}
+a.ref{color:var(--blue);text-decoration:none;font-weight:700}a.ref span{font-weight:500}a.ref:hover,a.ref:focus-visible{text-decoration:underline;outline:none}
+a.pf{text-decoration:none;color:inherit;transition:border-color .15s,background .15s}a.pf:hover,a.pf:focus-visible{border-color:var(--blue);background:var(--tint);outline:none}
 .pf.star{border:2px solid var(--blue);background:var(--tint)}
 
 /* 컬러칩 */
@@ -272,22 +274,20 @@ tr.hl td{background:var(--tint)}
 <!-- 06 디자인 -->
 <section class="slide" id="design"><div class="roof"></div><div class="in">
   <div class="eyebrow">05 · 디자인 방향</div>
-  <div class="ttl"><h2>신뢰감 있는 사이트에서 장점을 골라 참고합니다</h2></div>
+  <div class="ttl"><h2>디자인은 참고 사례를 함께 보며 정합니다</h2></div>
+  <p class="lead">아래 사이트들은 방향을 잡기 위한 참고 예시입니다(이름을 누르면 해당 사이트가 열립니다). 개발원과 함께 살펴보고 원하시는 분위기를 협의한 뒤 최종 디자인을 진행합니다.</p>
   <div class="body">
     <div class="tw"><table>
-      <thead><tr><th style="width:24%">참고 사이트</th><th>참고 포인트</th><th style="width:26%">참고할 영역</th></tr></thead>
+      <thead><tr><th style="width:24%">참고 예시</th><th>참고할 만한 점</th><th style="width:26%">활용해 볼 수 있는 곳</th></tr></thead>
       <tbody>
-        <tr><td>토스 toss.im</td><td>큰 제목, 짧은 문장, 한 화면 한 메시지</td><td>메인 문구</td></tr>
-        <tr><td>Stripe stripe.com</td><td>많은 서비스를 카드처럼 정돈</td><td>서비스 소개</td></tr>
-        <tr><td>Mercury mercury.com</td><td>차분한 색감, 넓은 여백</td><td>전체 분위기</td></tr>
-        <tr><td>Pentagram pentagram.com</td><td>잡지처럼 정돈된 글 배치</td><td>칼럼·보도자료</td></tr>
-        <tr><td>Linear linear.app</td><td>절제된 움직임, 숫자 강조</td><td>실적·수상</td></tr>
+        <tr><td><a class="ref" href="https://toss.im/" target="_blank" rel="noopener">토스 <span>toss.im ↗</span></a></td><td>큰 제목, 짧은 문장, 한 화면 한 메시지</td><td>메인 문구</td></tr>
+        <tr><td><a class="ref" href="https://stripe.com/" target="_blank" rel="noopener">Stripe <span>stripe.com ↗</span></a></td><td>많은 서비스를 카드처럼 정돈</td><td>서비스 소개</td></tr>
+        <tr><td><a class="ref" href="https://mercury.com/" target="_blank" rel="noopener">Mercury <span>mercury.com ↗</span></a></td><td>차분한 색감, 넓은 여백</td><td>전체 분위기</td></tr>
+        <tr><td><a class="ref" href="https://pentagram.com/" target="_blank" rel="noopener">Pentagram <span>pentagram.com ↗</span></a></td><td>잡지처럼 정돈된 글 배치</td><td>칼럼·보도자료</td></tr>
+        <tr><td><a class="ref" href="https://linear.app/" target="_blank" rel="noopener">Linear <span>linear.app ↗</span></a></td><td>절제된 움직임, 숫자 강조</td><td>실적·수상</td></tr>
       </tbody>
     </table></div>
-    <div class="grid g2" style="align-items:center">
-      <p class="lead" style="margin:0">네이비·아이보리를 기본으로, 골드를 포인트로 쓰는 차분한 톤을 제안합니다. 국내 웹디자인 수상작(GDWEB) 등 원하시는 사례도 함께 보고 정합니다.</p>
-      <div class="chips"><span class="chip"><i style="background:#1E2A4A"></i>네이비</span><span class="chip"><i style="background:#F5F1E8"></i>아이보리</span><span class="chip"><i style="background:#B8975A"></i>골드</span></div>
-    </div>
+    <div class="premise"><b>진행 방식</b> 위 예시와 국내 웹디자인 수상작(<a class="ref" href="https://www.gdweb.co.kr/main/" target="_blank" rel="noopener">GDWEB ↗</a>) 등에서 마음에 드시는 사례를 함께 고른 뒤, 색감·분위기·화면 구성은 협의해서 확정하고 시안 작업에 들어갑니다.</div>
   </div>
 </div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">06</span></div></section>
 
@@ -375,15 +375,15 @@ tr.hl td{background:var(--tint)}
 <section class="slide" id="portfolio"><div class="roof"></div><div class="in">
   <div class="eyebrow">11 · 제작 실적</div>
   <div class="ttl"><h2>이용걸 대표가 제작한 홈페이지입니다</h2></div>
-  <p class="lead">기업 컨설팅, 공익 법인, 문화·교육 등 여러 분야의 홈페이지를 제작했습니다.</p>
+  <p class="lead">기업 컨설팅, 공익 법인, 문화·교육 등 여러 분야의 홈페이지를 제작했습니다. 각 칸을 누르면 해당 홈페이지가 새 창으로 열립니다.</p>
   <div class="body">
     <div class="grid g3">
-      <div class="pf star"><span class="dom">a-cube.kr</span><h3>에이큐브 기업연구소</h3><p>기업 경영컨설팅</p></div>
-      <div class="pf"><span class="dom">weia.or.kr</span><h3>세계환경산업교육진흥원</h3><p>ESG 교육 사단법인</p></div>
-      <div class="pf"><span class="dom">gallerysoa.com</span><h3>갤러리소아</h3><p>갤러리·온라인 전시</p></div>
-      <div class="pf"><span class="dom">imkstc.co.kr</span><h3>KS트레이닝센터</h3><p>교육기관</p></div>
-      <div class="pf"><span class="dom">dminecoffee.co.kr</span><h3>디마인 커피 로스터즈</h3><p>커피 브랜드</p></div>
-      <div class="pf"><span class="dom">gwangjinsw.or.kr</span><h3>비영리 기관 홈페이지</h3><p>공익·비영리 기관</p></div>
+      <a class="pf star" href="https://a-cube.kr/" target="_blank" rel="noopener"><span class="dom">a-cube.kr ↗</span><h3>에이큐브 기업연구소</h3><p>기업 경영컨설팅</p></a>
+      <a class="pf" href="https://weia.or.kr/" target="_blank" rel="noopener"><span class="dom">weia.or.kr ↗</span><h3>세계환경산업교육진흥원</h3><p>ESG 교육 사단법인</p></a>
+      <a class="pf" href="https://gallerysoa.com/" target="_blank" rel="noopener"><span class="dom">gallerysoa.com ↗</span><h3>갤러리소아</h3><p>갤러리·온라인 전시</p></a>
+      <a class="pf" href="https://imkstc.co.kr/" target="_blank" rel="noopener"><span class="dom">imkstc.co.kr ↗</span><h3>KS트레이닝센터</h3><p>교육기관</p></a>
+      <a class="pf" href="https://dminecoffee.co.kr/" target="_blank" rel="noopener"><span class="dom">dminecoffee.co.kr ↗</span><h3>디마인 커피 로스터즈</h3><p>커피 브랜드</p></a>
+      <a class="pf" href="https://gwangjinsw.or.kr/" target="_blank" rel="noopener"><span class="dom">gwangjinsw.or.kr ↗</span><h3>비영리 기관 홈페이지</h3><p>공익·비영리 기관</p></a>
     </div>
   </div>
 </div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">12</span></div></section>
