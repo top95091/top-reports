@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강남지사 영업 FAQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1f8a4c; --green-d:#146b39; --green-l:#e8f5ec; --navy:#1d2a4d;
+    --sky:#3fa9dc; --orange:#f08a24;
+    --bg:#f5f8f6; --card:#ffffff; --text:#1f2a24; --muted:#6b7a71; --line:#dfe8e2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+  header{background:linear-gradient(135deg,var(--green-d),var(--green));color:#fff;padding:36px 0 30px}
+  .brand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;opacity:.92}
+  .logo{width:30px;height:30px;border-radius:50%;background:conic-gradient(var(--green) 0 120deg,var(--orange) 120deg 240deg,var(--sky) 240deg 360deg);display:grid;place-items:center}
+  .logo span{width:22px;height:22px;border-radius:50%;background:#fff;color:var(--navy);font-weight:900;font-size:15px;display:grid;place-items:center;line-height:1}
+  h1{font-size:26px;font-weight:900;margin:14px 0 6px;letter-spacing:-.5px}
+  .sub{font-size:14px;opacity:.9}
+  .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:3px 12px;font-size:12px;font-weight:500}
+
+  .tools{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 0 10px;border-bottom:1px solid var(--line)}
+  .search{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;background:#fff}
+  .search:focus{outline:2px solid var(--green);border-color:transparent}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .chip{border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
+  .chip.on{background:var(--green);border-color:var(--green);color:#fff;font-weight:500}
+
+  .cat{margin:26px 0 10px;font-size:13px;font-weight:700;color:var(--green-d);letter-spacing:.3px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  summary{list-style:none;cursor:pointer;padding:16px 44px 16px 16px;position:relative;font-weight:700;font-size:15.5px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'+';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:22px;font-weight:400;color:var(--green)}
+  details[open] summary::after{content:'−'}
+  .q{color:var(--green);margin-right:6px}
+  .ans{padding:0 16px 16px;border-top:1px dashed var(--line)}
+  .ans p{padding-top:12px;font-size:15px}
+  .ans ul{padding:8px 0 0 18px;font-size:15px}
+  .ans li{margin:3px 0}
+  .tip{margin-top:12px;background:var(--green-l);border-left:3px solid var(--green);border-radius:6px;padding:10px 12px;font-size:14px}
+  .tip b{color:var(--green-d)}
+  .badge{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:1px 7px;margin-top:12px}
+  .ok{background:#e3f4e9;color:#146b39}
+  .case{background:#fff4e2;color:#a85b05}
+  .empty{display:none;text-align:center;color:var(--muted);padding:40px 0}
+
+  .legend{margin-top:28px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .legend div{margin:3px 0}
+  footer{margin:30px 0 40px;font-size:13px;color:var(--muted)}
+  footer h3{font-size:13px;color:var(--text);margin-bottom:6px}
+  footer table{width:100%;border-collapse:collapse;margin-bottom:16px}
+  footer td{border-top:1px solid var(--line);padding:6px 4px;vertical-align:top}
+  footer td:first-child{white-space:nowrap;font-weight:700;color:var(--green-d);width:64px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand"><div class="logo"><span>e</span></div>(주)지노베이션 C&amp;G │ 강남지사</div>
+    <h1>전기료 절감 컨설팅<br>영업 FAQ</h1>
+    <div class="sub">현장에서 자주 나오는 질문, 본사 확인 답변으로 정리했습니다.</div>
+    <div class="meta">
+      <span class="pill">v1.0</span>
+      <span class="pill">2026.10.16 기준</span>
+      <span class="pill">영업 파트너 전용</span>
+    </div>
+  </div>
+</header>
+
+<div class="tools">
+  <div class="wrap">
+    <input class="search" id="q" type="search" placeholder="궁금한 내용 검색 (예: 임대, 관리단, 50%)">
+    <div class="chips" id="chips">
+      <button class="chip on" data-c="all">전체</button>
+      <button class="chip" data-c="임대차·시설">임대차·시설</button>
+      <button class="chip" data-c="계약">계약 주체</button>
+      <button class="chip" data-c="정산">절감액 정산</button>
+      <button class="chip" data-c="방문">현장 방문</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="list">
+
+  <section data-cat="임대차·시설">
+    <div class="cat">🏭 임대차 · 시설</div>
+
+    <details>
+      <summary><span class="q">Q.</span>임차(임대) 공장도 시공이 가능한가요?</summary>
+      <div class="ans">
+        <p><b>가능합니다.</b> 자가 공장이든 임차 공장이든 진행에 큰 제약은 없습니다.</p>
+        <div class="tip"><b>영업 포인트</b> — "임차라서 안 되겠죠?" 하시면 대상에서 빼지 말고 그대로 진행하세요. (임대인 동의 전제)</div>
+        <span class="badge ok">본사 확인완료</span>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q">Q.</span>원상복구 문제로 임대인이 반대하지 않나요?</summary>
+      <div class="ans">
+        <p><b>오히려 반대입니다.</b> 절감 설비가 설치된 공장은 임대 경쟁력이 올라가 임대가 더 잘 나간다는 것이 본사 설명입니다.</p>
+        <div class="tip"><b>영업 포인트</b> — 임대인에게는 "건물 가치가 올라가는 설비"로 설명하세요.</div>
+        <span class="badge ok">본사 확인완료</span>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q">Q.</span>설치한 설비는 임대인 것인가요, 임차인 것인가요?</summary>
+      <div class="ans">
+        <p><b>정해진 규칙은 없습니다.</b> 건별로 임대인·임차인이 협의해서 계약할 때 <b>특약</b>으로 정리합니다.</p>
+        <span class="badge case">건별 협의</span>
+      </div>
+    </details>
+  </section>
+
+  <section data-cat="계약">
+    <div class="cat">🏢 계약 주체 (관리단 건물)</div>
+
+    <details>
+      <summary><span class="q">Q.</span>여러 업체가 입주한 건물에서 관리단이 전기를 일괄 관리하면, 누구와 계약하나요?</summary>
+      <div class="ans">
+        <p><b>관리단을 통해 진행합니다.</b></p>
+        <ul>
+          <li>다만 실제 절감 혜택은 <b>각 입주사</b>에게 돌아갑니다.</li>
+          <li>그래서 관리단이 입주사별로 <b>동의</b>를 받아야 합니다.</li>
+          <li>관리단이 입주사를 설득하는 과정이 필요해 다소 번거로울 수 있습니다.</li>
+        </ul>
+        <div class="tip"><b>영업 포인트</b> — 관리단 건물은 처음부터 "입주사 동의 절차"가 있다는 걸 안내하고, 관리단 담당자를 우리 편으로 만드는 게 핵심입니다.</div>
+        <span class="badge ok">본사 확인완료</span>
+      </div>
+    </details>
+  </section>
+
+  <section data-cat="정산">
+    <div class="cat">💰 절감액 정산</div>
+
+    <details>
+      <summary><span class="q">Q.</span>관리단과 계약하면, 절감액 50%는 입주사들에게서 어떻게 받나요?</summary>
+      <div class="ans">
+        <p>기존 요금과 비교해 <b>절감액이 100이면 그중 50%</b>를 지노베이션 측이 받습니다. 입주사별로는 사용량에 따라 <b>나눠서(안분)</b> 정산합니다.</p>
+        <div class="tip"><b>실무 대안 (검토안)</b><br>
+          관리단이 <b>입주자대표회의</b>와 합의 → 전기요금은 절감된 금액대로 부과하고, 지노베이션 몫은 <b>관리비에 별도 항목</b>으로 청구.<br>
+          대표회의 합의가 있으면 입주사 개별 동의 절차를 줄일 수 있습니다.</div>
+        <span class="badge case">건별 협의</span>
+      </div>
+    </details>
+  </section>
+
+  <section data-cat="방문">
+    <div class="cat">🚗 현장 방문</div>
+
+    <details>
+      <summary><span class="q">Q.</span>본사 실사·상담 방문은 어느 지역까지 오나요?</summary>
+      <div class="ans">
+        <p><b>서울·경기권까지 방문합니다.</b> 수도권 건은 본사 담당자와 동반 상담이 가능합니다.</p>
+        <span class="badge ok">본사 확인완료</span>
+      </div>
+    </details>
+  </section>
+
+  <div class="empty" id="empty">검색 결과가 없습니다. 지사장에게 질문해 주세요 🙂</div>
+
+  <div class="legend">
+    <div><span class="badge ok" style="margin:0 6px 0 0">본사 확인완료</span> 본사가 확정 답변한 내용 — 그대로 안내해도 됩니다.</div>
+    <div><span class="badge case" style="margin:0 6px 0 0">건별 협의</span> 현장마다 다를 수 있음 — 고객에게 확정처럼 말하지 말고 지사에 먼저 확인하세요.</div>
+  </div>
+
+  <footer>
+    <h3>버전 기록</h3>
+    <table>
+      <tr><td>v1.0</td><td>2026.10.16 · 최초 배포 (6문항: 임대차·시설 3 / 계약 주체 1 / 정산 1 / 방문 1)</td></tr>
+    </table>
+    <div>새 질문이 생기면 강남지사 지사장에게 남겨 주세요. 본사 확인 후 다음 버전에 추가됩니다.</div>
+    <div style="margin-top:6px">(주)지노베이션 C&amp;G 강남지사 │ 지사장 고영권</div>
+  </footer>
+</main>
+
+<script>
+  const q=document.getElementById('q'), chips=document.querySelectorAll('.chip'), secs=document.querySelectorAll('section'), empty=document.getElementById('empty');
+  let cat='all';
+  function apply(){
+    const t=q.value.trim().toLowerCase(); let shown=0;
+    secs.forEach(s=>{
+      let n=0; const okCat=(cat==='all'||s.dataset.cat===cat);
+      s.querySelectorAll('details').forEach(d=>{
+        const hit=okCat&&(!t||d.textContent.toLowerCase().includes(t));
+        d.style.display=hit?'':'none'; if(hit){n++; if(t) d.open=true;}
+      });
+      s.style.display=n?'':'none'; shown+=n;
+    });
+    empty.style.display=shown?'none':'block';
+  }
+  q.addEventListener('input',apply);
+  chips.forEach(c=>c.addEventListener('click',()=>{chips.forEach(x=>x.classList.remove('on'));c.classList.add('on');cat=c.dataset.c;apply();}));
+</script>
+</body>
+</html>
