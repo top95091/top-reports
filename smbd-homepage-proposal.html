@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="중소기업개발원 홈페이지 제작 제안 | The Oracle Partners">
+<meta property="og:description" content="기존 smbd.co.kr을 바탕으로 한 신규 홈페이지 제작 제안">
+<style>html,body{margin:0}img{max-width:100%}
+@media print{.deck{gap:0!important;padding:0!important;background:#fff}.slide{box-shadow:none!important;page-break-after:always;break-after:page}body{background:#fff}}
+@page{size:A4 landscape;margin:0}</style>
+</head>
+<body>
+<title>중소기업개발원 홈페이지 제작 제안</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 16:9 slide stack (1920 기준, 1em = 16px@1920), 단일 라이트 테마 — 흰 지면 + 네이비, 액센트 블루 고정 */
+:root{
+  --blue:#2A398D; --navy:#141B36; --mid:#232D53; --soft:#3C4A75;
+  --gold:#AF9146; --cream:#F3EFE6; --white:#FFFFFF;
+  --ink:#1B2240; --muted:#5B6485; --line:#DCE0EC; --tint:#EEF0F8; --stage:#E6E8EF;
+  --f:"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--stage);color:var(--ink);font-family:var(--f);margin:0;-webkit-font-smoothing:antialiased}
+.deck{display:flex;flex-direction:column;gap:28px;align-items:center;padding-block:28px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.slide{width:100%;max-width:1600px;aspect-ratio:16/9;background:var(--white);position:relative;overflow:hidden;
+  container-type:inline-size;box-shadow:0 2px 18px rgba(20,27,54,.10)}
+.in{position:absolute;inset:0;font-size:calc(100cqw / 82);padding:4.2em 5em 3.4em;display:flex;flex-direction:column}
+h1,h2,h3,p{margin:0}
+.eyebrow{font-size:.95em;font-weight:700;letter-spacing:.14em;color:var(--blue);text-transform:uppercase}
+.ttl{display:flex;gap:.9em;align-items:stretch;margin-top:.5em}
+.ttl::before{content:"";width:.42em;background:var(--navy);flex:none}
+.ttl h2{font-size:2.7em;font-weight:700;line-height:1.25;color:var(--navy);text-wrap:balance;letter-spacing:-.01em}
+.lead{font-size:1.35em;line-height:1.6;color:var(--muted);margin-top:.9em;max-width:62em}
+.body{flex:1;min-height:0;margin-top:2em;display:flex;flex-direction:column;gap:1.4em}
+.foot{position:absolute;left:5em;right:5em;bottom:1.5em;display:flex;justify-content:space-between;align-items:center;
+  font-size:.82em;color:var(--muted);letter-spacing:.04em}
+.foot .brand{display:flex;align-items:center;gap:.6em;font-weight:500;color:var(--soft)}
+.foot svg{height:1.5em;width:auto}
+.num{font-variant-numeric:tabular-nums}
+.roof{position:absolute;top:0;right:0;width:22em;height:22em;background:var(--tint);clip-path:polygon(100% 0,0 0,100% 100%)}
+.grid{display:grid;gap:1.4em}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g5{grid-template-columns:repeat(5,1fr)}.g6{grid-template-columns:repeat(6,1fr)}
+.grid>*{min-width:0}
+.card{border:1px solid var(--line);padding:1.5em 1.6em;display:flex;flex-direction:column;gap:.6em;background:var(--white)}
+.card h3{font-size:1.35em;color:var(--navy);font-weight:700;line-height:1.35}
+.card p,.card li{font-size:1.08em;line-height:1.6;color:var(--ink)}
+.card ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:.3em}
+.tag{display:inline-block;font-size:.85em;font-weight:700;color:var(--blue);letter-spacing:.06em}
+.k{font-size:3.4em;font-weight:700;color:var(--blue);line-height:1}
+.k small{font-size:.4em;font-weight:500;color:var(--muted);margin-left:.2em}
+table{width:100%;border-collapse:collapse;font-size:1.08em}
+th{background:var(--navy);color:var(--white);font-weight:500;text-align:left;padding:.7em 1em}
+td{border-bottom:1px solid var(--line);padding:.72em 1em;line-height:1.5;vertical-align:top}
+td:first-child{font-weight:700;color:var(--navy);white-space:nowrap}
+tr.hl td{background:var(--tint)}
+.tw{overflow-x:auto}
+.note{font-size:.95em;color:var(--muted);line-height:1.6}
+.b{color:var(--blue);font-weight:700}
+.arrow{color:var(--blue);font-weight:700}
+
+/* 표지·마무리 */
+.dark{background:var(--navy);color:var(--white)}
+.dark .in{padding:5em 6em}
+.dark .roofd{position:absolute;top:0;right:0;width:46em;height:100%;background:var(--mid);clip-path:polygon(40% 0,100% 0,100% 100%,100% 100%)}
+.logo{display:flex;align-items:center;gap:1em;font-weight:600;font-size:1.5em;letter-spacing:.02em;position:relative}
+.logo svg{height:2.6em;width:auto}
+.cover-h{position:relative;margin-top:auto;display:flex;flex-direction:column;gap:1.2em}
+.cover-h .eyebrow{color:#AEB8E6}
+.cover-h h1{font-size:4.6em;line-height:1.2;font-weight:700;text-wrap:balance;letter-spacing:-.015em}
+.cover-h p{font-size:1.5em;color:#C9CFE6;line-height:1.6}
+.cover-meta{position:relative;margin-top:3em;display:flex;gap:3em;font-size:1.15em;color:#C9CFE6;border-top:1px solid #3C4A75;padding-top:1.4em}
+.cover-meta b{display:block;color:var(--white);font-weight:500;margin-top:.3em;font-size:1.1em}
+
+/* 요청 매핑 */
+.map{display:grid;grid-template-columns:1fr 3.2em 1.35fr;gap:.9em 0;align-items:stretch}
+.map .q{background:var(--tint);padding:1em 1.4em;font-size:1.15em;line-height:1.4;color:var(--navy);font-weight:700;display:flex;flex-direction:column;justify-content:center}
+.map .q span{font-weight:400;color:var(--muted);display:block;font-size:.85em;margin-top:.2em}
+.map .ar{display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:1.6em;font-weight:700}
+.map .a{border:1px solid var(--line);border-left:.35em solid var(--blue);padding:1.1em 1.4em;font-size:1.08em;line-height:1.55;display:flex;align-items:center}
+
+/* 사이트맵 */
+.sm{display:grid;grid-template-columns:repeat(5,1fr);gap:1em}
+.sm>div{min-width:0;border-top:.35em solid var(--navy);background:var(--white);border-left:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sm h3{font-size:1.25em;color:var(--white);background:var(--blue);padding:.7em 1em;font-weight:700}
+.sm ul{list-style:none;margin:0;padding:.8em 1em;display:flex;flex-direction:column;gap:.45em}
+.sm li{font-size:1.05em;line-height:1.4;padding-left:.8em;position:relative}
+.sm li::before{content:"";position:absolute;left:0;top:.6em;width:.3em;height:.3em;background:var(--soft)}
+.sm li.new{color:var(--blue);font-weight:700}
+
+/* 메인 와이어 */
+.wire{display:flex;flex-direction:column;gap:.45em;border:1px solid var(--line);padding:.8em;background:var(--tint)}
+.wire div{background:var(--white);border:1px solid var(--line);padding:.55em 1em;font-size:1em;display:flex;justify-content:space-between;gap:1em}
+.wire div b{color:var(--navy)}
+.wire div span{color:var(--muted);font-size:.92em}
+.wire .hero{background:var(--navy);color:var(--white);padding:1.2em 1em;border-color:var(--navy)}
+.wire .hero b{color:var(--white)}.wire .hero span{color:#C9CFE6}
+.wire .cta{background:var(--blue);border-color:var(--blue)}.wire .cta b{color:var(--white)}.wire .cta span{color:#D9DEF5}
+
+/* 퍼널 */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:stretch;gap:0}
+.flow .st{border:1px solid var(--line);padding:1.3em 1.2em;display:flex;flex-direction:column;gap:.5em;min-width:0}
+.flow .st h3{font-size:1.3em;color:var(--navy)}
+.flow .st p{font-size:1.02em;line-height:1.55}
+.flow .st.on{background:var(--navy);border-color:var(--navy)}
+.flow .st.on h3,.flow .st.on p{color:var(--white)}
+.flow .st.on .tag{color:#AEB8E6}
+.flow .ar{display:flex;align-items:center;padding:0 .6em;color:var(--blue);font-size:1.8em;font-weight:700}
+
+/* 타임라인 */
+.tl{display:grid;grid-template-columns:repeat(8,1fr);border:1px solid var(--line)}
+.tl>div{border-right:1px solid var(--line);font-size:.95em;color:var(--muted);text-align:center;padding:.5em 0;background:var(--tint)}
+.tl>div:last-child{border-right:0}
+.bars{display:flex;flex-direction:column;gap:.55em;margin-top:.6em}
+.bar{display:grid;grid-template-columns:16em 1fr;align-items:center;gap:1em}
+.bar .lb{font-size:1.08em;font-weight:700;color:var(--navy)}
+.bar .lb span{display:block;font-weight:400;color:var(--muted);font-size:.85em}
+.bar .tr{display:grid;grid-template-columns:repeat(8,1fr);height:2.3em}
+.bar .tr i{background:var(--blue);display:flex;align-items:center;padding:0 .8em;color:var(--white);font-style:normal;font-size:.95em;white-space:nowrap;overflow:hidden}
+.bar .tr i.lt{background:var(--soft)}
+
+/* 포트폴리오 */
+.pf{border:1px solid var(--line);padding:1.3em 1.4em;display:flex;flex-direction:column;gap:.45em;min-width:0}
+.pf .dom{font-size:.95em;color:var(--blue);font-weight:700;word-break:break-all}
+.pf h3{font-size:1.25em;color:var(--navy)}
+.pf p{font-size:1em;line-height:1.55;color:var(--ink)}
+.pf.star{border:2px solid var(--blue);background:var(--tint)}
+
+/* 컬러칩 */
+.chips{display:flex;gap:1em}
+.chip{display:flex;align-items:center;gap:.6em;font-size:1em;color:var(--ink)}
+.chip i{width:2.2em;height:2.2em;display:block;border:1px solid var(--line)}
+
+/* 모바일: 슬라이드 비율 해제, 리플로우 */
+@media (max-width: 760px){
+  .deck{gap:16px;padding-block:16px}
+  .slide{aspect-ratio:auto}
+  .in{position:relative;font-size:13px;padding:2.4em 1.6em 4.4em}
+  .dark .in{padding:2.6em 1.6em 3em}
+  .g2,.g3,.g4,.g5,.g6,.sm{grid-template-columns:1fr}
+  .map{grid-template-columns:1fr}.map .ar{transform:rotate(90deg);height:1.6em}
+  .flow{grid-template-columns:1fr}.flow .ar{justify-content:center;transform:rotate(90deg);padding:.2em}
+  .foot{left:1.6em;right:1.6em;font-size:11px}
+  .roof{width:9em;height:9em}
+  .dark .roofd{display:none}
+  .ttl h2{font-size:2.1em}
+  .cover-h h1{font-size:2.6em}
+  .cover-meta{flex-direction:column;gap:1em}
+  .bar{grid-template-columns:1fr}
+  .tl,.bar .tr{min-width:520px}
+  .tlwrap{overflow-x:auto}
+  td:first-child{white-space:normal}
+}
+</style>
+
+<div class="deck">
+<style>
+.price{display:grid;grid-template-columns:1fr 1.25fr;gap:2.4em;align-items:stretch}
+.price .big{background:var(--navy);color:var(--white);padding:2.4em 2.6em;display:flex;flex-direction:column;justify-content:center;gap:.8em}
+.price .big .lbl{font-size:1.05em;color:#AEB8E6;letter-spacing:.08em;font-weight:700}
+.price .big .amt{font-size:5.2em;font-weight:700;line-height:1;letter-spacing:-.02em}
+.price .big .amt span{font-size:.36em;font-weight:500;margin-left:.15em}
+.price .big .vat{font-size:1.2em;color:#C9CFE6}
+.inc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7em}
+.inc li{font-size:1.15em;line-height:1.5;padding-left:1.4em;position:relative}
+.inc li::before{content:"✓";position:absolute;left:0;color:var(--blue);font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line)}
+.steps>div{padding:1.6em 1.6em;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:.55em;min-width:0}
+.steps>div:last-child{border-right:0}
+.steps .wk{font-size:.95em;font-weight:700;color:var(--blue);letter-spacing:.06em}
+.steps h3{font-size:1.4em;color:var(--navy)}
+.steps p{font-size:1.08em;line-height:1.6}
+.steps>div.on{background:var(--navy)}
+.steps>div.on h3,.steps>div.on p{color:var(--white)}.steps>div.on .wk{color:#AEB8E6}
+.premise{border:1px solid var(--line);background:var(--tint);padding:1em 1.4em;font-size:1em;line-height:1.6;color:var(--ink)}
+.premise b{color:var(--blue)}
+.ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5em;counter-reset:n}
+.ol li{counter-increment:n;display:grid;grid-template-columns:2.2em 9em 1fr;gap:.8em;align-items:baseline;border-bottom:1px solid var(--line);padding:.55em 0;font-size:1.05em;line-height:1.5}
+.ol li::before{content:counter(n);font-weight:700;color:var(--blue);font-variant-numeric:tabular-nums}
+.ol li b{color:var(--navy)}
+.card .small{font-size:.98em}
+@media (max-width:760px){.price,.steps{grid-template-columns:1fr}.steps>div{border-right:0;border-bottom:1px solid var(--line)}.ol li{grid-template-columns:2em 1fr}.ol li span{grid-column:2}}
+</style>
+
+<!-- 01 표지 -->
+<section class="slide dark" id="cover"><div class="roofd"></div><div class="in">
+  <div class="logo">
+    <svg viewBox="0 0 143 277" fill="#FFFFFF" aria-label="The Oracle Partners"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>
+    The Oracle Partners
+  </div>
+  <div class="cover-h">
+    <div class="eyebrow">Homepage Proposal</div>
+    <h1>읽히고, 신뢰받고,<br>상담으로 이어지는 홈페이지</h1>
+    <p>기존 smbd.co.kr을 바탕으로 한 신규 홈페이지 제작 제안</p>
+  </div>
+  <div class="cover-meta">
+    <div>받는 곳<b>(주)중소기업개발원 귀중</b></div>
+    <div>제안일<b class="num">2026년 10월</b></div>
+    <div>제안사<b>디오라클파트너스 × 이용걸 대표(디자인·웹)</b></div>
+  </div>
+</div></section>
+
+<!-- 02 개요 -->
+<section class="slide" id="overview"><div class="roof"></div><div class="in">
+  <div class="eyebrow">01 · 제안 개요</div>
+  <div class="ttl"><h2>홈페이지는 경영자문 회사의 첫 번째 상담 창구입니다</h2></div>
+  <p class="lead">대표님들은 상담 전에 반드시 홈페이지를 확인합니다. 정보가 잘 읽히고, 최신 활동이 보이고, 휴대폰에서 바로 문의할 수 있어야 신뢰가 상담으로 이어집니다.</p>
+  <div class="body">
+    <div class="grid g3">
+      <div class="card"><span class="tag">지금</span><h3>이미지 위주의 구성</h3><p>핵심 정보 대부분이 이미지로 되어 있어 검색과 수정에 불리합니다.</p></div>
+      <div class="card"><span class="tag">지금</span><h3>휴대폰에서 보기 어려움</h3><p>반응형(화면 크기에 맞춰 바뀌는 방식)이 적용되어 있지 않습니다.</p></div>
+      <div class="card"><span class="tag">지금</span><h3>나뉘어 있는 관리</h3><p>메인·보도자료·정책 페이지가 서로 다른 방식으로 운영되고 있습니다.</p></div>
+    </div>
+    <div class="premise"><b>안내</b> 이 제안서는 현재 홈페이지를 살펴본 결과와 새 홈페이지의 전체 방향을 담은 자료입니다. 메뉴·화면 구성·기능 등 세부 사항은 개발원의 의견을 들은 뒤 협의해서 확정합니다.</div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">02</span></div></section>
+
+<!-- 03 진단 -->
+<section class="slide" id="diagnosis"><div class="in">
+  <div class="eyebrow">02 · 현 홈페이지 진단</div>
+  <div class="ttl"><h2>지금 홈페이지에서 살펴본 여섯 가지</h2></div>
+  <div class="body">
+    <div class="grid g3">
+      <div class="card"><span class="tag">가장 큰 부분</span><h3>글자가 이미지로 되어 있음</h3><ul class="small"><li>메인 서비스 소개·중앙 문구·언론 기사가 이미지 안의 글자</li><li>검색엔진이 내용을 읽기 어렵고, 문구 수정 때마다 이미지를 새로 만들어야 함</li></ul></div>
+      <div class="card"><span class="tag">휴대폰</span><h3>반응형 미지원</h3><ul class="small"><li>PC 화면이 그대로 줄어들어 보여 확대·좌우 이동이 필요</li><li>휴대폰 방문자가 많은 환경에서 상담 기회 손실로 이어질 수 있음</li></ul></div>
+      <div class="card"><span class="tag">이미지</span><h3>이미지 최적화 부족</h3><ul class="small"><li>가벼운 이미지 형식을 쓰지 않음</li><li>일부 영역은 같은 이미지를 두 장씩 불러와 무거움</li></ul></div>
+      <div class="card"><span class="tag">검색 설정</span><h3>검색 관련 설정 보완 필요</h3><ul class="small"><li>주소 표기(www 유무)가 섞여 있음</li><li>카톡 공유 시 미리보기 이미지가 빠질 수 있음</li><li>페이지 제목 구조가 정리되어 있지 않음</li></ul></div>
+      <div class="card"><span class="tag">구조</span><h3>오래된 방식과 분산된 관리</h3><ul class="small"><li>상담 신청 폼이 PC용·모바일용으로 따로 있음</li><li>메인·보도자료·개인정보처리방침이 각각 다른 방식</li></ul></div>
+      <div class="card"><span class="tag">신뢰</span><h3>오래된 정보 노출</h3><ul class="small"><li>예전 연도 표기와 지난 수상 문구가 남아 있음</li><li>휴대폰에서 전화·카톡 상담으로 가는 길이 약함</li></ul></div>
+    </div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">03</span></div></section>
+
+<!-- 04 개선 요약 -->
+<section class="slide" id="fix"><div class="roof"></div><div class="in">
+  <div class="eyebrow">03 · 개선 방향</div>
+  <div class="ttl"><h2>무엇을 어떤 방향으로 바꾸는지</h2></div>
+  <div class="body">
+    <div class="tw"><table>
+      <thead><tr><th style="width:16%">항목</th><th style="width:40%">현재</th><th>개선 방향</th></tr></thead>
+      <tbody>
+        <tr><td>글자</td><td>주요 내용이 이미지</td><td class="b">실제 글자로 바꿔 검색·가독성 확보</td></tr>
+        <tr><td>반응형</td><td>미지원, PC·모바일 폼 중복</td><td class="b">화면 크기에 맞춰 바뀌는 구성</td></tr>
+        <tr><td>대표 주소</td><td>www 유무 혼용</td><td class="b">하나의 주소로 통일</td></tr>
+        <tr><td>SNS 공유</td><td>미리보기 이미지 누락 우려</td><td class="b">페이지별 공유 이미지 정비</td></tr>
+        <tr><td>검색 정보</td><td>페이지 제목·설명 미비</td><td class="b">페이지별 제목·설명 정리</td></tr>
+        <tr><td>운영</td><td>메인·보도자료·정책 페이지 분산</td><td class="b">한 곳에서 통합 관리</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">04</span></div></section>
+
+<!-- 05 목표 -->
+<section class="slide" id="goals"><div class="in">
+  <div class="eyebrow">04 · 제작 목표</div>
+  <div class="ttl"><h2>새 홈페이지가 지향하는 네 가지</h2></div>
+  <div class="body">
+    <div class="grid g4">
+      <div class="card"><span class="tag">목표 1</span><h3>읽히는 홈페이지</h3><p>이미지 속 글자를 실제 글자로 바꿔 검색 노출과 가독성을 높입니다.</p></div>
+      <div class="card"><span class="tag">목표 2</span><h3>신뢰를 주는 디자인</h3><p>차분한 색감과 여백을 쓰고, 실적과 전문위원이 잘 보이도록 구성합니다.</p></div>
+      <div class="card"><span class="tag">목표 3</span><h3>상담으로 이어지는 흐름</h3><p>휴대폰에서도 바로 전화·상담 문의를 할 수 있는 흐름을 고려합니다.</p></div>
+      <div class="card"><span class="tag">목표 4</span><h3>직접 관리하는 홈페이지</h3><p>워드프레스(Divi) 같은 방식으로, 담당자가 문구·기사·사례를 직접 고칠 수 있도록 합니다.</p></div>
+    </div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">05</span></div></section>
+
+<!-- 06 디자인 -->
+<section class="slide" id="design"><div class="roof"></div><div class="in">
+  <div class="eyebrow">05 · 디자인 방향</div>
+  <div class="ttl"><h2>신뢰감 있는 사이트에서 장점을 골라 참고합니다</h2></div>
+  <div class="body">
+    <div class="tw"><table>
+      <thead><tr><th style="width:24%">참고 사이트</th><th>참고 포인트</th><th style="width:26%">참고할 영역</th></tr></thead>
+      <tbody>
+        <tr><td>토스 toss.im</td><td>큰 제목, 짧은 문장, 한 화면 한 메시지</td><td>메인 문구</td></tr>
+        <tr><td>Stripe stripe.com</td><td>많은 서비스를 카드처럼 정돈</td><td>서비스 소개</td></tr>
+        <tr><td>Mercury mercury.com</td><td>차분한 색감, 넓은 여백</td><td>전체 분위기</td></tr>
+        <tr><td>Pentagram pentagram.com</td><td>잡지처럼 정돈된 글 배치</td><td>칼럼·보도자료</td></tr>
+        <tr><td>Linear linear.app</td><td>절제된 움직임, 숫자 강조</td><td>실적·수상</td></tr>
+      </tbody>
+    </table></div>
+    <div class="grid g2" style="align-items:center">
+      <p class="lead" style="margin:0">네이비·아이보리를 기본으로, 골드를 포인트로 쓰는 차분한 톤을 제안합니다. 국내 웹디자인 수상작(GDWEB) 등 원하시는 사례도 함께 보고 정합니다.</p>
+      <div class="chips"><span class="chip"><i style="background:#1E2A4A"></i>네이비</span><span class="chip"><i style="background:#F5F1E8"></i>아이보리</span><span class="chip"><i style="background:#B8975A"></i>골드</span></div>
+    </div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">06</span></div></section>
+
+<!-- 07 사이트맵 -->
+<section class="slide" id="sitemap"><div class="in">
+  <div class="eyebrow">06 · 사이트맵(안)</div>
+  <div class="ttl"><h2>기존 메뉴를 다섯 갈래로 다시 묶는 안</h2></div>
+  <div class="body">
+    <div class="sm">
+      <div><h3>회사소개</h3><ul><li>인사말·비전</li><li>SMBD 시스템</li><li>전문위원 소개</li><li>수상·인증</li><li>오시는 길</li></ul></div>
+      <div><h3>재무건전</h3><ul><li>가지급금 정리</li><li>이익잉여금 정리</li><li>배우자증여 이익소각</li><li>법인정관 정비</li><li>경정청구</li><li>고용지원금</li><li>벤처투자 소득공제</li></ul></div>
+      <div><h3>경영안정</h3><ul><li>명의신탁주식</li><li>기업부설연구소</li><li>벤처인증</li><li>법인전환</li><li>기업합병·분할</li><li>건설업 M&amp;A</li><li>병원 절세</li><li class="new">우수조달</li></ul></div>
+      <div><h3>가업승계</h3><ul><li>가업승계</li><li>부동산 가업승계</li><li>VPM 전략</li><li>가업승계 사례</li></ul></div>
+      <div><h3>인사이트·상담</h3><ul><li>보도자료</li><li>칼럼·이슈</li><li>연구노트</li><li>온라인 상담신청</li><li>업무제휴 문의</li></ul></div>
+    </div>
+    <p class="note">현재 6개 대메뉴와 별도로 운영되던 보도자료·정책 페이지를 다섯 갈래로 묶는 안입니다. 기존 ‘매출증대’의 우수조달은 경영안정으로 옮기는 안입니다. 최종 메뉴는 협의를 통해 확정합니다.</p>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">07</span></div></section>
+
+<!-- 08 메인 구성 -->
+<section class="slide" id="main"><div class="roof"></div><div class="in">
+  <div class="eyebrow">07 · 메인 화면 구성(안)</div>
+  <div class="ttl"><h2>메인 화면은 신뢰에서 상담으로 흐르도록 구성합니다</h2></div>
+  <div class="body">
+    <ol class="ol">
+      <li><b>첫 화면</b><span>핵심 메시지 한 줄과 대표전화·상담 신청 버튼</span></li>
+      <li><b>신뢰 지표</b><span>수상 이력과 자문 실적 (들어갈 수치는 협의)</span></li>
+      <li><b>서비스 영역</b><span>재무건전·경영안정·가업승계, 누르면 상세 페이지로</span></li>
+      <li><b>전문위원</b><span>세무사·회계사 등 전문가 소개</span></li>
+      <li><b>성공 사례</b><span>가업승계·가지급금 정리 등 대표 사례 요약</span></li>
+      <li><b>인사이트</b><span>최신 보도자료·칼럼</span></li>
+      <li><b>상담 신청</b><span>지역·분야를 고르는 간편 신청과 개인정보 동의</span></li>
+    </ol>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">08</span></div></section>
+
+<!-- 09 핵심 기능 -->
+<section class="slide" id="features"><div class="in">
+  <div class="eyebrow">08 · 주요 기능(안)</div>
+  <div class="ttl"><h2>검토 중인 주요 기능</h2></div>
+  <div class="body">
+    <div class="grid g3">
+      <div class="card"><h3>모바일 상담 버튼</h3><p>휴대폰 화면에서 전화·카카오톡·상담신청으로 바로 가는 버튼</p></div>
+      <div class="card"><h3>인사이트 게시판</h3><p>보도자료·칼럼을 한곳에서 올리고 메인에도 보이게</p></div>
+      <div class="card"><h3>전문위원 소개</h3><p>분야별 전문가와 담당 서비스를 함께 보여 줌</p></div>
+      <div class="card"><h3>반응형 화면</h3><p>PC·태블릿·휴대폰 화면에 맞춰 자동으로 정리</p></div>
+      <div class="card"><h3>가벼운 화면</h3><p>이미지를 가볍게 다듬어 첫 화면이 빨리 뜨도록</p></div>
+      <div class="card"><h3>검색 기본 설정</h3><p>페이지별 제목·설명 정리, 네이버·구글 등록</p></div>
+    </div>
+    <p class="note">기능의 범위와 방식은 협의를 통해 확정합니다.</p>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">09</span></div></section>
+
+<!-- 10 기대 효과 -->
+<section class="slide" id="effect"><div class="roof"></div><div class="in">
+  <div class="eyebrow">09 · 기대 효과</div>
+  <div class="ttl"><h2>새 홈페이지로 기대할 수 있는 변화</h2></div>
+  <div class="body">
+    <div class="grid g5">
+      <div class="card"><span class="tag">검색 노출</span><h3>검색 유입의 기반</h3><p>서비스명·키워드가 글자로 읽혀 네이버·구글 검색에 유리해집니다.</p></div>
+      <div class="card"><span class="tag">휴대폰</span><h3>바로 읽히는 화면</h3><p>확대나 좌우 이동 없이 휴대폰에서 읽을 수 있습니다.</p></div>
+      <div class="card"><span class="tag">상담</span><h3>쉬운 문의</h3><p>휴대폰에서 간단하게 전화·상담 신청을 할 수 있습니다.</p></div>
+      <div class="card"><span class="tag">신뢰</span><h3>활동 중인 회사</h3><p>실적과 전문가가 보이는, 지금 활동 중인 회사의 인상을 줍니다.</p></div>
+      <div class="card"><span class="tag">운영</span><h3>직접 수정</h3><p>담당자가 문구·기사·사례를 직접 고칠 수 있습니다.</p></div>
+    </div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">10</span></div></section>
+
+<!-- 11 진행 -->
+<section class="slide" id="schedule"><div class="in">
+  <div class="eyebrow">10 · 진행 순서</div>
+  <div class="ttl"><h2>네 단계로 진행합니다</h2></div>
+  <p class="lead">구체적인 일정은 범위를 정한 뒤 함께 맞춥니다.</p>
+  <div class="body">
+    <div class="steps">
+      <div><span class="wk">STEP 1</span><h3>협의·기획</h3><p>개발원의 의견을 듣고 메뉴와 화면 구성을 확정합니다.</p></div>
+      <div><span class="wk">STEP 2</span><h3>디자인</h3><p>시안을 보여 드리고 의견을 반영해 다듬습니다.</p></div>
+      <div><span class="wk">STEP 3</span><h3>제작</h3><p>확정된 디자인으로 만들고 기존 내용을 옮깁니다.</p></div>
+      <div class="on"><span class="wk">STEP 4</span><h3>확인·오픈</h3><p>함께 확인한 뒤 오픈합니다.</p></div>
+    </div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">11</span></div></section>
+
+<!-- 12 실적 -->
+<section class="slide" id="portfolio"><div class="roof"></div><div class="in">
+  <div class="eyebrow">11 · 제작 실적</div>
+  <div class="ttl"><h2>이용걸 대표가 제작한 홈페이지입니다</h2></div>
+  <p class="lead">기업 컨설팅, 공익 법인, 문화·교육 등 여러 분야의 홈페이지를 제작했습니다.</p>
+  <div class="body">
+    <div class="grid g3">
+      <div class="pf star"><span class="dom">a-cube.kr</span><h3>에이큐브 기업연구소</h3><p>기업 경영컨설팅</p></div>
+      <div class="pf"><span class="dom">weia.or.kr</span><h3>세계환경산업교육진흥원</h3><p>ESG 교육 사단법인</p></div>
+      <div class="pf"><span class="dom">gallerysoa.com</span><h3>갤러리소아</h3><p>갤러리·온라인 전시</p></div>
+      <div class="pf"><span class="dom">imkstc.co.kr</span><h3>KS트레이닝센터</h3><p>교육기관</p></div>
+      <div class="pf"><span class="dom">dminecoffee.co.kr</span><h3>디마인 커피 로스터즈</h3><p>커피 브랜드</p></div>
+      <div class="pf"><span class="dom">gwangjinsw.or.kr</span><h3>비영리 기관 홈페이지</h3><p>공익·비영리 기관</p></div>
+    </div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">12</span></div></section>
+
+<!-- 13 비용 -->
+<section class="slide" id="price"><div class="in">
+  <div class="eyebrow">12 · 제작 비용</div>
+  <div class="ttl"><h2>홈페이지 제작 비용</h2></div>
+  <div class="body">
+    <div class="price">
+      <div class="big">
+        <span class="lbl">홈페이지 제작비</span>
+        <div class="amt num">300<span>만 원</span></div>
+        <span class="vat">부가세 별도</span>
+      </div>
+      <div class="card" style="justify-content:center;gap:1.1em">
+        <h3>범위</h3>
+        <ul class="inc">
+          <li>홈페이지 기획·디자인·제작</li>
+          <li>기존 홈페이지 내용을 바탕으로 한 신규 구성</li>
+          <li>휴대폰·PC 대응</li>
+        </ul>
+        <p class="note">이번 제안은 홈페이지 제작에 한정합니다. 유튜브 영상 촬영·편집은 포함되지 않습니다. 세부 범위는 협의 후 확정합니다.</p>
+      </div>
+    </div>
+  </div>
+</div><div class="foot"><span class="brand"><svg viewBox="0 0 143 277" fill="#2A398D"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>The Oracle Partners</span><span class="num">13</span></div></section>
+
+<!-- 14 맺음말 -->
+<section class="slide dark" id="next"><div class="roofd"></div><div class="in">
+  <div class="logo">
+    <svg viewBox="0 0 143 277" fill="#FFFFFF" aria-label="The Oracle Partners"><path d="M143 24 L102 0 L0 60 L0 110 Z"/><path d="M121 54 L80 78 L81 206 L123 180 Z"/><path d="M61 88 L21 112 L22 253 L64 277 Z"/></svg>
+    The Oracle Partners
+  </div>
+  <div class="cover-h" style="margin-top:2.6em">
+    <div class="eyebrow">맺음말</div>
+    <h1 style="font-size:3.2em">말씀을 듣고, 함께 정하겠습니다</h1>
+  </div>
+  <div class="grid g2" style="position:relative;margin-top:2em;gap:2.4em;font-size:1.15em;line-height:1.8;color:#E3E7F5">
+    <div>
+      <p>중소기업개발원의 전문성이 온라인에서도 그대로 전해질 수 있도록, 읽히고 신뢰받고 상담으로 이어지는 홈페이지를 만들겠습니다. 세부 메뉴와 화면 구성은 협의를 통해 확정하겠습니다.</p>
+    </div>
+    <div style="border-left:1px solid #3C4A75;padding-left:2em">
+      <p style="color:#AEB8E6;font-size:.85em;letter-spacing:.1em">문의</p>
+      <p style="color:#fff;font-weight:500">디오라클파트너스 PM 고영권</p>
+      <p class="num">010-4860-3087</p>
+      <p>theoracle95091@gmail.com</p>
+    </div>
+  </div>
+</div></section>
+
+</div>
+
+</body>
+</html>
