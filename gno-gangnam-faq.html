@@ -66,8 +66,8 @@
     <h1>전기료 절감 컨설팅<br>영업 FAQ</h1>
     <div class="sub">현장에서 자주 나오는 질문, 본사 확인 답변으로 정리했습니다.</div>
     <div class="meta">
-      <span class="pill">v1.0</span>
-      <span class="pill">2026.10.16 기준</span>
+      <span class="pill">v1.1</span>
+      <span class="pill">2026.10.19 기준</span>
       <span class="pill">영업 파트너 전용</span>
     </div>
   </div>
@@ -75,13 +75,14 @@
 
 <div class="tools">
   <div class="wrap">
-    <input class="search" id="q" type="search" placeholder="궁금한 내용 검색 (예: 임대, 관리단, 50%)">
+    <input class="search" id="q" type="search" placeholder="궁금한 내용 검색 (예: 임대, 관리단, 약정서)">
     <div class="chips" id="chips">
       <button class="chip on" data-c="all">전체</button>
       <button class="chip" data-c="임대차·시설">임대차·시설</button>
       <button class="chip" data-c="계약">계약 주체</button>
       <button class="chip" data-c="정산">절감액 정산</button>
       <button class="chip" data-c="방문">현장 방문</button>
+      <button class="chip" data-c="약정서">약정서·서류</button>
     </div>
   </div>
 </div>
@@ -163,6 +164,36 @@
     </details>
   </section>
 
+  <section data-cat="약정서">
+    <div class="cat">📝 약정서 · 서류</div>
+
+    <details>
+      <summary><span class="q">Q.</span>약정서 원본이 본사에 도착해야만 실사가 진행되나요?</summary>
+      <div class="ans">
+        <p><b>원칙은 원본 도착 후 실사입니다.</b> 다만 시간이 늦어지지 않도록, 아래 두 가지를 먼저 받아 제출하면 원본 도착 전에도 실사를 진행할 수 있습니다.</p>
+        <ul>
+          <li>고객이 도장을 찍은 <b>약정서 사진</b> (스캔도 가능)</li>
+          <li>원본을 우편으로 보낸 뒤의 <b>우편 발송 영수증 사진</b></li>
+        </ul>
+        <div class="tip"><b>영업 포인트</b> — 고객에게 "① 사진 먼저 ② 원본은 본사로 발송 ③ 발송 영수증 사진까지" 세 가지를 <b>한 번에</b> 요청하세요. 영수증 사진이 빠지면 원본이 도착할 때까지 실사가 밀릴 수 있습니다.</div>
+        <span class="badge ok">본사 확인완료</span>
+      </div>
+    </details>
+
+    <details>
+      <summary><span class="q">Q.</span>약정서 원본은 고객이 어디로, 어떻게 보내면 되나요?</summary>
+      <div class="ans">
+        <p><b>고객이 약정서에 적힌 주소(본사)로 원본을 직접 우편 발송</b>하면 됩니다. 영업자가 원본을 따로 모아서 보낼 필요는 없습니다.</p>
+        <ul>
+          <li>보내기 전에 약정서 사진을 먼저 받아 두세요.</li>
+          <li>보낸 뒤에는 우편 발송 영수증 사진을 꼭 받으세요.</li>
+        </ul>
+        <div class="tip"><b>영업 포인트</b> — 약정서를 드릴 때 <b>지노베이션 회신용 봉투</b>를 함께 드리면 고객이 주소를 따로 찾지 않고 바로 보낼 수 있습니다.</div>
+        <span class="badge ok">본사 확인완료</span>
+      </div>
+    </details>
+  </section>
+
   <div class="empty" id="empty">검색 결과가 없습니다. 지사장에게 질문해 주세요 🙂</div>
 
   <div class="legend">
@@ -173,6 +204,7 @@
   <footer>
     <h3>버전 기록</h3>
     <table>
+      <tr><td>v1.1</td><td>2026.10.19 · 약정서·서류 2문항 추가 (원본 도착 전 실사 진행 조건 / 원본 발송 방법) — 총 8문항</td></tr>
       <tr><td>v1.0</td><td>2026.10.16 · 최초 배포 (6문항: 임대차·시설 3 / 계약 주체 1 / 정산 1 / 방문 1)</td></tr>
     </table>
     <div>새 질문이 생기면 강남지사 지사장에게 남겨 주세요. 본사 확인 후 다음 버전에 추가됩니다.</div>
