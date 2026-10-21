@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="조종원님을 위한 주택담보대출 보고서">
+<meta property="og:description" content="청약 당첨 시 대출이 어떻게 나오는지 · 탑재무설계 고영권 컨설턴트">
+<title>조종원님 주택담보대출 보고서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 한 장짜리 상담 보고서 — 좁은 본문 칼럼, 큰 글씨, 표·단계 막대로 구조화 */
+/* 탑재무설계 CI: 블랙 + 라임그린(#8DC63F), 흰 지면 — 라이트 고정 */
+:root{
+  --bg:#F4F5F2; --paper:#FFFFFF; --ink:#111111; --muted:#5C6157; --line:#E1E4DC;
+  --lime:#8DC63F; --accent:#4E7D1C; --accent-soft:#EEF6E2; --warn:#A8501C; --warn-soft:#FBEDE3; --gold:#4E7D1C;
+  --seg1:#111111; --seg2:#4E7D1C; --seg3:#8DC63F;
+  --f-display:"Nanum Myeongjo","Batang",serif;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  color-scheme:light;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+.wrap{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header{border-bottom:4px solid var(--lime);padding-bottom:20px;display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:13px;letter-spacing:.12em;color:var(--gold);font-weight:700}
+.draft{display:inline-block;margin-left:8px;font-size:12px;letter-spacing:.06em;padding:1px 8px;border:1px solid var(--warn);color:var(--warn);border-radius:3px;vertical-align:2px}
+h1{font-family:var(--f-display);font-size:clamp(28px,5vw,38px);line-height:1.3;margin:0;text-wrap:balance}
+.meta{color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:4px 18px}
+h2{font-family:var(--f-display);font-size:24px;margin:0 0 6px;text-wrap:balance;display:flex;gap:10px;align-items:baseline}
+h2 .no{font-family:var(--f-body);font-size:14px;color:var(--gold);font-weight:700;letter-spacing:.06em}
+h3{font-size:18px;margin:18px 0 4px}
+section{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:24px clamp(18px,4vw,32px)}
+p{margin:8px 0} .muted{color:var(--muted)} .small{font-size:14.5px}
+.summary{background:var(--ink);color:var(--paper);border:none}
+.summary h2{color:var(--paper)} .summary h2 .no{color:var(--lime)}
+.summary ol{margin:8px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+.summary b{color:var(--lime)} .summary li::marker{color:var(--lime);font-weight:700}
+.logo{font-family:var(--f-body);font-weight:700;font-size:15px;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.logo i{display:inline-block;width:12px;height:12px;background:var(--lime);border-radius:2px}
+/* 분양대금 비율 막대 */
+.bar{display:flex;height:54px;border-radius:4px;overflow:hidden;margin:16px 0 8px;font-size:14px;font-weight:700;color:#fff}
+.bar div{display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.25;padding:0 4px}
+.s1{background:var(--seg1);flex:10} .s2{background:var(--seg2);flex:60} .s3{background:var(--seg3);flex:30}
+.s3{color:var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px}
+.step{border-top:3px solid var(--seg1);padding-top:10px;min-width:0}
+.step:nth-child(2){border-color:var(--seg2)} .step:nth-child(3){border-color:var(--seg3)}
+.step .t{font-weight:700} .step .d{font-size:15px;color:var(--muted)}
+@media (max-width:620px){.steps{grid-template-columns:1fr}}
+.tbl{overflow-x:auto;margin:12px 0}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:15.5px;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+thead th{border-bottom:2px solid var(--ink);font-size:14px;color:var(--muted);font-weight:700}
+td.num,th.num{text-align:right;white-space:nowrap}
+tr.hl td{background:var(--accent-soft)}
+.callout{border-left:4px solid var(--warn);background:var(--warn-soft);padding:12px 16px;border-radius:0 4px 4px 0;margin:12px 0}
+.callout.ok{border-color:var(--lime);background:var(--accent-soft)}
+.callout b{color:var(--warn)} .callout.ok b{color:var(--accent)}
+.calc{display:grid;grid-template-columns:1fr auto;gap:4px 16px;font-variant-numeric:tabular-nums;margin:10px 0}
+.calc .r{text-align:right;white-space:nowrap} .calc .sum{border-top:1px solid var(--ink);padding-top:6px;font-weight:700}
+.calc .min{color:var(--accent);font-weight:700}
+ul.chk{list-style:none;padding:0;margin:8px 0;display:flex;flex-direction:column;gap:8px}
+ul.chk li{padding-left:28px;position:relative}
+ul.chk li::before{content:"";position:absolute;left:2px;top:.45em;width:14px;height:14px;border:2px solid var(--accent);border-radius:3px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.two>div{min-width:0}
+@media (max-width:620px){.two{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:0 8px;border-radius:3px;background:var(--accent-soft);color:var(--accent)}
+.tag.w{background:var(--warn-soft);color:var(--warn)}
+footer{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:8px}
+.sign{font-family:var(--f-display);font-size:18px;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="logo"><i></i>탑재무설계 T.O.P FINANCIAL PLANNING</div>
+  <div class="eyebrow">청약 당첨 시 대출 설계</div>
+  <h1>조종원님을 위한 주택담보대출 보고서</h1>
+  <div class="meta"><span>조종원 고객님</span><span>작성 기준일 2026년 10월 21일</span><span>탑재무설계 · 고영권 컨설턴트</span></div>
+</header>
+
+<section class="summary">
+  <h2><span class="no">요약</span>한눈에 보는 결론</h2>
+  <ol>
+    <li>청약 대금은 <b>계약금 10% → 중도금 60% → 잔금 30%</b> 순서로 냅니다. 계약금은 고객님 자금으로 준비하셔야 합니다.</li>
+    <li>중도금은 보통 <b>집단대출</b>로 해결되고, 이 단계에는 소득 기준(DSR)이 적용되지 않습니다.</li>
+    <li>입주 때 중도금 대출을 <b>일반 주택담보대출로 갈아타야</b> 하며, 이때 집값 기준(LTV)·금액 상한·소득 기준(DSR)이 모두 적용됩니다. <b>이 시점이 가장 큰 고비</b>입니다.</li>
+    <li>고객님처럼 근로소득이 없고 연금 위주이신 경우, <b>소득 기준(DSR)이 대출 금액을 가장 크게 줄입니다.</b> 입주 시점에 분양가의 상당 부분을 자기자금으로 준비해야 할 수 있습니다.</li>
+    <li>대출을 받아 서울·수도권 주택을 사면 <b>6개월 안에 직접 전입</b>해야 합니다. 시세차익 목적이라면 전매제한·실거주 의무까지 함께 확인해야 합니다.</li>
+  </ol>
+</section>
+
+<section>
+  <h2><span class="no">01</span>청약 당첨 후 돈이 나가는 순서</h2>
+  <p class="muted small">분양가를 100으로 놓았을 때의 일반적인 납부 비율입니다. 실제 비율과 날짜는 단지별 입주자 모집공고를 따릅니다.</p>
+  <div class="bar" role="img" aria-label="계약금 10%, 중도금 60%, 잔금 30%">
+    <div class="s1">계약금<br>10%</div><div class="s2">중도금 60% (보통 6회 분납)</div><div class="s3">잔금 30%</div>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="t">① 계약 (당첨 직후)</div><div class="d">고객님 자금으로 납부. 대출이 나오지 않는 구간입니다.</div></div>
+    <div class="step"><div class="t">② 중도금 (공사 기간 약 2~3년)</div><div class="d">시공사가 연결해 주는 집단대출로 납부. 소득 기준(DSR) 미적용. 단, 개인별 신용·보증 심사는 있습니다.</div></div>
+    <div class="step"><div class="t">③ 잔금 (입주 시)</div><div class="d">중도금 대출 + 잔금 30%를 <b>일반 주택담보대출 한 건</b>으로 정리. 모든 규제가 여기서 적용됩니다.</div></div>
+  </div>
+  <div class="callout"><b>쉽게 말하면</b> 공사하는 동안은 "건설사 보증으로 빌린 돈"으로 버티다가, 입주할 때 "고객님 이름으로 은행에서 새로 빌린 돈"으로 갚아야 합니다. 새로 빌릴 때는 고객님의 소득과 집값을 처음부터 다시 따집니다.</div>
+</section>
+
+<section>
+  <h2><span class="no">02</span>입주 때 적용되는 대출 기준 (2026년 10월 현재)</h2>
+  <p class="muted small">입주 시점의 잔금대출은 아래 세 가지 기준으로 각각 계산하고, <b>그중 가장 작은 금액</b>까지만 나옵니다.</p>
+
+  <h3>① 집값 기준 (LTV · 집값의 몇 %까지)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>구분</th><th class="num">규제지역<br><span class="small">서울 전역 등</span></th><th class="num">수도권 비규제<br><span class="small">인천 등</span></th><th class="num">지방</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>무주택 (일반)</td><td class="num">40%</td><td class="num">70%</td><td class="num">70%</td></tr>
+      <tr><td>생애최초 (본인·배우자 모두 집을 가진 적 없음)</td><td class="num">70%</td><td class="num">70%</td><td class="num">80%</td></tr>
+      <tr><td>1주택 (기존 집 6개월 내 처분 조건)</td><td class="num">40%</td><td class="num">70%</td><td class="num">70%</td></tr>
+      <tr><td>1주택 이상 (처분하지 않음)</td><td class="num">불가</td><td class="num">불가</td><td class="num">60%</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">규제지역: 서울 25개 구 전역 + 경기 15곳(과천·광명·성남 분당/수정/중원·수원 영통/장안/팔달·안양 동안·용인 수지/기흥·의왕·하남·화성 동탄·구리)</p>
+
+  <h3>② 금액 상한 (수도권·규제지역)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>주택 시가</th><th class="num">최대 대출</th></tr></thead>
+    <tbody>
+      <tr><td>15억 원 이하</td><td class="num">6억 원</td></tr>
+      <tr><td>15억 초과 ~ 25억 원</td><td class="num">4억 원</td></tr>
+      <tr><td>25억 원 초과</td><td class="num">2억 원</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>③ 소득 기준 (DSR · 1년 소득 대비 1년 원리금)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>항목</th><th>기준</th></tr></thead>
+    <tbody>
+      <tr><td>상한</td><td>은행 40%, 제2금융권 50% (모든 대출 합계가 1억 원을 넘을 때 적용)</td></tr>
+      <tr><td>스트레스 금리</td><td>한도 계산 때만 금리를 올려서 계산 — 수도권·규제지역 +3.0%p, 지방 +0.75%p(2026년 12월 31일까지)</td></tr>
+      <tr><td>금리 유형</td><td>5년 주기형이면 수도권 가산이 +1.2%p로 줄어 한도가 늘어남. 21년 이상 고정은 가산 없음</td></tr>
+      <tr><td>만기</td><td>수도권·규제지역 최장 30년</td></tr>
+      <tr><td>전입 의무</td><td>수도권·규제지역 주택을 대출로 사면 6개월 안에 전입</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="no">03</span>고객님 소득으로 예상해 본 잔금대출 한도</h2>
+  <p class="muted small">가정: 다른 대출 없음 · 은행 DSR 40% · 만기 30년 원리금균등 · 약정금리 연 4.2%. 소득은 은행이 인정하는 증빙 소득(국민연금·개인연금 등 연금소득, 임대·이자·배당소득 등)을 합한 금액입니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>인정 연소득</th><th class="num">수도권·규제지역<br>변동금리</th><th class="num">수도권·규제지역<br>5년 주기형</th><th class="num">지방 비규제<br>(올해 말까지)</th></tr></thead>
+    <tbody>
+      <tr><td>1,200만 원 (월 100만)</td><td class="num">약 0.59억</td><td class="num">약 0.71억</td><td class="num">약 0.75억</td></tr>
+      <tr class="hl"><td>2,400만 원 (월 200만)</td><td class="num">약 1.18억</td><td class="num">약 1.42억</td><td class="num">약 1.50억</td></tr>
+      <tr><td>3,600만 원 (월 300만)</td><td class="num">약 1.77억</td><td class="num">약 2.14억</td><td class="num">약 2.25억</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small muted">대출 합계가 1억 원 이하이면 DSR 규제 자체는 적용되지 않지만, 은행이 자체적으로 상환 능력을 심사하므로 소득 증빙은 여전히 필요합니다.</p>
+
+  <h3>예시: 서울 분양가 9억 원 아파트, 무주택 일반 공급, 연소득 2,400만 원</h3>
+  <div class="two">
+    <div>
+      <div class="calc">
+        <span>집값 기준 (9억 × 40%)</span><span class="r">3.60억</span>
+        <span>금액 상한 (15억 이하)</span><span class="r">6.00억</span>
+        <span>소득 기준 (5년 주기형)</span><span class="r min">1.42억</span>
+        <span class="sum">실제 대출 가능액</span><span class="r sum min">약 1.42억</span>
+      </div>
+    </div>
+    <div>
+      <div class="calc">
+        <span>계약금 (당첨 직후)</span><span class="r">0.90억</span>
+        <span>입주 때 갚을 중도금 + 잔금</span><span class="r">8.10억</span>
+        <span>잔금대출로 충당</span><span class="r">− 1.42억</span>
+        <span class="sum">입주 때 필요한 자기자금</span><span class="r sum">약 6.68억</span>
+      </div>
+    </div>
+  </div>
+  <div class="callout"><b>핵심</b> 이 예시에서 고객님이 준비하셔야 할 자기자금은 계약금 포함 <b>약 7.58억 원</b>입니다. 중도금 대출이 순조롭게 나왔더라도 입주 때 대출이 크게 줄어드는 구조이므로, 청약 전에 자금 계획을 먼저 세워야 합니다.</div>
+</section>
+
+<section>
+  <h2><span class="no">04</span>고객님 상황에서 꼭 확인할 것</h2>
+
+  <h3><span class="tag">특별공급</span></h3>
+  <ul class="chk">
+    <li>분양가는 일반공급과 같습니다. 할인된 가격이 아니라 <b>당첨 기회를 따로 주는 제도</b>입니다.</li>
+    <li>본인 포함 세대원 전원이 무주택이어야 합니다. 예외 인정 기준이 있으니 보유 주택이 있다면 따로 확인하겠습니다.</li>
+    <li>특별공급은 <b>평생 1회</b>입니다. 함께 사는 세대원이 이미 특별공급을 받았다면 신청할 수 없습니다.</li>
+  </ul>
+
+  <h3><span class="tag w">시세차익 목적일 때</span></h3>
+  <ul class="chk">
+    <li><b>전입 의무</b>: 서울·수도권 주택을 대출로 사면 6개월 안에 직접 들어가 살아야 합니다.</li>
+    <li><b>분양권 전매제한</b>: 투기과열지구(현재 서울 전역 등)는 일정 기간 분양권을 팔 수 없습니다. 단지별 공고문에 기간이 명시됩니다.</li>
+    <li><b>실거주 의무</b>: 분양가상한제 단지(강남·서초·송파·용산 민간택지, 공공택지 등)는 일정 기간 직접 거주해야 합니다.</li>
+    <li><b>분양권 양도세</b>: 입주 전 분양권 상태로 팔면 보유 1년 미만 70%, 1년 이상 60%의 높은 세율이 적용됩니다. 차익 실현 시점은 세금까지 계산해 정해야 합니다.</li>
+  </ul>
+
+  <h3><span class="tag">소득 증빙</span></h3>
+  <ul class="chk">
+    <li>은행은 <b>증빙되는 소득</b>으로 상환 능력을 봅니다. 연금 수령 내역, 임대소득 신고 자료 등을 미리 모아 두면 한도가 늘어납니다.</li>
+    <li>자녀 등 가족과 공동명의·공동차주로 하면 소득 합산이 가능할 수 있으나, <b>무주택 요건·특별공급 자격·증여세</b>와 얽히므로 설계 단계에서 함께 검토해야 합니다.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="no">05</span>탑재무설계의 제안</h2>
+  <div class="two">
+    <div>
+      <h3>대안 A · 분양가 6억 원 이하 단지</h3>
+      <p class="small">무주택이라면 주택금융공사 <b>보금자리론</b>을 검토할 수 있습니다. 소득 기준이 DSR이 아닌 DTI(60%)로 완화되고, 일반 한도는 3.6억 원입니다. 단, 주택 가격 6억 원 이하·부부 합산 소득 기준 등의 요건이 있습니다.</p>
+    </div>
+    <div>
+      <h3>대안 B · 실거주 의무 없는 단지</h3>
+      <p class="small">대출 대신 <b>입주 시 전세 보증금으로 잔금</b>을 치르는 방식이 가능할 수 있습니다. 실거주 의무·토지거래허가 대상 여부를 단지별로 반드시 확인해야 합니다.</p>
+    </div>
+  </div>
+  <div class="callout ok"><b>다음 단계</b> 아래 정보를 알려주시면 고객님 실제 수치로 다시 계산해 드리겠습니다.</div>
+  <ul class="chk">
+    <li>희망 지역 또는 관심 단지(분양 예정 공고)</li>
+    <li>연간 소득 내역 (연금·임대·이자·배당 등 증빙 가능한 소득)</li>
+    <li>현재 보유 주택 여부와 세대원 구성</li>
+    <li>청약에 쓸 수 있는 자기자금 규모와 마련 시기</li>
+    <li>기존 대출 잔액(신용대출·담보대출 등)</li>
+  </ul>
+</section>
+
+<footer>
+  <div class="sign">탑재무설계 · 고영권 컨설턴트</div>
+  <div>본 자료는 2026년 10월 21일 기준 금융위원회 가계부채 대책(6·27, 10·15), 은행연합회 스트레스 DSR 운영 방안, 주택공급에 관한 규칙 등을 바탕으로 작성한 참고 자료입니다. 대출 한도·금리는 은행·단지·개인 심사에 따라 달라지며 승인을 보장하지 않습니다. 대출 규제는 수시로 바뀌므로 실행 전 금융기관에서 최종 확인이 필요합니다. 세무·법률 사항은 전문가 확인을 권합니다.</div>
+</footer>
+
+</div>
+</body>
+</html>
