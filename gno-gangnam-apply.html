@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>전기요금 무료 절감 분석 신청 | 지노베이션 강남지사</title>
+<meta name="description" content="전기요금 고지서 한 장이면 예상 절감액을 무료로 분석해 드립니다. 컨설팅비·시설비 0원, 절감 안 되면 0원.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="전기요금, 줄일 수 있는 고정비입니다">
+<meta property="og:description" content="고지서 한 장 올리시면 예상 절감액을 무료로 분석해 드립니다 · 컨설팅비·시설비 0원 | (주)지노베이션 C&G 강남지사">
+<meta property="og:image" content="https://top95091.github.io/top-reports/gno-gangnam-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#0C2A21">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap">
+<style>
+/* Layout: 어두운 숲색 히어로 위로 흰 신청 카드가 겹쳐 올라오는 1단(모바일) / 2단(데스크톱) */
+:root{
+  --forest:#0C2A21; --forest-2:#123D30; --deep:#071711;
+  --emerald:#1E9E64; --lime:#A6E05A; --lime-soft:#F2FAE6;
+  --mint:#EAF4EE; --paper:#FFFFFF; --ground:#F3F6F4;
+  --ink:#0B1F19; --mute:#5B6B65; --line:#DCE6E1; --error:#C8372D;
+  --font:"Noto Sans KR","Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--ground);color:var(--ink);font-family:var(--font);letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;line-height:1.5;word-break:keep-all;overflow-wrap:anywhere}
+.num{font-variant-numeric:tabular-nums;letter-spacing:-0.03em}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+
+/* ---------- HERO ---------- */
+.hero{background:radial-gradient(120% 90% at 90% 0%,#1B5A43 0%,var(--forest) 45%,var(--deep) 100%);color:#fff;position:relative;overflow:hidden;padding-top:env(safe-area-inset-top,0px)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 56px),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 56px)}
+.hero .wrap{position:relative;z-index:1;padding-block:22px 120px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand svg{width:32px;height:32px;flex:none}
+.brand b{font-size:14.5px;font-weight:900;letter-spacing:-0.01em;display:block}
+.brand span{display:block;font-size:10.5px;opacity:.7;letter-spacing:0}
+.kicker{margin-top:40px;font-size:11.5px;font-weight:700;letter-spacing:.2em;color:var(--lime)}
+h1{margin-top:12px;font-size:clamp(31px,8.2vw,50px);line-height:1.22;font-weight:900;letter-spacing:-0.045em;text-wrap:balance}
+h1 .soft{font-weight:300;color:rgba(255,255,255,.82);display:block}
+h1 em{font-style:normal;color:var(--lime)}
+.lead{margin-top:16px;font-size:15px;color:rgba(255,255,255,.78);max-width:27em;word-break:keep-all}
+.lead b{color:#fff}
+.zeros{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
+.zeros span{font-size:13px;font-weight:700;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);white-space:nowrap}
+.zeros span b{color:var(--lime);font-weight:900;margin-left:4px}
+.zeros span.key{background:var(--lime);color:var(--forest);border-color:var(--lime)}
+.zeros span.key b{color:var(--forest)}
+.big{display:none}
+
+/* ---------- MAIN GRID ---------- */
+.main{margin-top:-96px;position:relative;z-index:2;padding-bottom:28px}
+.grid{display:grid;gap:22px}
+
+/* ---------- FORM CARD ---------- */
+.card{background:var(--paper);border-radius:20px;box-shadow:0 22px 50px rgba(4,20,14,.22),0 2px 6px rgba(4,20,14,.06);padding:24px 20px 22px}
+.card h2{font-size:20px;font-weight:900;letter-spacing:-0.035em}
+.card .sub{font-size:13px;color:var(--mute);margin-top:4px}
+form{margin-top:18px;display:grid;gap:16px}
+.field{display:grid;gap:6px;min-width:0}
+.label{font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px}
+.label .req{color:var(--emerald);font-size:11px;font-weight:800}
+.label .opt{color:#8A9893;font-size:11px;font-weight:500}
+input[type=text],input[type=tel],textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;outline:none;transition:border-color .15s,box-shadow .15s;letter-spacing:-0.01em}
+textarea{min-height:76px;resize:vertical}
+input::placeholder,textarea::placeholder{color:#9AA8A2}
+input:focus,textarea:focus{border-color:var(--emerald);box-shadow:0 0 0 4px rgba(30,158,100,.14)}
+.row2{display:grid;gap:16px}
+
+/* dropzone */
+.drop{position:relative;border:2px dashed #B9D3C6;border-radius:16px;background:var(--lime-soft);padding:20px 16px;text-align:center;cursor:pointer;transition:background .15s,border-color .15s}
+.drop:hover,.drop.over{background:#E8F6D4;border-color:var(--emerald)}
+.drop:focus-within{border-color:var(--emerald);box-shadow:0 0 0 4px rgba(30,158,100,.14)}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%}
+.drop .ic{width:46px;height:46px;border-radius:14px;background:var(--forest);color:var(--lime);display:flex;align-items:center;justify-content:center;margin:0 auto}
+.drop .ic svg{width:24px;height:24px}
+.drop strong{display:block;margin-top:10px;font-size:15.5px;font-weight:800}
+.drop small{display:block;margin-top:4px;font-size:12px;color:var(--mute)}
+.files{display:grid;gap:8px}
+.files:empty{display:none}
+.file{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:12px;background:#fff;min-width:0}
+.file .th{width:42px;height:42px;border-radius:8px;flex:none;background:var(--mint) center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--emerald)}
+.file .meta{flex:1;min-width:0}
+.file .meta b{display:block;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.file .meta span{font-size:11.5px;color:var(--mute)}
+.file button{flex:none;border:0;background:transparent;color:var(--mute);font:inherit;font-size:12px;font-weight:700;padding:8px;border-radius:8px;cursor:pointer}
+.file button:hover{background:var(--ground);color:var(--ink)}
+.later{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);cursor:pointer}
+.later input,.agree input{width:18px;height:18px;accent-color:var(--emerald);flex:none}
+
+/* bill chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0}
+.chips span{display:block;font-size:13px;font-weight:600;padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;transition:all .15s;background:#fff}
+.chips input:checked + span{border-color:var(--emerald);background:var(--mint);color:var(--forest);font-weight:800}
+.chips input:focus-visible + span{box-shadow:0 0 0 3px rgba(30,158,100,.25)}
+
+.agree{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.55;cursor:pointer}
+details.policy{font-size:11.5px;color:var(--mute);background:var(--ground);border-radius:10px;padding:10px 12px;line-height:1.65}
+details.policy summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:12px}
+details.policy p{margin-top:6px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.submit{width:100%;border:0;border-radius:14px;padding:16px;font:inherit;font-size:17px;font-weight:900;letter-spacing:-0.03em;color:var(--forest);background:linear-gradient(90deg,#A6E05A,#C6EE87);cursor:pointer;box-shadow:0 10px 24px rgba(120,190,50,.32);transition:transform .1s,filter .15s}
+.submit:hover{filter:brightness(1.03)}
+.submit:active{transform:translateY(1px)}
+.submit:disabled{cursor:progress;filter:grayscale(.4);opacity:.8}
+.submit:focus-visible{outline:3px solid var(--forest);outline-offset:3px}
+.err{font-size:13px;color:var(--error);font-weight:700;min-height:0}
+.err:empty{display:none}
+.note{font-size:11.5px;color:#8A9893;text-align:center}
+
+/* success */
+.done{text-align:center;padding:30px 8px 12px}
+.done .ok{width:64px;height:64px;border-radius:50%;margin:0 auto;background:var(--lime);display:flex;align-items:center;justify-content:center}
+.done .ok svg{width:32px;height:32px}
+.done h2{margin-top:16px;font-size:22px}
+.done p{margin-top:8px;font-size:14px;color:var(--mute);line-height:1.7}
+.done .tel{margin-top:18px;font-size:13px;color:var(--mute)}
+.done .tel b{display:block;font-size:24px;color:var(--forest);font-weight:900;margin-top:2px}
+
+/* ---------- SIDE CONTENT ---------- */
+.side{display:grid;gap:22px;align-content:start}
+.sec-t{font-size:11.5px;font-weight:800;letter-spacing:.14em;color:var(--emerald)}
+.sec-h{font-size:19px;font-weight:900;margin-top:6px;letter-spacing:-0.035em;line-height:1.4;text-wrap:balance}
+.panel{background:var(--paper);border-radius:18px;padding:22px 20px;border:1px solid var(--line)}
+.struct{background:var(--forest);color:#fff;border-radius:18px;padding:22px 20px;position:relative;overflow:hidden;border:0}
+.struct::before{content:"";position:absolute;right:-70px;top:-90px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(166,224,90,.22),transparent 70%)}
+.struct > *{position:relative}
+.struct .sec-t{color:var(--lime)}
+.tl{display:flex;margin-top:16px;border-radius:10px;overflow:hidden;min-height:58px}
+.tl .a{flex:62;display:grid;grid-template-rows:1fr 1fr}
+.tl .a div{display:flex;align-items:center;padding:6px 10px;font-size:11.5px;font-weight:700;line-height:1.3}
+.tl .a .c{background:var(--lime);color:var(--forest)}
+.tl .a .f{background:rgba(255,255,255,.14);color:rgba(255,255,255,.88)}
+.tl .b{flex:38;background:linear-gradient(90deg,#A6E05A,#C9F08B);color:var(--forest);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12.5px;font-weight:900;border-left:2px solid var(--forest);padding:6px;line-height:1.3}
+.tlx{display:flex;font-size:10.5px;color:rgba(255,255,255,.6);margin-top:6px;gap:4px}
+.tlx span:first-child{flex:62}.tlx span:last-child{flex:38}
+.struct .ex{margin-top:14px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.2);font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.6}
+.struct .ex b{color:#fff}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:14px;overflow:hidden;margin-top:14px}
+.stat{background:#fff;padding:14px 14px 12px}
+.stat .v{font-size:26px;font-weight:900;color:var(--forest);line-height:1.1;letter-spacing:-0.05em}
+.stat .v small{font-size:13px;font-weight:800;margin-left:1px}
+.stat .l{font-size:11.5px;color:var(--mute);margin-top:4px}
+.creds{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.creds span{font-size:11px;font-weight:700;color:var(--forest);background:var(--mint);border-radius:6px;padding:5px 8px}
+
+.steps{list-style:none;margin-top:14px;position:relative;display:grid;gap:12px}
+.steps::before{content:"";position:absolute;left:13px;top:14px;bottom:14px;width:1px;background:var(--line)}
+.steps li{display:flex;gap:12px;position:relative}
+.steps .no{flex:none;width:27px;height:27px;border-radius:50%;background:var(--forest);color:var(--lime);font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.steps li:first-child .no{background:var(--lime);color:var(--forest)}
+.steps b{display:block;font-size:14px;font-weight:800}
+.steps span{font-size:12px;color:var(--mute)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--forest);color:rgba(255,255,255,.7);margin-top:8px}
+footer .wrap{padding-block:26px calc(30px + env(safe-area-inset-bottom,0px));display:grid;gap:14px}
+footer .who{font-size:12px}
+footer .tel{font-size:26px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.2}
+footer .tel a{text-decoration:none}
+footer .addr{font-size:11.5px;line-height:1.7}
+footer .disc{font-size:10.5px;color:rgba(255,255,255,.45);line-height:1.6;border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
+
+@media (min-width:880px){
+  .hero .wrap{padding-block:28px 150px}
+  .kicker{margin-top:56px}
+  .hero-in{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+  .big{display:block;text-align:right;flex:none}
+  .big .lab{font-size:12px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.6)}
+  .big .val{font-size:104px;font-weight:900;line-height:.95;letter-spacing:-0.06em}
+  .big .val small{font-size:42px;color:var(--lime);margin-left:2px}
+  .big .sub{font-size:12px;color:rgba(255,255,255,.62);margin-top:8px;line-height:1.6}
+  .main{margin-top:-110px}
+  .grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:start;gap:26px}
+  .card{padding:30px 30px 26px}
+  .row2{grid-template-columns:1fr 1fr}
+  .side{margin-top:110px}
+  footer .wrap{grid-template-columns:1fr auto;align-items:end}
+  footer .disc{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="none" stroke-width="10" transform="rotate(-150 50 50)">
+          <circle cx="50" cy="50" r="40" stroke="#3FAE49" stroke-dasharray="92 160"/>
+          <circle cx="50" cy="50" r="40" stroke="#F39A1E" stroke-dasharray="70 182" stroke-dashoffset="-100"/>
+          <circle cx="50" cy="50" r="40" stroke="#2EA3DB" stroke-dasharray="66 186" stroke-dashoffset="-178"/>
+        </g>
+        <text x="50" y="69" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-weight="900" font-size="58" fill="#E9F0FF">e</text>
+      </svg>
+      <div><b>(주)지노베이션 C&amp;G · 강남지사</b><span>전기요금 절감 컨설팅 · 설비공사 전문기업</span></div>
+    </div>
+    <div class="hero-in">
+      <div>
+        <div class="kicker">FREE ELECTRICITY BILL ANALYSIS</div>
+        <h1><span class="soft">전기요금 고지서</span><em>한 장</em>이면 충분합니다.</h1>
+        <p class="lead">고지서를 올려 주시면 <b>한전 약관·계약전력·요금제</b>를 분석해 예상 절감액을 <b>무료로</b> 알려드립니다.</p>
+        <div class="zeros">
+          <span>컨설팅비<b>0원</b></span>
+          <span class="key">시설·공사비<b>0원</b></span>
+          <span>절감 안 되면<b>0원</b></span>
+        </div>
+      </div>
+      <div class="big" aria-label="최대 약 30% 절감">
+        <div class="lab">예상 절감 효과</div>
+        <div class="val num">30<small>%</small></div>
+        <div class="sub">최대 기준 · 기본료 최대 33.3%<br>사용요금 최대 30.7%</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+  <div class="wrap grid">
+
+    <!-- ============ FORM ============ -->
+    <section class="card" id="apply" aria-labelledby="formTitle">
+      <div id="formView">
+        <h2 id="formTitle">무료 절감 분석 신청</h2>
+        <p class="sub">1분이면 끝납니다. 담당 컨설턴트가 확인 후 연락드립니다.</p>
+
+        <form id="form" novalidate>
+          <div class="field">
+            <div class="label">전기요금 고지서 <span class="req">필수</span></div>
+            <div class="drop" id="drop">
+              <input type="file" id="fileInput" accept="image/*,application/pdf" multiple aria-label="고지서 파일 선택">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div>
+              <strong>고지서 사진 · PDF 올리기</strong>
+              <small>우편 고지서 촬영본 또는 한전ON에서 받은 PDF · 최대 5개</small>
+            </div>
+            <div class="files" id="fileList"></div>
+            <label class="later"><input type="checkbox" id="later"> 고지서는 상담할 때 전달할게요</label>
+          </div>
+
+          <div class="field">
+            <label class="label" for="company">회사명 <span class="req">필수</span></label>
+            <input type="text" id="company" name="company" autocomplete="organization" placeholder="예) (주)한빛정밀" maxlength="60">
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label class="label" for="name">담당자 성함 · 직함 <span class="req">필수</span></label>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="예) 김민수 대표" maxlength="30">
+            </div>
+            <div class="field">
+              <label class="label" for="phone">연락처 <span class="req">필수</span></label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="010-0000-0000" maxlength="20">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="address">사업장 주소 <span class="opt">선택</span></label>
+            <input type="text" id="address" name="address" autocomplete="street-address" placeholder="예) 경기도 김포시 양촌읍 ○○로 12" maxlength="120">
+          </div>
+          <div class="field">
+            <div class="label" id="billLabel">월 전기요금 <span class="opt">선택 · 대략</span></div>
+            <div class="chips" role="radiogroup" aria-labelledby="billLabel">
+              <label><input type="radio" name="bill" value="500만 원 미만"><span>500만 미만</span></label>
+              <label><input type="radio" name="bill" value="500만~1천만 원"><span>500만~1천만</span></label>
+              <label><input type="radio" name="bill" value="1천만~3천만 원"><span>1천만~3천만</span></label>
+              <label><input type="radio" name="bill" value="3천만 원 이상"><span>3천만 이상</span></label>
+              <label><input type="radio" name="bill" value="모름"><span>잘 모름</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="memo">문의 내용 <span class="opt">선택</span></label>
+            <textarea id="memo" name="memo" maxlength="500" placeholder="통화 가능한 시간이나 궁금한 점을 남겨 주세요."></textarea>
+          </div>
+
+          <div class="hp" aria-hidden="true"><label for="website">웹사이트</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
+
+          <div class="field">
+            <label class="agree"><input type="checkbox" id="agree"> <span><b>개인정보 수집·이용에 동의합니다.</b> <span style="color:var(--mute)">(필수)</span></span></label>
+            <details class="policy">
+              <summary>수집 항목과 이용 목적 보기</summary>
+              <p><b>수집 항목</b> 회사명, 담당자 성함·직함, 연락처, 사업장 주소, 전기요금 고지서(고객번호·사용량·요금 정보 포함)<br>
+              <b>이용 목적</b> 전기요금 절감 가능 여부 분석 및 상담 연락<br>
+              <b>보유 기간</b> 상담 종료 후 1년 (요청 시 즉시 파기)<br>
+              동의를 거부할 수 있으나, 거부 시 분석·상담이 어렵습니다. 제공하신 고지서는 절감 분석 목적으로 (주)지노베이션C&amp;G 본사 분석팀과 공유될 수 있습니다.</p>
+            </details>
+          </div>
+
+          <p class="err" id="err" role="alert"></p>
+          <button class="submit" type="submit" id="submitBtn">무료 절감 분석 신청하기</button>
+          <p class="note">신청 비용은 없으며, 상담 후 진행 여부는 자유롭게 결정하시면 됩니다.</p>
+        </form>
+      </div>
+
+      <div class="done" id="doneView" hidden>
+        <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#0C2A21" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h2>신청이 접수되었습니다</h2>
+        <p id="doneMsg">보내주신 고지서로 절감 가능 여부를 분석한 뒤<br>담당 컨설턴트가 연락드리겠습니다.</p>
+        <div class="tel">급한 문의는 강남지사로 연락 주세요<b class="num">010-4860-3087</b></div>
+      </div>
+    </section>
+
+    <!-- ============ SIDE ============ -->
+    <div class="side">
+      <section class="panel struct" aria-labelledby="structTitle">
+        <div class="sec-t">ZERO-COST STRUCTURE</div>
+        <h2 class="sec-h" id="structTitle">고객이 먼저 내는 돈은 없습니다</h2>
+        <div class="tl">
+          <div class="a"><div class="c">절감액 50% → 고객사 이익</div><div class="f">절감액 50% → 수수료(시설비 포함)</div></div>
+          <div class="b">61개월부터<br>절감액 100% 고객사</div>
+        </div>
+        <div class="tlx"><span>1~60개월 · 절감된 금액 안에서만 정산</span><span>이후 영구 절감</span></div>
+        <p class="ex">J사업장 실제 사례 · <b class="num">연 1억 1,881만 원 절감(30.6%)</b><br>초기 투자 0원으로 5년간 약 2.97억 원이 고객사 몫입니다.</p>
+      </section>
+
+      <section class="panel" aria-labelledby="trustTitle">
+        <div class="sec-t">TRACK RECORD</div>
+        <h2 class="sec-h" id="trustTitle">이미 1,900개 기업이 줄이고 있습니다</h2>
+        <div class="stats">
+          <div class="stat"><div class="v num">1,900<small>건</small></div><div class="l">누적 컨설팅 계약</div></div>
+          <div class="stat"><div class="v num">621.8<small>억</small></div><div class="l">누적 절감 금액</div></div>
+          <div class="stat"><div class="v num">16<small>개</small></div><div class="l">전국 지사</div></div>
+          <div class="stat"><div class="v num">20<small>곳+</small></div><div class="l">상공회의소·산단 MOU</div></div>
+        </div>
+        <div class="creds"><span>특허 제10-2570098호</span><span>특허 제10-2570089호</span><span>벤처기업</span><span>ISO 9001·14001·45001</span></div>
+      </section>
+
+      <section class="panel" aria-labelledby="stepTitle">
+        <div class="sec-t">PROCESS</div>
+        <h2 class="sec-h" id="stepTitle">신청 후 이렇게 진행됩니다</h2>
+        <ol class="steps">
+          <li><div class="no">1</div><div><b>고지서 접수</b><span>지금 이 페이지에서 끝</span></div></li>
+          <li><div class="no">2</div><div><b>무료 진단 · 예상 절감액 안내</b><span>한전 약관·사용 패턴 분석</span></div></li>
+          <li><div class="no">3</div><div><b>약정 · 기술팀 현장 실사</b><span>사업장 맞춤 절감안 확정</span></div></li>
+          <li><div class="no">4</div><div><b>한전 승인 · 시공 · 절감 시작</b><span>한전 절차 대행, 사후 관리</span></div></li>
+        </ol>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="who">(주)지노베이션 C&amp;G 강남지사 · 고영권 지사장</div>
+      <div class="tel num"><a href="tel:01048603087">010-4860-3087</a></div>
+    </div>
+    <div class="addr">서울 강남구 강남대로84길 23 한라클래식 1602-1호<br>팩스 0504-242-3087 · 대상: 계약전력 300kW 이상 산업용·일반용 사업장</div>
+    <p class="disc">※ 절감률·절감액은 분석 예상치이며 사업장 전력 사용 형태와 한전 약관 적용 여부에 따라 달라질 수 있습니다. 실적 수치는 (주)지노베이션C&amp;G 2026년 4월 기준입니다.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ▼ Apps Script 웹앱 주소 (배포 후 붙여넣기)
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbyTJn9W0A-dXI6fKljvSgJFxi9PK1AXMHymBmrzxAGC7n_llTEy4jUolcYuxN0EEUScJQ/exec';
+
+  var MAX_FILES = 5, MAX_BYTES = 15 * 1024 * 1024, MAX_EDGE = 2200;
+  var params = new URLSearchParams(location.search);
+  var partnerCode = (params.get('p') || '').slice(0, 10);
+  var sourceCode = (params.get('s') || '').slice(0, 10);
+
+  var $ = function(id){ return document.getElementById(id); };
+  var form = $('form'), fileInput = $('fileInput'), list = $('fileList'), drop = $('drop');
+  var errEl = $('err'), btn = $('submitBtn'), later = $('later');
+  var picked = [];
+
+  function fmtSize(n){ return n > 1048576 ? (n/1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(n/1024)) + 'KB'; }
+
+  function render(){
+    list.innerHTML = '';
+    picked.forEach(function(f, i){
+      var row = document.createElement('div'); row.className = 'file';
+      var th = document.createElement('div'); th.className = 'th';
+      if (/^image\//.test(f.type) && f.url) th.style.backgroundImage = 'url(' + f.url + ')';
+      else th.textContent = 'PDF';
+      var meta = document.createElement('div'); meta.className = 'meta';
+      var b = document.createElement('b'); b.textContent = f.file.name;
+      var s = document.createElement('span'); s.textContent = fmtSize(f.file.size);
+      meta.appendChild(b); meta.appendChild(s);
+      var rm = document.createElement('button'); rm.type = 'button'; rm.textContent = '삭제';
+      rm.setAttribute('aria-label', f.file.name + ' 삭제');
+      rm.onclick = function(){ if (f.url) URL.revokeObjectURL(f.url); picked.splice(i, 1); render(); };
+      row.appendChild(th); row.appendChild(meta); row.appendChild(rm);
+      list.appendChild(row);
+    });
+  }
+
+  function addFiles(fileList){
+    errEl.textContent = '';
+    Array.prototype.forEach.call(fileList, function(file){
+      if (picked.length >= MAX_FILES) { errEl.textContent = '고지서는 최대 ' + MAX_FILES + '개까지 올릴 수 있습니다.'; return; }
+      if (!/^image\//.test(file.type) && file.type !== 'application/pdf' && !/\.(pdf|jpe?g|png|heic|heif|webp)$/i.test(file.name)) {
+        errEl.textContent = '사진(JPG·PNG) 또는 PDF 파일만 올릴 수 있습니다.'; return;
+      }
+      if (file.size > 30 * 1024 * 1024) { errEl.textContent = file.name + ' 파일이 너무 큽니다(30MB 이하).'; return; }
+      var url = /^image\/(jpeg|png|webp|gif)$/.test(file.type) ? URL.createObjectURL(file) : '';
+      picked.push({ file: file, type: file.type, url: url });
+    });
+    if (picked.length) later.checked = false;
+    render();
+  }
+
+  fileInput.addEventListener('change', function(){ addFiles(fileInput.files); fileInput.value = ''; });
+  ['dragenter','dragover'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave','drop'].forEach(function(t){ drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function(e){ if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+
+  $('phone').addEventListener('input', function(e){
+    var d = e.target.value.replace(/\D/g, '').slice(0, 11);
+    e.target.value = d.length < 4 ? d : d.length < 8 ? d.slice(0,3) + '-' + d.slice(3)
+      : d.length < 11 ? d.slice(0,3) + '-' + d.slice(3,6) + '-' + d.slice(6) : d.slice(0,3) + '-' + d.slice(3,7) + '-' + d.slice(7);
+  });
+
+  // 사진은 휴대폰 원본이 커서 전송 전에 줄입니다(글자 판독에 충분한 2200px)
+  function shrinkImage(file){
+    return new Promise(function(resolve){
+      if (!/^image\/(jpeg|png|webp)$/.test(file.type)) return resolve(file);
+      var img = new Image(), url = URL.createObjectURL(file);
+      img.onload = function(){
+        var w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, MAX_EDGE / Math.max(w, h));
+        if (k === 1 && file.size < 2.5 * 1024 * 1024) { URL.revokeObjectURL(url); return resolve(file); }
+        var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+        var ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+        ctx.drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(url);
+        c.toBlob(function(b){ resolve(b && b.size < file.size ? new File([b], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }) : file); }, 'image/jpeg', 0.86);
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); resolve(file); };
+      img.src = url;
+    });
+  }
+  function toBase64(blob){
+    return new Promise(function(resolve, reject){
+      var r = new FileReader();
+      r.onload = function(){ resolve(String(r.result).split(',')[1] || ''); };
+      r.onerror = reject; r.readAsDataURL(blob);
+    });
+  }
+
+  function fail(msg, el){ errEl.textContent = msg; if (el) el.focus(); }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errEl.textContent = '';
+    var company = $('company').value.trim(), name = $('name').value.trim(), phone = $('phone').value.trim();
+    if (!picked.length && !later.checked) return fail('고지서를 올려 주시거나 「상담할 때 전달할게요」를 선택해 주세요.', fileInput);
+    if (!company) return fail('회사명을 입력해 주세요.', $('company'));
+    if (!name) return fail('담당자 성함을 입력해 주세요.', $('name'));
+    if (phone.replace(/\D/g, '').length < 9) return fail('연락 가능한 번호를 입력해 주세요.', $('phone'));
+    if (!$('agree').checked) return fail('개인정보 수집·이용에 동의해 주세요.', $('agree'));
+    if (ENDPOINT.indexOf('__') === 0) return fail('접수 서버 연결 전입니다. 010-4860-3087로 연락 주세요.');
+
+    btn.disabled = true; btn.textContent = '고지서 전송 중…';
+    var bill = (form.querySelector('input[name=bill]:checked') || {}).value || '';
+
+    Promise.all(picked.map(function(p){
+      return shrinkImage(p.file).then(function(f){
+        if (f.size > MAX_BYTES) throw new Error('size');
+        return toBase64(f).then(function(data){ return { name: f.name, type: f.type || 'application/octet-stream', data: data }; });
+      });
+    })).then(function(files){
+      return fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          company: company, name: name, phone: phone,
+          address: $('address').value.trim(), bill: bill, memo: $('memo').value.trim(),
+          agree: true, p: partnerCode, s: sourceCode, website: $('website').value, files: files
+        })
+      });
+    }).then(function(res){ return res.json(); }).then(function(r){
+      if (!r || !r.ok) throw new Error(r && r.error ? r.error : 'server');
+      $('formView').hidden = true; $('doneView').hidden = false;
+      if (!picked.length) $('doneMsg').innerHTML = '상담 신청이 접수되었습니다.<br>담당 컨설턴트가 연락드리겠습니다.';
+      document.getElementById('apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }).catch(function(err){
+      var m = err && err.message;
+      fail(m === 'size' ? '파일 하나가 15MB를 넘습니다. 사진으로 다시 찍어 올려 주세요.'
+        : (m && m !== 'server' && m.indexOf('Failed') < 0 && m.indexOf('JSON') < 0 ? m
+        : '전송에 실패했습니다. 인터넷 연결을 확인하고 다시 눌러 주세요. 계속 안 되면 010-4860-3087로 연락 주세요.'));
+      btn.disabled = false; btn.textContent = '무료 절감 분석 신청하기';
+    });
+  });
+})();
+</script>
+</body>
+</html>
