@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강남지사 영업 용어사전</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1f8a4c; --green-d:#146b39; --green-l:#e8f5ec; --navy:#1d2a4d;
+    --sky:#3fa9dc; --sky-l:#e7f4fb; --orange:#f08a24; --orange-l:#fff4e2;
+    --bg:#f5f8f6; --card:#ffffff; --text:#1f2a24; --muted:#6b7a71; --line:#dfe8e2; --red:#c0392b; --red-l:#fdecea;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+  .wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+  header{background:linear-gradient(135deg,var(--green-d),var(--green));color:#fff;padding:36px 0 30px}
+  .brand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;opacity:.92}
+  .logo{width:30px;height:30px;border-radius:50%;background:conic-gradient(var(--green) 0 120deg,var(--orange) 120deg 240deg,var(--sky) 240deg 360deg);display:grid;place-items:center}
+  .logo span{width:22px;height:22px;border-radius:50%;background:#fff;color:var(--navy);font-weight:900;font-size:15px;display:grid;place-items:center;line-height:1}
+  h1{font-size:26px;font-weight:900;margin:14px 0 6px;letter-spacing:-.5px}
+  .sub{font-size:14px;opacity:.9}
+  .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:3px 12px;font-size:12px;font-weight:500}
+
+  .tools{position:sticky;top:0;z-index:5;background:var(--bg);padding:16px 0 10px;border-bottom:1px solid var(--line)}
+  .search{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;background:#fff}
+  .search:focus{outline:2px solid var(--green);border-color:transparent}
+  .chips{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;margin-top:10px;padding-bottom:4px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
+  .chip.on{background:var(--green);border-color:var(--green);color:#fff;font-weight:500}
+  .chip.star.on{background:var(--orange);border-color:var(--orange)}
+  .count{font-size:12px;color:var(--muted);margin-top:6px}
+
+  .block{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:22px}
+  .block h2{font-size:15px;font-weight:900;color:var(--green-d);margin-bottom:10px}
+  .flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px}
+  .flow .st{background:var(--green-l);border:1px solid #cfe7d8;border-radius:8px;padding:5px 9px;font-weight:500}
+  .flow .st b{color:var(--green-d);margin-right:4px}
+  .flow .ar{color:var(--muted)}
+  .block p.note{font-size:13px;color:var(--muted);margin-top:10px}
+
+  .cat{margin:28px 0 10px;font-size:13px;font-weight:700;color:var(--green-d);letter-spacing:.3px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  summary{list-style:none;cursor:pointer;padding:14px 44px 14px 16px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:'+';position:absolute;right:16px;top:18px;font-size:22px;font-weight:400;color:var(--green);line-height:1}
+  details[open] summary::after{content:'−'}
+  .term{font-weight:900;font-size:16.5px;letter-spacing:-.2px}
+  .en{font-size:12px;color:var(--muted);font-weight:500;margin-left:6px}
+  .star-tag{display:inline-block;font-size:11px;font-weight:700;color:#a85b05;background:var(--orange-l);border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:2px}
+  .short{display:block;font-size:14.5px;color:#3c4a42;margin-top:4px}
+  .body{padding:2px 16px 16px;border-top:1px dashed var(--line)}
+  .row{margin-top:12px;font-size:14.5px}
+  .row .lb{display:inline-block;font-size:11.5px;font-weight:700;border-radius:4px;padding:1px 7px;margin-bottom:4px}
+  .lb.ex{background:var(--sky-l);color:#1b6f99}
+  .lb.say{background:var(--green-l);color:var(--green-d)}
+  .lb.warn{background:var(--red-l);color:var(--red)}
+  .lb.num{background:#eef0f6;color:var(--navy)}
+  .say-box{background:var(--green-l);border-left:3px solid var(--green);border-radius:6px;padding:9px 12px}
+  .warn-box{background:var(--red-l);border-left:3px solid var(--red);border-radius:6px;padding:9px 12px}
+  .badge{display:inline-block;font-size:11px;font-weight:700;border-radius:4px;padding:1px 7px;margin-top:12px;margin-right:4px}
+  .src-kepco{background:#eef0f6;color:var(--navy)}
+  .src-hq{background:#e3f4e9;color:#146b39}
+  .src-case{background:var(--orange-l);color:#a85b05}
+  .src-branch{background:var(--sky-l);color:#1b6f99}
+  .empty{display:none;text-align:center;color:var(--muted);padding:40px 0}
+
+  table.std{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.std th,table.std td{border-top:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top}
+  table.std th{color:var(--muted);font-weight:500;font-size:12.5px;border-top:none}
+  table.std td:first-child{font-weight:700;white-space:nowrap}
+  .no{color:var(--red);font-weight:700}
+  .yes{color:var(--green-d);font-weight:700}
+
+  .legend{margin-top:28px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .legend div{margin:4px 0}
+  .legend .badge{margin:0 6px 0 0}
+  footer{margin:30px 0 40px;font-size:13px;color:var(--muted)}
+  footer h3{font-size:13px;color:var(--text);margin-bottom:6px}
+  footer table{width:100%;border-collapse:collapse;margin-bottom:16px}
+  footer td{border-top:1px solid var(--line);padding:6px 4px;vertical-align:top}
+  footer td:first-child{white-space:nowrap;font-weight:700;color:var(--green-d);width:64px}
+  @media (max-width:480px){h1{font-size:23px}.term{font-size:16px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand"><div class="logo"><span>e</span></div>(주)지노베이션 C&amp;G │ 강남지사</div>
+    <h1>전기료 절감 컨설팅<br>영업 용어사전</h1>
+    <div class="sub">고지서 한 장 앞에서 막히지 않도록, 현장에서 쓰는 말만 쉽게 풀었습니다.</div>
+    <div class="meta">
+      <span class="pill">v1.0</span>
+      <span class="pill">2026.10.28 기준</span>
+      <span class="pill">영업 파트너 전용</span>
+    </div>
+  </div>
+</header>
+
+<div class="tools">
+  <div class="wrap">
+    <input class="search" id="q" type="search" placeholder="용어 검색 (예: 계약전력, 역률, 약정서)">
+    <div class="chips" id="chips"></div>
+    <div class="count" id="count"></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <div class="block" id="howto">
+    <h2>📄 고지서 받으면 이 순서로 보세요</h2>
+    <div class="flow">
+      <span class="st"><b>①</b>계약종별</span><span class="ar">→</span>
+      <span class="st"><b>②</b>계약전력 vs 요금적용전력</span><span class="ar">→</span>
+      <span class="st"><b>③</b>피크 이력</span><span class="ar">→</span>
+      <span class="st"><b>④</b>역률</span><span class="ar">→</span>
+      <span class="st"><b>⑤</b>선택요금</span><span class="ar">→</span>
+      <span class="st"><b>⑥</b>초과사용부가금</span><span class="ar">→</span>
+      <span class="st"><b>⑦</b>시간대별 사용량</span>
+    </div>
+    <p class="note">파트너가 직접 분석·판정할 필요는 없습니다. 이 순서대로 <b>숫자만 읽을 줄 알면</b> 대표님과 대화가 됩니다. 정밀 분석은 본사 기술팀이 합니다.</p>
+  </div>
+
+  <div class="block">
+    <h2>🎯 진행 대상 한눈에 보기</h2>
+    <table class="std">
+      <tr><th>항목</th><th>진행 ✅</th><th>보류·제외 ⛔</th></tr>
+      <tr><td>계약전력</td><td class="yes">300 ~ 1,000 kW</td><td>300kW 미만은 효과 작음 / 1,000kW 초과는 지사 확인</td></tr>
+      <tr><td>계약종별</td><td class="yes">산업용(을) · 일반용(을)</td><td>주택용·교육용·농사용 제외</td></tr>
+      <tr><td>월 전기요금</td><td class="yes">약 1,000만 ~ 5,000만원</td><td>500만원 이하 제외</td></tr>
+      <tr><td>설치 공간</td><td class="yes">약 2m × 2m 확보</td><td>공간 없으면 실사로 판단</td></tr>
+      <tr><td>기존 설비</td><td class="yes">저감장치 없음</td><td>외부 저감장치 이미 설치 → 제외</td></tr>
+    </table>
+    <p class="note">임차 공장도 진행 가능합니다(임대인 동의 전제 · 본사 확인). 애매하면 빼지 말고 지사에 먼저 물어보세요.</p>
+  </div>
+
+  <div id="list"></div>
+  <div class="empty" id="empty">검색 결과가 없습니다. 지사장에게 질문해 주세요 🙂</div>
+
+  <div class="block">
+    <h2>⛔ 용어를 이렇게 쓰면 안 됩니다</h2>
+    <table class="std">
+      <tr><th>✕ 이렇게 말하지 않기</th><th>○ 이렇게 바꾸기</th></tr>
+      <tr><td class="no" style="white-space:normal">"한전에서 나왔습니다"</td><td>"한전 <b>요금약관 안에서</b> 계약 구조를 조정해 드립니다"</td></tr>
+      <tr><td class="no" style="white-space:normal">"평균 30% 줄어듭니다"</td><td>"사례마다 다르고, <b>고지서를 봐야</b> 말씀드릴 수 있습니다"</td></tr>
+      <tr><td class="no" style="white-space:normal">"공사는 전부 공짜입니다"</td><td>"공사비는 저희가 투자하고, <b>추가 부담 여부는 실사 후 안(案)으로</b> 말씀드립니다"</td></tr>
+      <tr><td class="no" style="white-space:normal">"승압 공사까지 다 해드립니다"</td><td>"승압 필요 여부와 범위는 <b>실사 후 확정</b>됩니다"</td></tr>
+      <tr><td class="no" style="white-space:normal">"무조건 됩니다"</td><td>"<b>안 되면 안 된다고</b> 말씀드립니다. 그땐 저희도 받는 게 없습니다"</td></tr>
+      <tr><td class="no" style="white-space:normal">모르는 용어 아는 척</td><td>"그 부분은 <b>실사 나가는 기술팀</b>이 정확히 봐 드립니다"</td></tr>
+    </table>
+  </div>
+
+  <div class="legend">
+    <div><span class="badge src-kepco">한전 약관</span> 한전 기본공급약관·시행세칙(2026.8.1판) 기준</div>
+    <div><span class="badge src-hq">본사 확인</span> 지노베이션 본사(본부장) 확인 내용 — 그대로 안내 가능</div>
+    <div><span class="badge src-case">건별 협의</span> 현장마다 다름 — 확정처럼 말하지 말고 지사에 먼저 확인</div>
+    <div><span class="badge src-branch">지사 기준</span> 강남지사 운영 기준(위촉계약서·내부 프로세스)</div>
+    <div style="margin-top:8px"><span class="star-tag" style="margin-left:0">⭐ 필수</span> 첫 미팅 전에 반드시 외워둘 용어</div>
+  </div>
+
+  <footer>
+    <h3>버전 기록</h3>
+    <table>
+      <tr><td>v1.0</td><td>2026.10.28 · 최초 배포 — 6개 분류 · 용어 <span id="total"></span>개 (고지서 진단 순서 · 진행 대상 기준 · 금지 표현 포함)</td></tr>
+    </table>
+    <div>모르는 용어가 나오면 강남지사 지사장에게 남겨 주세요. 다음 버전에 추가됩니다.</div>
+    <div style="margin-top:6px">함께 보기: <a href="gno-gangnam-faq.html" style="color:var(--green-d)">강남지사 영업 FAQ</a></div>
+    <div style="margin-top:6px">(주)지노베이션 C&amp;G 강남지사 │ 지사장 고영권</div>
+  </footer>
+</main>
+
+<script>
+/* 용어 데이터 — 버전업 시 이 배열만 수정하면 됩니다.
+   c:분류 / t:용어 / en:영문·별칭 / s:필수 / d:한 줄 뜻 / ex:비유 / say:고객 화법 / num:숫자·기준 / warn:주의 / src:출처(kepco·hq·case·branch) */
+const CATS=[
+  {k:'biz',n:'💼 사업 구조',ch:'사업 구조'},
+  {k:'bill',n:'📄 고지서 · 요금',ch:'고지서·요금'},
+  {k:'type',n:'🏷️ 계약종별',ch:'계약종별'},
+  {k:'time',n:'🕐 시간대 · 계절',ch:'시간대'},
+  {k:'fac',n:'🔌 설비 · 현장',ch:'설비·현장'},
+  {k:'sales',n:'🤝 영업 실무',ch:'영업 실무'}
+];
+const T=[
+/* ── 사업 구조 ── */
+{c:'biz',t:'전기요금 절감 컨설팅',en:'우리가 하는 일',s:1,
+ d:'기계를 파는 게 아니라, 한전과 맺은 <b>전기 계약 조건</b>을 약관 안에서 더 유리하게 바꿔 드리는 일입니다.',
+ ex:'같은 휴대폰을 써도 <b>요금제</b>만 바꾸면 요금이 줄어드는 것과 같습니다. LED·인버터·절감기 같은 장비 판매가 아닙니다.',
+ say:'"장비를 파는 곳이 아니라, 한전 <b>계약</b>을 대표님께 유리하게 바꾸는 곳입니다."',src:['hq']},
+{c:'biz',t:'컨설팅 약정서',en:'약정서',s:1,
+ d:'고객사가 "실사를 진행해도 좋다"고 동의하는 서류. 서명을 받아야 실사가 시작됩니다. 이 단계 비용은 <b>0원</b>.',
+ ex:'변호사 <b>성공보수 약정</b>과 같습니다. 이겨야(절감돼야) 보수를 받습니다.',
+ say:'"오늘 결정하실 건 <b>실사 진행 동의</b> 하나뿐이고, 비용은 들지 않습니다."',
+ warn:'원본은 고객이 약정서에 적힌 <b>본사 주소로 직접 우편 발송</b>. ① 서명본 사진 ② 원본 발송 ③ 발송 영수증 사진 — 세 가지를 한 번에 요청하세요.',src:['hq']},
+{c:'biz',t:'성공보수 (절감액 50%)',en:'수익 구조',s:1,
+ d:'실제로 줄어든 전기요금의 <b>50%</b>를 60개월 동안 나눠 받는 구조. 절감이 없으면 받는 돈도 없습니다.',
+ num:'월 절감액 600만원 → 고객 300만원 이익 + 지노베이션 300만원. 60개월 후에는 절감액 <b>100%가 고객 몫</b>.',
+ say:'"투자금이 0원이라 5년간 절반을 나누는 겁니다. 약정이 끝나면 그 다음부터는 <b>전부 대표님 몫</b>입니다."',src:['hq']},
+{c:'biz',t:'약정기간 60개월',en:'5년',
+ d:'절감액을 나누는 기간. 이 기간 동안 지노베이션이 설비 <b>유지관리 책임</b>도 함께 집니다.',src:['hq']},
+{c:'biz',t:'공사비 투자 (자기자본)',en:'고객 투자 0원',s:1,
+ d:'절감에 필요한 전기공사 비용을 지노베이션이 <b>자기 돈으로</b> 먼저 부담합니다. 보증보험·대출을 끼우는 방식이 아닌 것이 차별점.',
+ warn:'"공사 전부 공짜"라고 단정하지 마세요. 아래 <b>한전시설부담금</b>처럼 실사 후 안(案)별로 정해지는 부분이 있습니다.',src:['hq']},
+{c:'biz',t:'한전시설부담금',en:'시설부담금',
+ d:'한전 쪽 설비(인입선 등)를 새로 놓거나 늘릴 때 <b>한전에 내는 비용</b>. 현장마다 다르고 실사 후에야 알 수 있습니다.',
+ say:'"지금 단계 비용은 0원입니다. 부담이 생기는 안은 실사 결과 보시고 <b>안 하시면 됩니다.</b>"',
+ warn:'첫 미팅에서 먼저 꺼내지 마세요. 실사 결과 1·2·3안을 제시할 때 본사가 안내합니다(분납 가능 여부 포함).',src:['case']},
+{c:'biz',t:'실사',en:'현장 조사',s:1,
+ d:'기술팀이 현장에 직접 가서 설비·공간·전선 경로를 확인하는 조사. 실사 결과로 <b>1·2·3안</b>을 만들어 고객에게 제시합니다.',
+ num:'약정서 → 지노 1차 실사 → 결과 미팅(1·2·3안) → 고객 안 선택 → 한전 신청 → 한전 실사·승인 → 공사 → 절감 시작',src:['hq']},
+{c:'biz',t:'한전 실사 · 승인',en:'',
+ d:'한전이 신청 서류를 검토하고 현장을 확인해 <b>승인해야만</b> 공사가 들어갑니다.',
+ say:'"한전 몰래 하는 게 아니라, 한전이 <b>직접 실사하고 승인</b>해야 진행되는 정식 절차입니다."',src:['hq']},
+{c:'biz',t:'한전 신청 위임서류',en:'위임장',
+ d:'고객이 안을 고르면 <b>사업자등록증 + 담당자 명함</b>을 받고, 본사 담당자가 고객에게 직접 전화해 한전 신청 위임서류 날인을 받습니다.',src:['hq']},
+{c:'biz',t:'고객수수료',en:'',
+ d:'지노베이션이 고객에게서 받는 몫 = <b>절감액의 50%</b>. 파트너 수수료를 계산하는 기준 금액입니다.',src:['branch']},
+{c:'biz',t:'파트너 수수료',en:'영업이사 수수료',s:1,
+ d:'위촉계약서 기준으로 <b>고객수수료</b>에서 일정 비율을 5년간 받습니다.',
+ num:'• 미팅주선 + 약정서 작성 등 실무 수행: 고객수수료의 <b>15%</b><br>• 단순 소개(미팅 주선만): 고객수수료의 <b>10%</b><br>예) 월 절감 600만원 → 고객수수료 300만원 → 실무 수행 시 월 45만원 · 단순 소개 시 월 30만원 (60개월)',
+ warn:'정확한 조건은 본인 <b>위촉계약서</b>가 기준입니다.',src:['branch']},
+{c:'biz',t:'플로우 (flow)',en:'본사 업무 플랫폼',
+ d:'지노베이션 본사가 쓰는 업무 앱. 실사 요청과 약정서 스캔본이 이 창구로 접수됩니다. 파트너는 <b>지사를 통해</b> 제출합니다.',src:['branch']},
+{c:'biz',t:'계약전력 사전조회',en:'계약종별 검색',
+ d:'고객을 만나기 전, <b>상호 + 주소</b>만으로 본사에 계약종별·계약전력을 조회하는 것. 대상인지 1차로 걸러 줍니다.',
+ say:'파트너는 상호·주소를 지사에 주면 됩니다. 연락처는 본사로 넘기지 않습니다.',src:['branch']},
+{c:'biz',t:'레퍼런스',en:'계약·시공 사례',
+ d:'이미 계약·시공한 고객 사례. "계약한 곳 좀 소개해 달라"는 요청이 자주 나옵니다.',
+ warn:'임의로 업체명을 말하지 말고, 소개 가능 여부를 <b>지사 → 본사</b>로 먼저 확인하세요.',src:['case']},
+
+/* ── 고지서 · 요금 ── */
+{c:'bill',t:'전기요금 고지서',en:'영업의 출발점',s:1,
+ d:'계약종별 · 계약전력 · 월 요금이 <b>한 장에 다</b> 적혀 있습니다. 첫 통화·첫 미팅의 목표는 이 한 장을 받는 것.',
+ say:'"대표님이 숫자를 몰라도 괜찮습니다. <b>고지서 사진 한 장</b>이면 다 적혀 있습니다."',src:['branch']},
+{c:'bill',t:'고객번호',en:'',
+ d:'한전이 계약(계량) 단위로 붙인 번호. 한 회사에 <b>여러 개</b>일 수 있고, 번호마다 따로 분석합니다.',src:['kepco']},
+{c:'bill',t:'kW 와 kWh',en:'킬로와트 / 킬로와트시',s:1,
+ d:'<b>kW</b> = 순간에 쓰는 힘의 크기, <b>kWh</b> = 실제로 쓴 양. 기본요금은 kW로, 사용요금은 kWh로 계산합니다.',
+ ex:'수도로 치면 kW는 <b>수도관 굵기(한 번에 나오는 양)</b>, kWh는 한 달 동안 받은 <b>물의 양</b>입니다.',src:['kepco']},
+{c:'bill',t:'계약전력',en:'kW',s:1,
+ d:'한전과 "최대 이만큼까지 쓰겠다"고 약속한 크기. 영업 대상을 가르는 <b>1순위 숫자</b>입니다.',
+ ex:'주차장을 "최대 100대"로 계약해 둔 것과 같습니다.',
+ num:'영업 주력: <b>300 ~ 1,000 kW</b>',src:['kepco','branch']},
+{c:'bill',t:'최대수요전력 (피크)',en:'Peak',
+ d:'15분 단위로 재서 실제로 <b>가장 많이 쓴 순간</b>의 크기(kW). 이 값이 기본요금을 정합니다.',src:['kepco']},
+{c:'bill',t:'요금적용전력',en:'',s:1,
+ d:'기본요금 계산에 <b>실제로 쓰이는 kW</b>. 계약전력이 아니라 피크 기록으로 정해집니다.',
+ ex:'계약은 100대 주차장이어도, 요금은 <b>1년 중 가장 붐볐던 날</b> 차가 몇 대였는지로 매기는 셈입니다.',
+ num:'직전 12개월 중 <b>12·1·2·7·8·9월분</b>과 당월의 피크 중 가장 큰 값. 단, <b>계약전력의 30%</b>보다 작게 잡히지는 않음.',
+ say:'계약전력(예: 950kW)과 요금적용전력(예: 346kW)의 차이가 크면 <b>진단 포인트</b>가 됩니다. 판단은 본사가 합니다.',src:['kepco']},
+{c:'bill',t:'기본요금',en:'',s:1,
+ d:'<b>요금적용전력 × kW당 단가</b>. 전기를 안 써도 매달 나가는 고정비입니다.',
+ ex:'휴대폰 <b>기본료</b>와 같습니다.',src:['kepco']},
+{c:'bill',t:'전력량요금',en:'사용요금',
+ d:'실제 쓴 <b>kWh × 시간대별 단가</b>. 같은 양도 언제 썼느냐에 따라 금액이 달라집니다.',src:['kepco']},
+{c:'bill',t:'선택요금제 (Ⅰ·Ⅱ·Ⅲ)',en:'선택Ⅰ / 선택Ⅱ',
+ d:'같은 계약종별 안에서 <b>"기본요금 낮고 사용단가 높은"</b> 요금제와 <b>"기본요금 높고 사용단가 낮은"</b> 요금제를 고르는 것.',
+ ex:'통신 요금제에서 "기본료 싸고 데이터 비싼 것" vs "기본료 비싸고 데이터 무제한" 고르기와 같습니다.',
+ num:'갈림길은 <b>월 사용시간 200시간</b> 내외 — 많이 쓰는 곳은 선택Ⅱ 쪽이 유리할 수 있음.<br>일반용(갑)Ⅱ는 <b>2026년 12월분부터 선택Ⅲ·Ⅳ를 신청해야</b> 적용됩니다.',src:['kepco']},
+{c:'bill',t:'월 사용시간',en:'',
+ d:'<b>월 사용량(kWh) ÷ 요금적용전력(kW)</b>. 설비를 한 달에 몇 시간 꽉 채워 돌렸는지 보는 숫자. 선택요금 판단에 씁니다.',src:['kepco']},
+{c:'bill',t:'역률',en:'Power Factor',
+ d:'들어온 전기 중 <b>실제 일에 쓰인 비율</b>. 기준 92%보다 낮으면 기본요금이 늘고, 높으면 줄어듭니다.',
+ ex:'맥주잔이 가득 차 보여도 <b>거품</b>이 많으면 실제 맥주는 적은 것과 같습니다.',
+ num:'주간 기준 92% — 1%p 모자랄 때마다 기본요금 <b>0.2% 추가</b>(최대 6.4%), 97%까지는 1%p 넘을 때마다 0.2% 감액.',src:['kepco']},
+{c:'bill',t:'초과사용부가금',en:'벌금성 요금',
+ d:'피크가 <b>계약전력을 넘으면</b> 넘친 kW에 기본요금의 <b>150~400%</b>가 붙습니다. 첫 달은 예고, 3년 안에 또 넘으면 부과.',
+ warn:'"계약전력을 마음대로 줄였다 늘렸다 할 수 있다"고 말하면 안 됩니다. 줄인 뒤 1년 안에 다시 늘리면 불이익이 있습니다.',src:['kepco']},
+{c:'bill',t:'기타 부과 항목',en:'기후환경요금 · 연료비조정요금 · 기금 · 부가세',
+ d:'고지서에 따로 붙는 항목들. 정부·한전 정책으로 정해지는 부분이라 <b>컨설팅으로 바꾸는 영역이 아닙니다.</b>',src:['kepco']},
+{c:'bill',t:'이의신청 · 환불',en:'',
+ d:'한전 잘못으로 요금이 더 나왔으면 이의신청 가능(30일 내 회신). 한전 과실 환불 시 <b>연 5% 이자</b>가 붙습니다.',src:['kepco']},
+
+/* ── 계약종별 ── */
+{c:'type',t:'계약종별',en:'요금 반 편성',s:1,
+ d:'한전 요금표의 <b>"반" 구분</b> — 주택용·일반용·산업용·교육용·농사용 등. 어느 반이냐에 따라 단가표가 통째로 다릅니다.',
+ say:'"고지서 위쪽에 <b>산업용 을</b>인지 <b>갑</b>인지 적혀 있습니다."',src:['kepco']},
+{c:'type',t:'산업용 (갑) · (을)',en:'제조업 공장',s:1,
+ d:'광업·제조업 등에 적용. <b>(갑) = 계약전력 300kW 미만</b>, <b>(을) = 300kW 이상</b>. 우리 영업의 주력은 <b>산업용(을)</b>입니다.',
+ warn:'(갑)Ⅱ는 고압으로 받아도 300kW 미만이면 "갑"입니다. "갑 = 저압"으로 외우면 틀립니다.',src:['kepco']},
+{c:'type',t:'일반용 (갑) · (을)',en:'병원·건물·마트·호텔',
+ d:'제조업이 아닌 사업장(병원·빌딩·마트·호텔 등)에 적용. 기준은 산업용과 같이 <b>300kW</b>. 일반용(을)도 진행 대상입니다.',src:['kepco']},
+{c:'type',t:'저압 · 고압',en:'',
+ d:'전기를 <b>어떤 전압으로 받느냐</b>의 구분. 고압으로 받으면 kWh 단가가 낮지만, 전압을 낮추는 수전설비가 필요합니다.',
+ num:'요금표에서는 고압A·B·C로 나뉘며, 대부분 공장은 22,900V로 받아 <b>고압A</b>에 해당합니다.',src:['kepco']},
+{c:'type',t:'제외 종별',en:'주택용 · 교육용 · 농사용',
+ d:'이 종별은 영업 대상에서 <b>제외</b>합니다. 고지서에서 확인되면 정중히 마무리하세요.',src:['branch']},
+{c:'type',t:'승압',en:'저압 → 고압',
+ d:'저압으로 받던 곳을 <b>고압으로 받도록 바꾸는 것</b>. 단가는 내려가지만 설비 공사가 필요합니다.',
+ warn:'"승압까지 다 해드린다" 약속 금지 — 필요 여부·범위는 <b>실사 후 확정</b>.',src:['branch']},
+
+/* ── 시간대 ── */
+{c:'time',t:'경부하 · 중간부하 · 최대부하',en:'시간대별 요금',s:1,
+ d:'하루를 세 구간으로 나눠 단가를 다르게 매깁니다. <b>밤(경부하)이 가장 싸고, 피크(최대부하)가 가장 비쌉니다.</b>',
+ ex:'택시 <b>심야할증</b>의 반대라고 보면 쉽습니다 — 전기는 남들 다 쓰는 시간이 비쌉니다.',src:['kepco']},
+{c:'time',t:'계절별 요금',en:'여름 · 봄가을 · 겨울',
+ d:'같은 시간대라도 계절마다 단가가 다릅니다. <b>여름(6~8월)</b>, <b>봄·가을(3~5·9~10월)</b>, <b>겨울(11~2월)</b>.',src:['kepco']},
+{c:'time',t:'2026.6.1 시간대 개편',en:'최신 변경',
+ d:'여름·봄가을 <b>최대부하 시간이 15~21시</b>로 바뀌었습니다. 산업용(을)은 봄·가을 토·공휴일 11~14시 <b>50% 할인</b>(2030년까지).',
+ warn:'예전 시간대로 설명하는 자료가 많습니다. 오래된 자료를 그대로 인용하지 마세요.',src:['kepco']},
+
+/* ── 설비 · 현장 ── */
+{c:'fac',t:'수전설비',en:'수변전설비 · 큐비클',
+ d:'한전에서 들어온 높은 전압을 공장에서 쓰는 전압으로 <b>낮춰 주는 설비 묶음</b>. 보통 철제 함(큐비클) 안에 있습니다.',src:['kepco']},
+{c:'fac',t:'변압기',en:'',
+ d:'전압을 바꾸는 장치. 크기(용량)를 보면 <b>계약전력을 대략 짐작</b>할 수 있어, 로드뷰 사전 검토에 씁니다.',src:['branch']},
+{c:'fac',t:'패드변압기',en:'',
+ d:'땅 위에 <b>네모난 박스 형태</b>로 놓인 한전 변압기. 전선이 땅속으로 들어오는 건물에서 주로 보입니다.',src:['hq']},
+{c:'fac',t:'인입 (가공 · 지중)',en:'전기 끌어오기',
+ d:'한전 전선을 건물까지 끌어오는 경로. <b>가공</b> = 전봇대 위로, <b>지중</b> = 땅속으로. 복합건물은 인입 거리·위치가 한전 승인 조건이 됩니다.',src:['hq']},
+{c:'fac',t:'설치 공간',en:'약 2m × 2m',
+ d:'설비를 놓을 <b>약 2m × 2m</b> 공간이 필요합니다. 없으면 바로 포기하지 말고 실사에서 판단합니다.',src:['branch']},
+{c:'fac',t:'기설치 저감장치',en:'',
+ d:'건물 외부에 이미 2m급 절감 장치가 있으면 <b>대상에서 제외</b>합니다. 로드뷰로 미리 확인하세요.',src:['branch']},
+{c:'fac',t:'전기안전관리자',en:'전기기사',
+ d:'일정 규모 이상 사업장에 선임된 <b>전기 담당자</b>. 고지서 숫자와 요금 구조를 잘 압니다.',
+ warn:'이분 앞에서 용어를 틀리면 신뢰가 바로 깨집니다. 모르면 "기술팀이 실사 때 정확히 봅니다"로 넘기세요.',
+ say:'대표님이 숫자를 모르시면 "<b>전기 담당하시는 분</b>이 아실 거고요, 고지서 한 장이면 됩니다."',src:['branch']},
+
+/* ── 영업 실무 ── */
+{c:'sales',t:'스윗스팟',en:'최우선 공략 대상',s:1,
+ d:'<b>계약전력 300~1,000kW · 산업용/일반용(을) · 월 전기요금 약 1,000만~5,000만원</b>인 사업장. 상시 가동 업종(사출·금형·냉동창고·식품가공·병원·마트)이 유리합니다.',src:['branch']},
+{c:'sales',t:'자가 · 임차',en:'건물 소유 여부',
+ d:'임차 공장도 <b>진행 가능</b>합니다(임대인 동의 전제). 임차라는 이유만으로 대상에서 빼지 마세요.',src:['hq']},
+{c:'sales',t:'원상복구',en:'',
+ d:'임차인이 나갈 때 건물을 원래대로 돌려놓을 의무. 본사 설명으로는 절감 설비가 있으면 오히려 <b>임대가 더 잘 나갑니다.</b>',
+ say:'임대인에게는 "<b>건물 가치를 올리는 설비</b>"로 설명하세요.',src:['hq']},
+{c:'sales',t:'특약',en:'',
+ d:'계약서 기본 조항 외에 <b>건별로 따로 합의해 적는 조항</b>. 설비가 임대인 것인지 임차인 것인지 같은 문제는 특약으로 정합니다.',src:['case']},
+{c:'sales',t:'관리단',en:'집합건물 관리 주체',
+ d:'여러 업체가 입주한 건물에서 전기를 일괄 관리하는 주체. 계약은 <b>관리단을 통해</b> 하되, 혜택은 각 입주사에게 가므로 <b>입주사 동의</b>가 필요합니다.',
+ say:'관리단 담당자를 <b>우리 편</b>으로 만드는 것이 핵심입니다.',src:['hq']},
+{c:'sales',t:'입주자대표회의',en:'',
+ d:'입주사 대표들의 협의체. 관리단이 이곳과 합의하면 입주사 <b>개별 동의 절차를 줄이는</b> 방안이 검토되고 있습니다.',src:['case']},
+{c:'sales',t:'안분',en:'나눠서 부담',
+ d:'전체 금액을 <b>사용량 비율대로 나누는 것</b>. 관리단 건물의 절감액·수수료를 입주사별로 정산할 때 씁니다.',src:['case']},
+{c:'sales',t:'우편 발송 영수증',en:'',
+ d:'약정서 원본을 우체국에서 보낸 뒤 받는 영수증. 이 <b>사진</b>이 있으면 원본이 도착하기 전에도 실사를 진행할 수 있습니다.',src:['hq']},
+{c:'sales',t:'영업단계',en:'파이프라인',
+ d:'고객이 지금 어디까지 왔는지 표시하는 단계. 예) <b>콜접촉 → 고지서수령 → 현장상담 → 약정 → 실사</b>. 지사 노션 업체리스트에 기록합니다.',src:['branch']},
+{c:'sales',t:'영업이사 QR · 신청 링크',en:'개인 신청 경로',
+ d:'파트너별 영업자료의 QR·링크로 고객이 고지서를 올리면, 지사 노션에 <b>해당 파트너 이름으로</b> 자동 접수됩니다. 누가 소개했는지 기록이 남습니다.',src:['branch']}
+];
+
+const SRC={kepco:['src-kepco','한전 약관'],hq:['src-hq','본사 확인'],case:['src-case','건별 협의'],branch:['src-branch','지사 기준']};
+const list=document.getElementById('list');
+list.innerHTML=CATS.map(c=>{
+  const items=T.filter(x=>x.c===c.k).map(x=>`
+    <details data-c="${x.c}" data-s="${x.s?1:0}">
+      <summary><span class="term">${x.t}</span>${x.en?`<span class="en">${x.en}</span>`:''}${x.s?'<span class="star-tag">⭐ 필수</span>':''}
+        <span class="short">${x.d}</span></summary>
+      <div class="body">
+        ${x.ex?`<div class="row"><span class="lb ex">쉽게 말하면</span><div>${x.ex}</div></div>`:''}
+        ${x.num?`<div class="row"><span class="lb num">숫자 · 기준</span><div>${x.num}</div></div>`:''}
+        ${x.say?`<div class="row"><span class="lb say">현장 활용</span><div class="say-box">${x.say}</div></div>`:''}
+        ${x.warn?`<div class="row"><span class="lb warn">주의</span><div class="warn-box">${x.warn}</div></div>`:''}
+        ${(x.src||[]).map(s=>`<span class="badge ${SRC[s][0]}">${SRC[s][1]}</span>`).join('')}
+      </div>
+    </details>`).join('');
+  return `<section data-cat="${c.k}"><div class="cat">${c.n}</div>${items}</section>`;
+}).join('');
+
+const chips=document.getElementById('chips');
+chips.innerHTML=`<button class="chip on" data-c="all">전체</button><button class="chip star" data-c="star">⭐ 필수 암기</button>`+
+  CATS.map(c=>`<button class="chip" data-c="${c.k}">${c.ch}</button>`).join('');
+document.getElementById('total').textContent=T.length;
+
+const q=document.getElementById('q'),empty=document.getElementById('empty'),count=document.getElementById('count');
+let cat='all';
+function apply(){
+  const t=q.value.trim().toLowerCase();let shown=0;
+  document.querySelectorAll('section').forEach(s=>{
+    let n=0;
+    s.querySelectorAll('details').forEach(d=>{
+      const okCat=cat==='all'||(cat==='star'?d.dataset.s==='1':d.dataset.c===cat);
+      const hit=okCat&&(!t||d.textContent.toLowerCase().includes(t));
+      d.style.display=hit?'':'none';if(hit){n++;}
+      if(t&&hit)d.open=true;
+    });
+    s.style.display=n?'':'none';shown+=n;
+  });
+  empty.style.display=shown?'none':'block';
+  count.textContent=`용어 ${shown}개`;
+}
+q.addEventListener('input',apply);
+chips.addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
+  chips.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');cat=b.dataset.c;apply();});
+apply();
+</script>
+</body>
+</html>
