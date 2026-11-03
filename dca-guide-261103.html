@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="매달 조금씩, 꾸준히 | 탑재무설계">
+<meta property="og:description" content="적립식 투자와 코스트 애버리징 효과, 그림으로 쉽게 이해하기">
+<title>매달 조금씩, 꾸준히</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="탑재무설계 · 적립식 투자와 코스트 애버리징 효과를 그림으로 쉽게 이해하기">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: 그림이 주인공인 세로 문서 — 각 섹션은 [짧은 제목 → 큰 그림 → 한 줄 설명] */
+:root{
+  --ink:#141414; --lime:#8DC63F; --lime-deep:#4E7A1A; --lime-wash:#F1F8E6;
+  --paper:#FFFFFF; --soft:#F6F7F3; --line:#E3E6DE; --muted:#5E625A; --warn:#C2552B; --warn-wash:#FBEEE8;
+  --f-display:"IBM Plex Sans KR","Noto Sans KR","Apple SD Gothic Neo",sans-serif;
+  --f-body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7;word-break:keep-all}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+svg{display:block;max-width:100%}
+.eyebrow{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--lime-deep)}
+.cap{font-size:15px;color:var(--muted);text-align:center}
+.cap b{color:var(--ink)}
+
+.top{background:var(--ink);color:#fff}
+.top .wrap{padding-block:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-weight:700;font-size:15px}
+.brand b{color:var(--lime)}
+.top small{font-size:12px;color:#BFC3BA}
+
+.hero .wrap{padding-block:40px 32px;display:grid;gap:16px}
+.hero h1{font-size:clamp(28px,6.2vw,44px);font-weight:700;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--lime) 62%)}
+.hero .lead{font-size:17px;color:var(--muted)}
+.hero-fig{background:var(--soft);padding:18px 12px 10px;display:grid;gap:8px}
+.hero-fig .cap{font-size:14px}
+
+section{border-top:1px solid var(--line)}
+section .wrap{padding-block:40px;display:grid;gap:20px}
+section h2{font-size:clamp(22px,4.4vw,29px);font-weight:700}
+
+/* 1. 세 가지 방식 타임라인 */
+.ways{display:grid;gap:14px}
+.way{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center}
+.way .nm{display:grid;gap:2px}
+.way .nm b{font-family:var(--f-display);font-size:16px}
+.way .nm span{font-size:12.5px;color:var(--muted)}
+.way.on{background:var(--lime-wash);padding:10px;margin:0 -10px}
+@media (max-width:480px){.way{grid-template-columns:1fr}}
+
+/* 2. 사과 가게 */
+.shop{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.mon{border:1px solid var(--line);display:grid;gap:8px;padding:14px 10px;justify-items:center;text-align:center}
+.mon.cheap{border:2px solid var(--lime);background:var(--lime-wash)}
+.mon .m{font-size:13px;color:var(--muted);font-weight:500}
+.tag{font-family:var(--f-num);font-weight:600;font-size:18px;padding:3px 12px;border-radius:999px;background:var(--ink);color:#fff}
+.mon.cheap .tag{background:var(--lime-deep)}
+.bag{font-size:13px}
+.bag b{font-family:var(--f-num);font-size:22px}
+.basket{width:100%;max-width:150px}
+@media (max-width:480px){.shop{gap:6px}.mon{padding:10px 4px}.tag{font-size:15px;padding:2px 8px}}
+
+.result2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rbox{padding:16px;display:grid;gap:6px;justify-items:center;text-align:center;border:1px solid var(--line)}
+.rbox.win{border:2px solid var(--lime);background:var(--lime-wash)}
+.rbox .t{font-size:13px;color:var(--muted);font-weight:700}
+.rbox .flow{font-family:var(--f-num);font-size:15px}
+.rbox .pct{font-family:var(--f-num);font-weight:600;font-size:30px}
+.rbox.win .pct{color:var(--lime-deep)}
+.rbox .s{font-size:13px;color:var(--muted)}
+
+/* 3. 원리 그림 */
+.principle{background:var(--soft);padding:16px 10px}
+.formula{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;font-family:var(--f-display);font-weight:700;font-size:17px}
+.formula .pill{padding:8px 14px;border-radius:999px;background:var(--paper);border:1px solid var(--line);display:inline-flex;align-items:center;gap:6px}
+.formula .pill.g{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+
+/* 4. 시뮬레이터 */
+.sim{border:1.5px solid var(--ink);display:grid}
+.sim-head{padding:14px 16px;display:grid;gap:12px;border-bottom:1px solid var(--line)}
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.tabs button{font:500 13px var(--f-body);padding:8px 4px 6px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;display:grid;justify-items:center;gap:2px}
+.tabs button svg{width:56px;height:24px}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tabs button[aria-pressed="true"] path{stroke:var(--lime)}
+.tabs button:focus-visible,.amt input:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+@media (max-width:480px){.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.amt{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px}
+.amt input{flex:1;min-width:150px;accent-color:var(--lime-deep)}
+.amt output{font-family:var(--f-num);font-weight:600;font-size:16px}
+.chart{padding:10px 6px 2px;overflow-x:auto}
+.chart svg{width:100%;height:auto;min-width:330px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);padding:0 16px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:16px;height:3px;display:inline-block}
+.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line);margin-top:10px}
+.res{padding:14px 16px;display:grid;gap:2px}
+.res+.res{border-left:1px solid var(--line)}
+.res .lbl{font-size:13px;color:var(--muted);font-weight:500}
+.res .big{font-family:var(--f-num);font-size:26px;font-weight:600}
+.res .sub{font-size:12.5px;color:var(--muted)}
+.res.best{background:var(--lime-wash)}
+.pos{color:var(--lime-deep)} .neg{color:var(--warn)}
+.lesson{padding:12px 16px;background:var(--soft);font-size:14.5px;border-top:1px solid var(--line)}
+
+/* 5. 상황별 카드 */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.case{border:1px solid var(--line);padding:14px;display:grid;gap:8px}
+.case .hd{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.case .hd b{font-family:var(--f-display);font-size:15px}
+.badge{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.badge.d{background:var(--lime);color:var(--ink)}
+.badge.l{background:var(--ink);color:#fff}
+.badge.e{background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+.case svg{width:100%;height:auto}
+.bars{display:grid;gap:4px;font-size:12px}
+.bars div{display:grid;grid-template-columns:42px 1fr 52px;align-items:center;gap:6px}
+.bars i{height:10px;display:block}
+.bars .v{font-family:var(--f-num);text-align:right}
+@media (max-width:520px){.cases{grid-template-columns:1fr}}
+
+/* 6. 오해 vs 사실 */
+.myths{display:grid;gap:10px}
+.myth{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.myth>div{padding:12px 14px;display:flex;gap:10px;align-items:flex-start;font-size:14.5px}
+.myth .x{background:var(--warn-wash)}
+.myth .o{background:var(--lime-wash)}
+.myth svg{flex:none;width:26px;height:26px}
+@media (max-width:520px){.myth{grid-template-columns:1fr}}
+
+/* 7. 원칙 아이콘 */
+.rules{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.rule{display:grid;gap:8px;justify-items:center;text-align:center;padding:16px 8px;background:var(--soft)}
+.rule .ic{width:60px;height:60px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+.rule .ic svg{width:32px;height:32px}
+.rule b{font-family:var(--f-display);font-size:15px;line-height:1.35}
+.rule span{font-size:12.5px;color:var(--muted);line-height:1.5}
+@media (max-width:700px){.rules{grid-template-columns:repeat(2,minmax(0,1fr))}.rule:last-child{grid-column:1/-1}}
+
+.closing{background:var(--ink);color:#fff;border-top:0}
+.closing h2{color:#fff}
+.closing h2 em{font-style:normal;color:var(--lime)}
+.closing p{color:#D4D7CF}
+.sign{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:end;border-top:1px solid #3A3D37;padding-top:18px}
+.sign .who{font-family:var(--f-display);font-weight:700;font-size:18px}
+.sign .who small{display:block;font-family:var(--f-body);font-weight:400;font-size:13px;color:#BFC3BA}
+.sign .tel{font-family:var(--f-num);font-size:17px;color:var(--lime);user-select:all}
+.note{font-size:12px;color:#9EA299;line-height:1.7}
+</style>
+
+<style>body{margin:0}</style>
+</head>
+<body>
+<!-- 아이콘 묶음 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="apple" viewBox="0 0 24 24"><path d="M12 7.5c-1.8-1.6-6-1.4-6 3.2 0 4.2 3 8.8 6 8.8s6-4.6 6-8.8c0-4.6-4.2-4.8-6-3.2z" fill="currentColor"/><path d="M12 7.5c0-1.6.4-3 1.4-4" stroke="#5B3A1E" stroke-width="1.4" fill="none" stroke-linecap="round"/><path d="M13.2 4.6c1.6-1.2 3.4-.9 4.2-.4-.8 1.4-2.6 1.9-4.2.4z" fill="#8DC63F"/></symbol>
+    <symbol id="ix" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="#C2552B"/><path d="M8.5 8.5l9 9M17.5 8.5l-9 9" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="io" viewBox="0 0 26 26"><circle cx="13" cy="13" r="12" fill="#4E7A1A"/><path d="M7.5 13.5l3.8 3.8 7.2-8" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><b>T.O.P</b> 탑재무설계</div>
+    <small>고객 상담 자료 · 2026.11</small>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">적립식 투자 · 코스트 애버리징</span>
+    <h1>언제 사야 할지 몰라도 괜찮습니다.<br><em>매달 같은 돈으로, 꾸준히.</em></h1>
+    <p class="lead">시장을 맞히는 대신, 시간을 내 편으로 만드는 방법을 그림으로 보여드립니다.</p>
+    <figure class="hero-fig" style="margin:0">
+      <div id="heroFig"></div>
+      <figcaption class="cap">가격(검은 선)이 <b>내려갈수록</b> 같은 돈으로 <b>더 많이</b> 쌓입니다(초록 동전)</figcaption>
+    </figure>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">1 · 적립식 투자란</span>
+    <h2>돈을 넣는 세 가지 방법</h2>
+    <div class="ways" id="ways"></div>
+    <p class="cap">적립식은 <b>매달 같은 금액</b>을 넣되, 사는 물건의 <b>가격이 매달 바뀝니다</b>. 이게 숨은 무기입니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">2 · 사과 가게로 이해하기</span>
+    <h2>매달 10만 원어치 사과를 산다면</h2>
+    <div class="shop">
+      <div class="mon">
+        <span class="m">1월</span>
+        <span class="tag">1,000원</span>
+        <svg class="basket" viewBox="0 0 150 120" id="bk1" aria-hidden="true"></svg>
+        <span class="bag"><b>100</b>개</span>
+      </div>
+      <div class="mon cheap">
+        <span class="m">2월 · 반값!</span>
+        <span class="tag">500원</span>
+        <svg class="basket" viewBox="0 0 150 120" id="bk2" aria-hidden="true"></svg>
+        <span class="bag"><b>200</b>개</span>
+      </div>
+      <div class="mon">
+        <span class="m">3월 · 회복</span>
+        <span class="tag">1,000원</span>
+        <svg class="basket" viewBox="0 0 150 120" id="bk3" aria-hidden="true"></svg>
+        <span class="bag"><b>100</b>개</span>
+      </div>
+    </div>
+    <p class="cap">사과 1개 그림 = 10개 · 반값일 때 <b>두 배</b>를 담았습니다</p>
+
+    <div class="result2">
+      <div class="rbox win">
+        <span class="t">매달 나눠 산 나</span>
+        <span class="flow">30만 원 → 400개</span>
+        <span class="pct">+33%</span>
+        <span class="s">3월 가치 40만 원 · 1개당 <b>750원</b></span>
+      </div>
+      <div class="rbox">
+        <span class="t">1월에 한 번에 산 경우</span>
+        <span class="flow">30만 원 → 300개</span>
+        <span class="pct">0%</span>
+        <span class="s">3월 가치 30만 원 · 1개당 1,000원</span>
+      </div>
+    </div>
+    <p class="cap">가격은 제자리로 돌아왔는데, <b>나눠 산 쪽만 돈을 벌었습니다</b></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">3 · 코스트 애버리징 효과</span>
+    <h2>평균 단가가 저절로 낮아지는 원리</h2>
+    <div class="formula" aria-label="같은 돈, 쌀 때 많이, 비쌀 때 적게, 평균단가 하락">
+      <span class="pill">같은 돈</span><span>→</span>
+      <span class="pill">쌀 때 많이</span><span>+</span>
+      <span class="pill">비쌀 때 적게</span><span>=</span>
+      <span class="pill g">평균단가 ↓</span>
+    </div>
+    <div class="principle"><div id="seesaw"></div></div>
+    <p class="cap">가격 막대가 짧을수록 사과 탑은 높아집니다. 그래서 <b>내 평균 단가(초록 점선)</b>는 시장 평균(회색 점선)보다 <b>항상 아래</b>에 있습니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">4 · 직접 돌려보기</span>
+    <h2>시장 모양을 골라 보세요</h2>
+    <div class="sim">
+      <div class="sim-head">
+        <div class="tabs" role="group" aria-label="시장 상황 선택" id="tabs"></div>
+        <label class="amt" for="amount">매달 넣는 금액
+          <input type="range" id="amount" min="100000" max="2000000" step="100000" value="500000">
+          <output id="amountOut">50만 원</output>
+        </label>
+      </div>
+      <div class="chart" id="chart"></div>
+      <div class="legend">
+        <span><i style="background:var(--ink)"></i>시장 가격</span>
+        <span><i style="background:var(--lime)"></i>내 평균 단가</span>
+        <span><i style="background:var(--lime);opacity:.35;height:10px;width:10px"></i>그달 산 수량</span>
+      </div>
+      <div class="results">
+        <div class="res" id="boxDca"><span class="lbl">적립식 · 매달 나눠서</span><span class="big" id="rDca">-</span><span class="sub" id="rDcaSub">-</span></div>
+        <div class="res" id="boxLump"><span class="lbl">거치식 · 첫 달 한꺼번에</span><span class="big" id="rLump">-</span><span class="sub" id="rLumpSub">-</span></div>
+      </div>
+      <p class="lesson" id="lesson">-</p>
+    </div>
+    <p class="cap" style="font-size:12.5px">12개월, 가격은 이해를 돕기 위한 가정입니다</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">5 · 한눈에 비교</span>
+    <h2>어떤 시장에서 누가 유리할까</h2>
+    <div class="cases" id="cases"></div>
+    <p class="cap">오를 줄 미리 안다면 한 번에 넣는 게 낫지만, <b>그걸 아는 사람은 없습니다</b>.<br>적립식은 최고 수익보다 <b>최악을 피하는</b> 방법입니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">6 · 꼭 알아두실 점</span>
+    <h2>오해와 사실</h2>
+    <div class="myths">
+      <div class="myth"><div class="x"><svg aria-hidden="true"><use href="#ix"/></svg><span>적립식이면 손해 안 본다</span></div><div class="o"><svg aria-hidden="true"><use href="#io"/></svg><span>원금 보장 아님. 끝내 회복 못 하면 손실</span></div></div>
+      <div class="myth"><div class="x"><svg aria-hidden="true"><use href="#ix"/></svg><span>아무 상품이나 꾸준히 사면 된다</span></div><div class="o"><svg aria-hidden="true"><use href="#io"/></svg><span>시장 전체를 담는 분산형 상품(지수 ETF·펀드)이 적합</span></div></div>
+      <div class="myth"><div class="x"><svg aria-hidden="true"><use href="#ix"/></svg><span>떨어지면 잠깐 쉬었다 하자</span></div><div class="o"><svg aria-hidden="true"><use href="#io"/></svg><span>하락기가 가장 싸게 모으는 핵심 구간</span></div></div>
+      <div class="myth"><div class="x"><svg aria-hidden="true"><use href="#ix"/></svg><span>오래 할수록 효과가 계속 커진다</span></div><div class="o"><svg aria-hidden="true"><use href="#io"/></svg><span>쌓인 돈이 커질수록 효과는 줄어듦 → 정기 점검 필요</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">7 · 탑재무설계의 적립식 원칙</span>
+    <h2>성공하는 적립식 다섯 가지</h2>
+    <div class="rules">
+      <div class="rule"><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="#8DC63F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="22" height="20" rx="2"/><path d="M5 13h22M11 4v6M21 4v6"/><path d="M11 20l3 3 6-6"/></svg></div><b>자동이체</b><span>월급 다음 날 자동으로</span></div>
+      <div class="rule"><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="#8DC63F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h14M9 28h14M10 4c0 7 12 7 12 12S10 21 10 28M22 4c0 7-12 7-12 12s12 5 12 12"/></svg></div><b>3~5년 이상</b><span>한 번의 오르내림을 지나야 효과</span></div>
+      <div class="rule"><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="#8DC63F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="11"/><path d="M5 16h22M16 5c3.5 3 3.5 19 0 22M16 5c-3.5 3-3.5 19 0 22"/></svg></div><b>넓게 분산</b><span>한 회사보다 시장 전체</span></div>
+      <div class="rule"><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="#8DC63F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a12 12 0 0 1 24 0z"/><path d="M16 16v9a3 3 0 0 1-6 0"/><path d="M16 4v0"/></svg></div><b>하락장에도 계속</b><span>싸게 모으는 시간</span></div>
+      <div class="rule"><div class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="#8DC63F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="14" cy="14" r="8"/><path d="M20 20l7 7"/><path d="M10.5 15.5l2.5 2.5 4.5-5"/></svg></div><b>1년 1~2회 점검</b><span>목표에 맞춰 조정</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>시장을 맞히는 사람보다<br><em>오래 머무는 사람</em>이 이깁니다.</h2>
+    <p>자녀 교육·은퇴·내 집 마련, 목표에 맞는 적립식 플랜을 함께 설계해 드립니다.</p>
+    <div class="sign">
+      <div class="who">탑재무설계 · 고영권 컨설턴트<small>T.O.P · Trust · Oracle · People</small></div>
+      <div class="tel">010-4860-3087</div>
+    </div>
+    <p class="note">본 자료는 적립식 투자의 원리를 설명하기 위한 교육용 자료이며, 예시의 가격과 수익률은 이해를 돕기 위한 가정으로 실제 수익을 보장하지 않습니다. 투자상품은 원금 손실이 발생할 수 있으며, 과거 수익률이 미래 수익률을 보장하지 않습니다. 가입 전 상품설명서와 약관을 반드시 확인하시기 바랍니다.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var INK="#141414",LIME="#8DC63F",DEEP="#4E7A1A",MUTED="#5E625A",LINE="#E3E6DE",RED="#C2552B";
+  function f(n){return Math.round(n).toLocaleString("ko-KR");}
+
+  /* 히어로: 가격선 + 동전 탑 */
+  (function(){
+    var p=[10000,9000,8000,7000,6000,5500,6000,7000,8000,9000,9500,10000],n=p.length;
+    var W=640,H=230,pl=20,pr=20,base=208;
+    var g="";
+    function x(i){return pl+(W-pl-pr)*(i+.5)/n;}
+    function py(v){return 20+(10000-v)/4500*60;}
+    for(var i=0;i<n;i++){
+      var coins=Math.round(10000/p[i]*5); // 5~9개
+      for(var c=0;c<coins;c++){
+        var cy=base-c*11;
+        g+='<ellipse cx="'+x(i)+'" cy="'+cy+'" rx="17" ry="6" fill="'+(p[i]<8000?LIME:"#C9E3A6")+'" stroke="'+DEEP+'" stroke-width="1"/>';
+      }
+    }
+    var d=p.map(function(v,i){return (i?"L":"M")+x(i)+" "+py(v);}).join(" ");
+    g+='<path d="'+d+'" fill="none" stroke="'+INK+'" stroke-width="3" stroke-linejoin="round"/>';
+    p.forEach(function(v,i){g+='<circle cx="'+x(i)+'" cy="'+py(v)+'" r="4" fill="'+INK+'"/>';});
+    g+='<text x="'+x(0)+'" y="12" text-anchor="middle" font-size="12" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">비쌀 때</text>';
+    g+='<text x="'+x(5)+'" y="'+(py(5500)+20)+'" text-anchor="middle" font-size="13" font-weight="700" fill="'+DEEP+'" font-family="Noto Sans KR,sans-serif">쌀 때 많이!</text>';
+    g+='<text x="'+x(0)+'" y="226" text-anchor="middle" font-size="11" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">1월</text>';
+    g+='<text x="'+x(11)+'" y="226" text-anchor="middle" font-size="11" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">12월</text>';
+    document.getElementById("heroFig").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="가격이 낮은 달에 동전이 더 높이 쌓이는 그림">'+g+'</svg>';
+  })();
+
+  /* 1. 세 가지 방법 타임라인 */
+  (function(){
+    var rows=[
+      {k:"거치식",s:"목돈을 한 번에",type:"lump"},
+      {k:"적금",s:"매달 넣고, 이자 고정",type:"save"},
+      {k:"적립식 투자",s:"매달 넣고, 가격은 매달 변동",type:"dca",on:true}
+    ];
+    var html="";
+    rows.forEach(function(r){
+      var W=480,H=58,g="",cw=W/12;
+      for(var i=0;i<12;i++){
+        g+='<line x1="'+(i*cw)+'" x2="'+(i*cw)+'" y1="50" y2="54" stroke="'+LINE+'"/>';
+      }
+      g+='<line x1="0" x2="'+W+'" y1="52" y2="52" stroke="'+LINE+'" stroke-width="2"/>';
+      if(r.type==="lump"){
+        g+='<rect x="2" y="6" width="'+(cw*1.6)+'" height="42" rx="4" fill="'+INK+'"/>';
+        g+='<text x="'+(cw*0.8+2)+'" y="32" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="IBM Plex Mono,monospace">1,200</text>';
+        g+='<text x="'+(cw*2+6)+'" y="32" font-size="12" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">← 1월에 1,200만 원 한 번</text>';
+      }else{
+        var hs=r.type==="dca"?[30,36,40,44,40,34,30,26,32,38,34,30]:[30,30,30,30,30,30,30,30,30,30,30,30];
+        for(var j=0;j<12;j++){
+          var h=hs[j];
+          g+='<rect x="'+(j*cw+5)+'" y="'+(48-h)+'" width="'+(cw-10)+'" height="'+h+'" rx="3" fill="'+(r.type==="dca"?LIME:"#BFC3BA")+'"/>';
+        }
+        if(r.type==="dca") g+='<text x="'+(W-4)+'" y="12" text-anchor="end" font-size="11" fill="'+DEEP+'" font-family="Noto Sans KR,sans-serif">같은 돈 → 사는 수량은 매달 다름</text>';
+        else g+='<text x="'+(W-4)+'" y="12" text-anchor="end" font-size="11" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">매달 100만 원 · 정해진 이자</text>';
+      }
+      html+='<div class="way'+(r.on?" on":"")+'"><div class="nm"><b>'+r.k+'</b><span>'+r.s+'</span></div><svg viewBox="0 0 '+W+' '+H+'" aria-hidden="true">'+g+'</svg></div>';
+    });
+    document.getElementById("ways").innerHTML=html;
+  })();
+
+  /* 2. 사과 바구니 */
+  function basket(id,count){
+    var g='<path d="M10 70h130l-14 46H24z" fill="#C89B6A"/><path d="M10 70h130" stroke="#8A6239" stroke-width="4"/><path d="M28 80l6 32M52 80l3 32M75 80v32M98 80l-3 32M122 80l-6 32" stroke="#A67C4E" stroke-width="2"/>';
+    var per=[5,4,4,4,3], k=0, rowY=60;
+    for(var r=0;r<per.length&&k<count;r++){
+      var m=per[r], w=24, start=75-(m-1)*w/2;
+      for(var c=0;c<m&&k<count;c++,k++){
+        g+='<use href="#apple" x="'+(start+c*w-12)+'" y="'+(rowY-r*13-12)+'" width="24" height="24" style="color:#D23A2E"/>';
+      }
+    }
+    document.getElementById(id).innerHTML=g;
+  }
+  basket("bk1",10);basket("bk2",20);basket("bk3",10);
+
+  /* 3. 원리 그림: 가격 막대 vs 사과 탑 */
+  (function(){
+    var p=[1000,500,1000], q=[100,200,100], W=600,H=280,g="",cx=[130,300,470];
+    var mid=140;
+    g+='<line x1="40" x2="'+(W-20)+'" y1="'+mid+'" y2="'+mid+'" stroke="'+INK+'" stroke-width="1.5"/>';
+    g+='<text x="20" y="40" font-size="12" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">가격 ↑</text>';
+    g+='<text x="20" y="'+(H-12)+'" font-size="12" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">수량 ↓</text>';
+    for(var i=0;i<3;i++){
+      var ph=p[i]/1000*90, qh=q[i]/200*110;
+      g+='<rect x="'+(cx[i]-30)+'" y="'+(mid-ph)+'" width="60" height="'+ph+'" fill="'+(p[i]<1000?"#BFC3BA":INK)+'"/>';
+      g+='<text x="'+cx[i]+'" y="'+(mid-ph-8)+'" text-anchor="middle" font-size="14" font-weight="600" fill="'+INK+'" font-family="IBM Plex Mono,monospace">'+f(p[i])+'원</text>';
+      var rows=Math.round(qh/22);
+      for(var r=0;r<rows;r++){for(var c=0;c<3;c++){
+        g+='<use href="#apple" x="'+(cx[i]-33+c*22)+'" y="'+(mid+4+r*21)+'" width="22" height="22" style="color:#D23A2E"/>';
+      }}
+      g+='<text x="'+(cx[i]+42)+'" y="'+(mid+24)+'" font-size="14" font-weight="700" fill="'+(q[i]>100?DEEP:INK)+'" font-family="IBM Plex Mono,monospace">'+q[i]+'개</text>';
+      g+='<text x="'+cx[i]+'" y="'+(H-4)+'" text-anchor="middle" font-size="12" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">'+(i+1)+'월</text>';
+    }
+    // 평균선 (가격축 위)
+    var avgMkt=833/1000*90, avgMine=750/1000*90;
+    g+='<line x1="70" x2="530" y1="'+(mid-avgMkt)+'" y2="'+(mid-avgMkt)+'" stroke="#9EA299" stroke-width="2" stroke-dasharray="6 5"/>';
+    g+='<line x1="70" x2="530" y1="'+(mid-avgMine)+'" y2="'+(mid-avgMine)+'" stroke="'+LIME+'" stroke-width="3" stroke-dasharray="8 5"/>';
+    g+='<text x="534" y="'+(mid-avgMkt+4)+'" font-size="12" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">시장 평균 833원</text>';
+    g+='<text x="534" y="'+(mid-avgMine+14)+'" font-size="12" font-weight="700" fill="'+DEEP+'" font-family="Noto Sans KR,sans-serif">내 평균 750원</text>';
+    document.getElementById("seesaw").innerHTML='<div style="overflow-x:auto"><svg viewBox="0 0 640 '+H+'" style="min-width:340px;width:100%" role="img" aria-label="가격이 낮은 2월에 사과를 두 배 사서 내 평균 단가 750원이 시장 평균 833원보다 낮음">'+g+'</svg></div>';
+  })();
+
+  /* 시나리오 데이터 */
+  var S={
+    v:{n:"떨어졌다 회복",p:[10000,9000,8000,7000,6000,5500,6000,7000,8000,9000,9500,10000],win:"d",
+       l:"가격은 제자리인데 적립식만 이익. 하락기에 싸게 모은 수량이 회복기에 힘을 냅니다."},
+    box:{n:"오르락내리락",p:[10000,11500,9000,12000,8500,11000,9500,12000,9000,11000,10000,10000],win:"e",
+       l:"평균 단가가 출렁임의 가운데에서 안정됩니다. 결과는 마지막 가격에 따라 달라지니 길게 가져가세요."},
+    up:{n:"꾸준히 상승",p:[10000,10300,10600,10900,11200,11500,11800,12100,12400,12700,13000,13300],win:"l",
+       l:"오르기만 하면 한꺼번에 넣은 쪽이 더 법니다. 하지만 미리 알 수 없기에 적립식은 '안전한 선택'입니다."},
+    down:{n:"계속 하락",p:[10000,9500,9000,8500,8000,7500,7000,6800,6500,6200,6000,5800],win:"d",
+       l:"적립식도 손실이지만 폭은 절반 수준. 평균 단가가 크게 낮아져 반등 때 회복이 빠릅니다."}
+  };
+  function calc(p,M){var U=0,avg=[],q=[];p.forEach(function(x,i){q.push(M/x);U+=M/x;avg.push(M*(i+1)/U);});
+    var inv=M*p.length;return{U:U,avg:avg,q:q,inv:inv,val:U*p[p.length-1],r:U*p[p.length-1]/inv-1,lval:inv*p[p.length-1]/p[0],lr:p[p.length-1]/p[0]-1};}
+  function spark(p,w,h,stroke){var mn=5000,mx=13500;return p.map(function(v,i){return (i?"L":"M")+(2+(w-4)*i/(p.length-1)).toFixed(1)+" "+(2+(h-4)*(1-(v-mn)/(mx-mn))).toFixed(1);}).join(" ");}
+
+  /* 탭(모양 아이콘 포함) */
+  var keys=["v","box","up","down"],cur="v",tabs=document.getElementById("tabs");
+  keys.forEach(function(k){
+    var b=document.createElement("button");b.type="button";b.id="sc-"+k;b.setAttribute("aria-pressed",k===cur?"true":"false");
+    b.innerHTML='<svg viewBox="0 0 56 24" aria-hidden="true"><path d="'+spark(S[k].p,56,24)+'" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>'+S[k].n;
+    b.addEventListener("click",function(){cur=k;Array.prototype.forEach.call(tabs.children,function(o){o.setAttribute("aria-pressed",o===b?"true":"false");});draw();});
+    tabs.appendChild(b);
+  });
+
+  var amt=document.getElementById("amount"),out=document.getElementById("amountOut");
+  function man(n){return f(n/10000)+"만 원";}
+  function pct(x){return (x>0.0005?"+":"")+(x*100).toFixed(1)+"%";}
+  function cls(x){return "big "+(x>=0.0005?"pos":(x<=-0.0005?"neg":""));}
+
+  function draw(){
+    var M=+amt.value,p=S[cur].p,n=p.length,c=calc(p,M);
+    out.textContent=man(M);
+    var W=640,H=270,pl=56,pr=16,pt=16,pb=34,qh=70;
+    var all=p.concat(c.avg),mn=Math.min.apply(null,all),mx=Math.max.apply(null,all);
+    var lo=Math.floor(mn/1000)*1000-500,hi=Math.ceil(mx/1000)*1000+500;
+    function x(i){return pl+(W-pl-pr)*i/(n-1);}
+    function y(v){return pt+(H-pt-pb)*(1-(v-lo)/(hi-lo));}
+    var g="",step=(hi-lo)>6000?2000:1000;
+    var qmax=Math.max.apply(null,c.q),bw=(W-pl-pr)/(n-1)*0.55;
+    c.q.forEach(function(v,i){var h=v/qmax*qh;g+='<rect x="'+(x(i)-bw/2)+'" y="'+(H-pb-h)+'" width="'+bw+'" height="'+h+'" fill="'+LIME+'" opacity=".3"/>';});
+    for(var t=Math.ceil(lo/step)*step;t<=hi;t+=step){
+      g+='<line x1="'+pl+'" x2="'+(W-pr)+'" y1="'+y(t)+'" y2="'+y(t)+'" stroke="'+LINE+'"/>';
+      g+='<text x="'+(pl-8)+'" y="'+(y(t)+4)+'" text-anchor="end" font-size="11" fill="'+MUTED+'" font-family="IBM Plex Mono,monospace">'+f(t)+'</text>';
+    }
+    for(var i=0;i<n;i++){if(i%2===0||i===n-1)g+='<text x="'+x(i)+'" y="'+(H-12)+'" text-anchor="middle" font-size="11" fill="'+MUTED+'" font-family="Noto Sans KR,sans-serif">'+(i+1)+'월</text>';}
+    function path(a){return a.map(function(v,i){return (i?"L":"M")+x(i).toFixed(1)+" "+y(v).toFixed(1);}).join(" ");}
+    g+='<path d="'+path(p)+'" fill="none" stroke="'+INK+'" stroke-width="2.5" stroke-linejoin="round"/>';
+    g+='<path d="'+path(c.avg)+'" fill="none" stroke="'+LIME+'" stroke-width="3" stroke-dasharray="7 5"/>';
+    p.forEach(function(v,i){g+='<circle cx="'+x(i)+'" cy="'+y(v)+'" r="3.2" fill="'+INK+'"/>';});
+    var la=c.avg[n-1];
+    g+='<circle cx="'+x(n-1)+'" cy="'+y(la)+'" r="5" fill="'+LIME+'" stroke="#fff" stroke-width="2"/>';
+    g+='<text x="'+(x(n-1)-8)+'" y="'+(y(la)+(la<p[n-1]?16:-10))+'" text-anchor="end" font-size="12" font-weight="600" fill="'+DEEP+'" font-family="IBM Plex Mono,monospace">평균 '+f(la)+'</text>';
+    document.getElementById("chart").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="12개월 시장 가격, 평균 단가, 월별 매수 수량">'+g+'</svg>';
+
+    var d=document.getElementById("rDca"),l=document.getElementById("rLump");
+    d.textContent=pct(c.r);d.className=cls(c.r);l.textContent=pct(c.lr);l.className=cls(c.lr);
+    document.getElementById("rDcaSub").textContent=man(c.inv)+" → "+man(c.val);
+    document.getElementById("rLumpSub").textContent=man(c.inv)+" → "+man(c.lval);
+    document.getElementById("boxDca").className="res"+(c.r>c.lr+0.001?" best":"");
+    document.getElementById("boxLump").className="res"+(c.lr>c.r+0.001?" best":"");
+    document.getElementById("lesson").textContent=S[cur].l;
+  }
+  amt.addEventListener("input",draw);
+  draw();
+
+  /* 5. 상황별 카드 */
+  (function(){
+    var html="",lab={d:"적립식 유리",l:"거치식 유리",e:"비슷함"};
+    keys.forEach(function(k){
+      var c=calc(S[k].p,100000),mx=0.45;
+      function bar(v,col){var w=Math.min(Math.abs(v)/mx*100,100);return '<i style="width:'+w+'%;background:'+col+';'+(v<0?'opacity:.55':'')+'"></i>';}
+      html+='<div class="case"><div class="hd"><b>'+S[k].n+'</b><span class="badge '+S[k].win+'">'+lab[S[k].win]+'</span></div>'+
+        '<svg viewBox="0 0 200 50" aria-hidden="true"><path d="'+spark(S[k].p,200,50)+'" fill="none" stroke="'+INK+'" stroke-width="2.5" stroke-linejoin="round"/></svg>'+
+        '<div class="bars"><div><span>적립식</span>'+bar(c.r,c.r<0?RED:LIME)+'<span class="v '+(c.r<0?"neg":"pos")+'">'+pct(c.r)+'</span></div>'+
+        '<div><span>거치식</span>'+bar(c.lr,c.lr<0?RED:INK)+'<span class="v '+(c.lr<0?"neg":"")+'">'+pct(c.lr)+'</span></div></div></div>';
+    });
+    document.getElementById("cases").innerHTML=html;
+  })();
+})();
+</script>
+
+</body>
+</html>
