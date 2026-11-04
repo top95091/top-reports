@@ -1,0 +1,175 @@
+<title>김동현 님 AXA 달러 적립 플랜</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Nanum+Myeongjo:wght@800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* 레이아웃 : 그림이 먼저, 글은 짧게. 한 단면씩 큰 도식 → 한 줄 해설. 탑재무설계 블랙 + 라임 */
+:root {
+  --bg:#ffffff; --fg:#141613; --muted:#5f655b; --line:#e4e7df; --soft:#f4f7ee;
+  --lime:#8DC63F; --lime-ink:#4c7614; --lime-soft:#dcefc2; --loss:#d9822b; --warn-bg:#fff5e8; --warn:#9a5600;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-disp:"Nanum Myeongjo","AppleMyungjo",serif;
+  --f-num:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg:#111310; --fg:#eceee8; --muted:#a2a89b; --line:#2b2f28; --soft:#1a1d17;
+  --lime:#9fd350; --lime-ink:#aee064; --lime-soft:#2c3a1b; --loss:#e89a4a; --warn-bg:#2a2214; --warn:#f0b35a; color-scheme:dark } }
+:root[data-theme="dark"] { --bg:#111310; --fg:#eceee8; --muted:#a2a89b; --line:#2b2f28; --soft:#1a1d17;
+  --lime:#9fd350; --lime-ink:#aee064; --lime-soft:#2c3a1b; --loss:#e89a4a; --warn-bg:#2a2214; --warn:#f0b35a; color-scheme:dark }
+body { background:var(--bg); color:var(--fg); font:15px/1.65 var(--f-body) }
+.wrap { max-width:880px; margin:0 auto; padding-block:36px 56px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)) }
+.brand { font-size:12px; letter-spacing:.12em; color:var(--muted); display:flex; gap:8px; align-items:center }
+.brand i { width:10px; height:10px; background:var(--lime); display:inline-block } .brand b { color:var(--fg) }
+h1 { font-family:var(--f-disp); font-size:clamp(26px,5vw,40px); line-height:1.25; margin:10px 0 6px; text-wrap:balance }
+h1 u { text-decoration:none; background:linear-gradient(transparent 60%, var(--lime-soft) 60%) }
+.sub { color:var(--muted); margin:0 }
+section { margin-top:44px }
+h2 { font-size:20px; margin:0 0 4px; text-wrap:balance }
+.lead { color:var(--muted); margin:0 0 14px; max-width:66ch }
+.uses { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin-top:22px }
+.use { border:1.5px solid var(--fg); padding:16px; display:grid; grid-template-columns:48px 1fr; gap:12px; align-items:center; min-width:0 }
+.use b { font-size:18px; display:block } .use span { font-size:13.5px; color:var(--muted) }
+.ic { width:48px; height:48px; fill:var(--lime-soft); stroke:var(--fg); stroke-width:2 }
+.icx { fill:var(--fg); stroke:none; font:700 12px var(--f-num) }
+.big { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:22px }
+.big div { background:var(--bg); padding:16px; min-width:0 }
+.big span { font-size:12px; color:var(--muted); display:block }
+.big b { font-family:var(--f-num); font-size:26px; line-height:1.25; display:block; font-variant-numeric:tabular-nums }
+.big em { font-style:normal; font-size:13px; color:var(--muted) }
+.big .hi b { color:var(--lime-ink) }
+.flow { display:flex; gap:3px; margin-top:14px; min-width:620px }
+.seg { padding:12px 10px; min-width:0 } .seg b { display:block; font-size:14px } .seg span { font-size:12px }
+.t1 { background:var(--fg); color:var(--bg) } .t2 { background:var(--lime-soft) } .t3 { background:var(--lime); color:#141613 } .t4 { border:2px solid var(--fg) }
+.tl-wrap { overflow-x:auto }
+.tms { position:relative; height:96px; min-width:620px; margin-top:6px; border-top:1px dashed var(--muted) }
+.tm { position:absolute; top:0; transform:translateX(-50%); text-align:center; font-size:11.5px; color:var(--muted); padding-top:8px; white-space:nowrap }
+.tm::before { content:""; position:absolute; top:-4px; left:50%; width:7px; height:7px; margin-left:-3.5px; background:var(--fg); border-radius:50% }
+.tm b { display:block; color:var(--fg); font-size:13px } .tm em { display:block; font-style:normal; color:var(--lime-ink); font-weight:700 }
+.tm:first-child { transform:none; text-align:left } .tm:first-child::before { left:0; margin-left:0 }
+.cbox { border:1px solid var(--line); padding:14px 14px 8px; overflow-x:auto }
+.chart { width:100%; min-width:560px; height:auto; display:block }
+.chart .grid { stroke:var(--line); stroke-width:1 }
+.chart .ax { fill:var(--muted); font:11px var(--f-body) }
+.chart .base { stroke:var(--muted); stroke-dasharray:4 4; stroke-width:1.2 }
+.chart .area { fill:var(--lime-soft) }
+.chart .line { fill:none; stroke:var(--lime-ink); stroke-width:2.5 }
+.chart .line.dark { stroke:var(--fg) }
+.chart .dot { fill:var(--bg); stroke:var(--lime-ink); stroke-width:2.5 }
+.chart .lab { fill:var(--fg); font:700 12.5px var(--f-body) }
+.chart .kidlab { fill:var(--lime-ink); font:600 11.5px var(--f-body) }
+.chart .bar { fill:var(--lime) } .chart .bar.paid { fill:var(--muted); opacity:.45 } .chart .bar.loss { fill:var(--loss) }
+.chart .mark { stroke:var(--fg); stroke-dasharray:3 3 }
+.legend { display:flex; flex-wrap:wrap; gap:6px 18px; font-size:12.5px; color:var(--muted); margin:8px 2px 0 }
+.legend i { display:inline-block; width:12px; height:12px; vertical-align:-2px; margin-right:6px }
+.say { margin:10px 0 0; font-size:14.5px } .say b { color:var(--lime-ink) }
+.sg { display:grid; gap:6px; padding:12px 0; border-bottom:1px solid var(--line) }
+.sg > b { font-size:14px }
+.sb { display:grid; grid-template-columns:36px 1fr 96px; gap:10px; align-items:center; font-size:13px }
+.sl { color:var(--muted) } .st { background:var(--soft); height:14px } .st i { display:block; height:100% }
+.s1 { background:var(--muted); opacity:.5 } .s2 { background:var(--lime) } .s3 { background:var(--lime-ink) }
+.sv { font-family:var(--f-num); text-align:right; font-variant-numeric:tabular-nums }
+.reasons { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px 22px }
+.rs { display:grid; grid-template-columns:34px 1fr; gap:10px; align-items:start; min-width:0 }
+.no { width:30px; height:30px; border-radius:50%; background:var(--lime); color:#141613; font:600 14px var(--f-num); display:grid; place-items:center }
+.rs b { font-size:15px } .rs p { margin:2px 0 0; font-size:13.5px; color:var(--muted) }
+.trust { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line) }
+.trust div { background:var(--bg); padding:14px; min-width:0 }
+.trust b { font-family:var(--f-num); font-size:24px; display:block; line-height:1.2 }
+.trust span { font-size:12.5px; color:var(--muted) }
+.trust small { display:block; font-size:11px; color:var(--muted); margin-top:4px }
+a { color:var(--lime-ink); font-weight:700 }
+.warn { background:var(--warn-bg); padding:16px 18px; margin-top:12px }
+.warn h3 { margin:0 0 6px; color:var(--warn); font-size:15px }
+.warn ul { margin:0; padding-left:18px } .warn li { font-size:14px; margin:3px 0 }
+.src { font-size:12px; color:var(--muted); margin-top:26px } .src a { color:var(--muted); font-weight:400 }
+footer { margin-top:40px; border-top:2px solid var(--fg); padding-top:14px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:13px; color:var(--muted) }
+footer b { color:var(--fg) }
+@media (prefers-reduced-motion: no-preference) { .chart .line { stroke-dasharray:2000; animation:draw 1.6s ease-out both } @keyframes draw { from { stroke-dashoffset:2000 } to { stroke-dashoffset:0 } } }
+</style>
+<div class="wrap">
+<div class="brand"><i></i><b>탑재무설계</b> T.O.P Financial Planning · 2026.11.3</div>
+<h1>김동현 님 가족을 위한 <u>10년 달러 적립 플랜</u></h1>
+<p class="sub">AXA 홍콩 WealthAhead II 슈프림 · 10년 납입 · 연 USD 6,000 · 공식 설계서(2026.11.3) 숫자 그대로</p>
+
+<div class="uses">
+  <div class="use"><svg viewBox="0 0 48 48" class="ic"><ellipse cx="24" cy="34" rx="14" ry="5"/><ellipse cx="24" cy="27" rx="14" ry="5"/><ellipse cx="24" cy="20" rx="14" ry="5"/><text x="24" y="24" text-anchor="middle" class="icx">$</text></svg><div><b>목돈</b><span>학자금 · 결혼 · 집 마련 때 꺼내 쓰기</span></div></div>
+  <div class="use"><svg viewBox="0 0 48 48" class="ic"><rect x="8" y="11" width="32" height="28" rx="3"/><line x1="8" y1="19" x2="40" y2="19"/><line x1="16" y1="7" x2="16" y2="14"/><line x1="32" y1="7" x2="32" y2="14"/><text x="24" y="34" text-anchor="middle" class="icx">$</text></svg><div><b>연금</b><span>필요 없으면 65세부터 매년 달러로</span></div></div>
+  <div class="use"><svg viewBox="0 0 48 48" class="ic"><circle cx="16" cy="15" r="6"/><path d="M5 38c0-7 5-12 11-12s11 5 11 12"/><circle cx="34" cy="21" r="4.5"/><path d="M26 38c0-5 3.5-9 8-9s8 4 8 9"/></svg><div><b>승계</b><span>남은 계약은 자녀에게 그대로</span></div></div>
+</div>
+
+<div class="big">
+  <div><span>10년간 넣는 돈</span><b>60K</b><em>USD 60,000 · 약 8,056만원</em></div>
+  <div class="hi"><span>65세부터 매년 받는 돈</span><b>9,500</b><em>USD · 약 1,275만원 × 74회</em></div>
+  <div><span>평생 받는 돈 합계</span><b>11.7배</b><em>USD 703,000 · 약 9.44억원</em></div>
+  <div><span>그러고도 남는 돈</span><b>762K</b><em>USD 762,251 · 자녀 승계 재원</em></div>
+</div>
+
+<section>
+<h2>우리 가족 시간표</h2>
+<p class="lead">주식형 ITA 플랜과 역할을 나눈 안정형 저축입니다. 아래 점마다 그해 자녀 나이를 함께 적었습니다.</p>
+<div class="tl-wrap"><div class="flow"><div class="seg t1" style="flex:0.149"><b>납입</b><span>매년 USD 6,000 × 10년</span></div><div class="seg t2" style="flex:0.149"><b>불리기</b><span>배당이 복리로 쌓이는 기간</span></div><div class="seg t3" style="flex:0.522"><b>연금 · 목돈</b><span>매년 USD 9,500 또는 필요할 때 목돈</span></div><div class="seg t4" style="flex:0.179"><b>승계</b><span>남은 계약을 자녀에게</span></div></div><div class="tms"><div class="tm" style="left:0.00%"><b>45세</b><span>첫째 12세<br>둘째 5세</span><em>지금</em></div><div class="tm" style="left:14.93%"><b>55세</b><span>첫째 22세<br>둘째 15세</span><em>납입 끝</em></div><div class="tm" style="left:29.85%"><b>65세</b><span>첫째 32세<br>둘째 25세</span><em>연금 시작</em></div><div class="tm" style="left:44.78%"><b>75세</b><span>첫째 42세<br>둘째 35세</span></div><div class="tm" style="left:59.70%"><b>85세</b><span>첫째 52세<br>둘째 45세</span></div><div class="tm" style="left:82.09%"><b>100세</b><span>첫째 67세<br>둘째 60세</span></div></div></div>
+</section>
+
+<section>
+<h2>그대로 모아두면 이렇게 불어납니다</h2>
+<p class="lead">연금을 받지 않고 두면 배당이 배당을 낳아 곡선이 점점 가팔라집니다. 점선은 넣은 원금입니다.</p>
+<div class="cbox"><svg viewBox="0 0 760 360" class="chart" role="img" aria-label="나이별 해지환급금 증가 그래프"><line x1="64" x2="736" y1="314.0" y2="314.0" class="grid"/><text x="56" y="318.0" class="ax" text-anchor="end">0</text><line x1="64" x2="736" y1="278.5" y2="278.5" class="grid"/><text x="56" y="282.5" class="ax" text-anchor="end">200K</text><line x1="64" x2="736" y1="243.0" y2="243.0" class="grid"/><text x="56" y="247.0" class="ax" text-anchor="end">400K</text><line x1="64" x2="736" y1="207.5" y2="207.5" class="grid"/><text x="56" y="211.5" class="ax" text-anchor="end">600K</text><line x1="64" x2="736" y1="172.0" y2="172.0" class="grid"/><text x="56" y="176.0" class="ax" text-anchor="end">800K</text><line x1="64" x2="736" y1="136.5" y2="136.5" class="grid"/><text x="56" y="140.5" class="ax" text-anchor="end">1M</text><line x1="64" x2="736" y1="101.0" y2="101.0" class="grid"/><text x="56" y="105.0" class="ax" text-anchor="end">1.2M</text><line x1="64" x2="736" y1="65.5" y2="65.5" class="grid"/><text x="56" y="69.5" class="ax" text-anchor="end">1.4M</text><line x1="64" x2="736" y1="30.0" y2="30.0" class="grid"/><text x="56" y="34.0" class="ax" text-anchor="end">1.6M</text><text x="113.8" y="332" class="ax" text-anchor="middle">50세</text><text x="238.2" y="332" class="ax" text-anchor="middle">60세</text><text x="362.7" y="332" class="ax" text-anchor="middle">70세</text><text x="487.1" y="332" class="ax" text-anchor="middle">80세</text><text x="611.6" y="332" class="ax" text-anchor="middle">90세</text><text x="736.0" y="332" class="ax" text-anchor="middle">100세</text><text x="736" y="354" class="ax" text-anchor="end">본인 나이</text><polygon points="64.0,314.0 64.0,314.0 76.4,314.0 88.9,313.7 101.3,313.4 113.8,312.9 126.2,312.1 138.7,308.4 151.1,306.0 163.6,304.4 176.0,302.5 188.4,301.4 200.9,300.5 213.3,299.5 225.8,298.5 238.2,297.3 250.7,296.1 263.1,294.9 275.6,293.6 288.0,291.5 300.4,288.9 312.9,287.1 325.3,285.2 337.8,283.1 350.2,280.8 362.7,278.3 375.1,275.7 387.6,272.9 400.0,269.8 412.4,266.4 424.9,262.8 437.3,259.4 449.8,255.8 462.2,252.0 474.7,247.9 487.1,243.5 499.6,238.8 512.0,233.7 524.4,228.4 536.9,222.6 549.3,216.5 561.8,209.6 574.2,202.3 586.7,194.4 599.1,185.9 611.6,176.8 624.0,166.9 636.4,156.8 648.9,146.6 661.3,135.8 673.8,124.2 686.2,111.9 698.7,98.7 711.1,84.7 723.6,69.8 736.0,54.0 736.0,314.0" class="area"/><polyline points="64.0,314.0 76.4,314.0 88.9,313.7 101.3,313.4 113.8,312.9 126.2,312.1 138.7,308.4 151.1,306.0 163.6,304.4 176.0,302.5 188.4,301.4 200.9,300.5 213.3,299.5 225.8,298.5 238.2,297.3 250.7,296.1 263.1,294.9 275.6,293.6 288.0,291.5 300.4,288.9 312.9,287.1 325.3,285.2 337.8,283.1 350.2,280.8 362.7,278.3 375.1,275.7 387.6,272.9 400.0,269.8 412.4,266.4 424.9,262.8 437.3,259.4 449.8,255.8 462.2,252.0 474.7,247.9 487.1,243.5 499.6,238.8 512.0,233.7 524.4,228.4 536.9,222.6 549.3,216.5 561.8,209.6 574.2,202.3 586.7,194.4 599.1,185.9 611.6,176.8 624.0,166.9 636.4,156.8 648.9,146.6 661.3,135.8 673.8,124.2 686.2,111.9 698.7,98.7 711.1,84.7 723.6,69.8 736.0,54.0" class="line"/><line x1="64" x2="736" y1="303.4" y2="303.4" class="base"/><text x="732" y="297.4" class="ax" text-anchor="end">넣은 원금 USD 60,000</text><circle cx="300.4" cy="288.9" r="5" class="dot"/><text x="290.4" y="266.9" class="lab" text-anchor="end">65세 · 142K</text><text x="290.4" y="280.9" class="kidlab" text-anchor="end">자녀 32·25세</text><circle cx="424.9" cy="262.8" r="5" class="dot"/><text x="414.9" y="240.8" class="lab" text-anchor="end">75세 · 289K</text><text x="414.9" y="254.8" class="kidlab" text-anchor="end">자녀 42·35세</text><circle cx="549.3" cy="216.5" r="5" class="dot"/><text x="539.3" y="194.5" class="lab" text-anchor="end">85세 · 550K</text><text x="539.3" y="208.5" class="kidlab" text-anchor="end">자녀 52·45세</text><circle cx="673.8" cy="124.2" r="5" class="dot"/><text x="663.8" y="102.2" class="lab" text-anchor="end">95세 · 1.1M</text><text x="663.8" y="116.2" class="kidlab" text-anchor="end">자녀 62·55세</text></svg></div>
+<p class="say">만 75세면 <b>USD 288,657(약 3.88억원)</b>, 그때 자녀는 첫째 42세 · 둘째 35세. 만 85세면 <b>USD 549,573(약 7.38억원)</b>, 자녀는 첫째 52세 · 둘째 45세입니다.</p>
+</section>
+
+<section>
+<h2>연금으로 받으면 : 받으면서도 남습니다</h2>
+<p class="lead">초록 막대는 그동안 받은 돈의 합계, 검은 선은 받고 난 뒤에도 계약 안에 남아 있는 돈입니다.</p>
+<div class="cbox"><svg viewBox="0 0 760 340" class="chart" role="img" aria-label="연금 누적 수령액과 남은 해지환급금"><line x1="64" x2="736" y1="294.0" y2="294.0" class="grid"/><text x="56" y="298.0" class="ax" text-anchor="end">0</text><line x1="64" x2="736" y1="256.3" y2="256.3" class="grid"/><text x="56" y="260.3" class="ax" text-anchor="end">50K</text><line x1="64" x2="736" y1="218.6" y2="218.6" class="grid"/><text x="56" y="222.6" class="ax" text-anchor="end">100K</text><line x1="64" x2="736" y1="180.9" y2="180.9" class="grid"/><text x="56" y="184.9" class="ax" text-anchor="end">150K</text><line x1="64" x2="736" y1="143.1" y2="143.1" class="grid"/><text x="56" y="147.1" class="ax" text-anchor="end">200K</text><line x1="64" x2="736" y1="105.4" y2="105.4" class="grid"/><text x="56" y="109.4" class="ax" text-anchor="end">250K</text><line x1="64" x2="736" y1="67.7" y2="67.7" class="grid"/><text x="56" y="71.7" class="ax" text-anchor="end">300K</text><line x1="64" x2="736" y1="30.0" y2="30.0" class="grid"/><text x="56" y="34.0" class="ax" text-anchor="end">350K</text><rect x="65.0" y="286.8" width="16.7" height="7.2" class="bar"/><text x="73.3" y="312" class="ax" text-anchor="middle">65세</text><rect x="83.7" y="279.7" width="16.7" height="14.3" class="bar"/><rect x="102.3" y="272.5" width="16.7" height="21.5" class="bar"/><rect x="121.0" y="265.3" width="16.7" height="28.7" class="bar"/><rect x="139.7" y="258.2" width="16.7" height="35.8" class="bar"/><rect x="158.3" y="251.0" width="16.7" height="43.0" class="bar"/><text x="166.7" y="312" class="ax" text-anchor="middle">70세</text><rect x="177.0" y="243.8" width="16.7" height="50.2" class="bar"/><rect x="195.7" y="236.7" width="16.7" height="57.3" class="bar"/><rect x="214.3" y="229.5" width="16.7" height="64.5" class="bar"/><rect x="233.0" y="222.3" width="16.7" height="71.7" class="bar"/><rect x="251.7" y="215.2" width="16.7" height="78.8" class="bar"/><text x="260.0" y="312" class="ax" text-anchor="middle">75세</text><rect x="270.3" y="208.0" width="16.7" height="86.0" class="bar"/><rect x="289.0" y="200.8" width="16.7" height="93.2" class="bar"/><rect x="307.7" y="193.7" width="16.7" height="100.3" class="bar"/><rect x="326.3" y="186.5" width="16.7" height="107.5" class="bar"/><rect x="345.0" y="179.3" width="16.7" height="114.7" class="bar"/><text x="353.3" y="312" class="ax" text-anchor="middle">80세</text><rect x="363.7" y="172.2" width="16.7" height="121.8" class="bar"/><rect x="382.3" y="165.0" width="16.7" height="129.0" class="bar"/><rect x="401.0" y="157.9" width="16.7" height="136.1" class="bar"/><rect x="419.7" y="150.7" width="16.7" height="143.3" class="bar"/><rect x="438.3" y="143.5" width="16.7" height="150.5" class="bar"/><text x="446.7" y="312" class="ax" text-anchor="middle">85세</text><rect x="457.0" y="136.4" width="16.7" height="157.6" class="bar"/><rect x="475.7" y="129.2" width="16.7" height="164.8" class="bar"/><rect x="494.3" y="122.0" width="16.7" height="172.0" class="bar"/><rect x="513.0" y="114.9" width="16.7" height="179.1" class="bar"/><rect x="531.7" y="107.7" width="16.7" height="186.3" class="bar"/><text x="540.0" y="312" class="ax" text-anchor="middle">90세</text><rect x="550.3" y="100.5" width="16.7" height="193.5" class="bar"/><rect x="569.0" y="93.4" width="16.7" height="200.6" class="bar"/><rect x="587.7" y="86.2" width="16.7" height="207.8" class="bar"/><rect x="606.3" y="79.0" width="16.7" height="215.0" class="bar"/><rect x="625.0" y="71.9" width="16.7" height="222.1" class="bar"/><text x="633.3" y="312" class="ax" text-anchor="middle">95세</text><rect x="643.7" y="64.7" width="16.7" height="229.3" class="bar"/><rect x="662.3" y="57.5" width="16.7" height="236.5" class="bar"/><rect x="681.0" y="50.4" width="16.7" height="243.6" class="bar"/><rect x="699.7" y="43.2" width="16.7" height="250.8" class="bar"/><rect x="718.3" y="36.0" width="16.7" height="258.0" class="bar"/><text x="726.7" y="312" class="ax" text-anchor="middle">100세</text><polyline points="73.3,194.4 92.0,194.4 110.7,194.0 129.3,193.1 148.0,191.8 166.7,190.0 185.3,188.4 204.0,186.5 222.7,184.4 241.3,182.8 260.0,181.0 278.7,180.3 297.3,179.6 316.0,178.8 334.7,177.9 353.3,176.9 372.0,175.8 390.7,174.6 409.3,173.2 428.0,171.8 446.7,170.2 465.3,168.2 484.0,165.9 502.7,163.8 521.3,162.5 540.0,161.1 558.7,159.7 577.3,158.1 596.0,156.4 614.7,154.7 633.3,152.8 652.0,150.8 670.7,148.6 689.3,146.3 708.0,143.9 726.7,141.3" class="line dark"/><line x1="64" x2="736" y1="248.7" y2="248.7" class="base"/><line x1="185.3" x2="185.3" y1="30" y2="294.0" class="mark"/><text x="191.3" y="42" class="lab">71세 원금 회수</text></svg>
+<div class="legend"><span><i style="background:var(--lime)"></i>누적 수령액</span><span><i style="background:var(--fg);height:3px;vertical-align:3px"></i>남은 해지환급금</span><span><i style="border-top:2px dashed var(--muted);height:0;vertical-align:4px"></i>넣은 원금</span></div></div>
+<p class="say">매년 USD 9,500을 받아 <b>71세에 원금을 다 돌려받고</b>, 100세까지 받은 뒤에도 USD 202,435이 남아 자녀에게 넘어갑니다.</p>
+</section>
+
+<section>
+<h2>왜 해외 달러 적립인가</h2>
+<p class="lead">국내 저축이나 직접 투자와 다른 여섯 가지입니다.</p>
+<div class="reasons"><div class="rs"><span class="no">1</span><div><b>배당으로 불어나는 목돈</b><p>국내 저축보험에 없는 유배당. 운용 이익을 해마다 배당으로 받아 다시 불립니다.</p></div></div><div class="rs"><span class="no">2</span><div><b>달러로 하는 저축</b><p>원화에 쏠린 재산을 기축통화로 분산. 원화 약세 땐 환차익, 강세 땐 환산액 감소.</p></div></div><div class="rs"><span class="no">3</span><div><b>위기 때 버팀목</b><p>금융위기 때 대체로 달러가 오르고, 보증 현금가치가 바닥을 받칩니다.</p></div></div><div class="rs"><span class="no">4</span><div><b>변동성은 보험사가</b><p>주식은 오르내림을 내가 떠안지만, 여기선 보험사가 흡수하고 배당을 고르게 나눕니다.</p></div></div><div class="rs"><span class="no">5</span><div><b>강제로 모이는 10년</b><p>쓰고 남는 돈이 아니라 먼저 떼어 두는 돈. 오래 둘수록 복리가 커집니다.</p></div></div><div class="rs"><span class="no">6</span><div><b>계약째 자녀에게</b><p>해지하지 않고 계약자 · 피보험자를 자녀로 바꿔 불어난 계약을 넘겨줍니다.</p></div></div></div>
+</section>
+
+<section>
+<h2>운용이 나쁠 때와 좋을 때</h2>
+<p class="lead">회사 예상 수익률보다 연 2.5%p 낮거나 높을 때의 해지환급금(USD)입니다. 나빠도 원금 대비 크게 불어납니다.</p>
+<div><div class="sg"><b>만 65세</b><div class="sb"><span class="sl">비관</span><span class="st"><i class="s1" style="width:6.5%"></i></span><span class="sv">95,304</span></div><div class="sb"><span class="sl">기본</span><span class="st"><i class="s2" style="width:9.7%"></i></span><span class="sv">141,608</span></div><div class="sb"><span class="sl">낙관</span><span class="st"><i class="s3" style="width:11.0%"></i></span><span class="sv">161,821</span></div></div><div class="sg"><b>만 80세</b><div class="sb"><span class="sl">비관</span><span class="st"><i class="s1" style="width:12.5%"></i></span><span class="sv">183,302</span></div><div class="sb"><span class="sl">기본</span><span class="st"><i class="s2" style="width:27.1%"></i></span><span class="sv">397,386</span></div><div class="sb"><span class="sl">낙관</span><span class="st"><i class="s3" style="width:28.4%"></i></span><span class="sv">416,204</span></div></div><div class="sg"><b>만 100세</b><div class="sb"><span class="sl">비관</span><span class="st"><i class="s1" style="width:28.9%"></i></span><span class="sv">423,260</span></div><div class="sb"><span class="sl">기본</span><span class="st"><i class="s2" style="width:99.9%"></i></span><span class="sv">1,464,999</span></div><div class="sb"><span class="sl">낙관</span><span class="st"><i class="s3" style="width:100.0%"></i></span><span class="sv">1,466,769</span></div></div></div>
+<p class="say">만 65세 기준 보증 금액은 USD 33,180, 나머지 77%는 배당이라 운용 성과에 따라 달라집니다.</p>
+</section>
+
+<section>
+<h2>믿고 맡길 수 있는 곳</h2>
+<p class="lead">홍콩이라는 시장, AXA라는 회사, 그리고 약속한 배당을 지켜 온 기록입니다.</p>
+<div class="trust">
+  <div><b>세계 3위</b><span>국제금융도시 홍콩</span><small>GFCI 40 (2026.9) · 아시아 · 태평양 1위</small></div>
+  <div><b>18.2%</b><span>보험 침투율 세계 1위</span><small>홍콩 · 2024년, 보험사 160곳</small></div>
+  <div><b>AA</b><span>AXA 신용등급 (S&amp;P)</span><small>무디스 Aa2 · AM Best A+</small></div>
+  <div><b>9,200만</b><span>AXA 전 세계 고객</span><small>52개 시장 · 임직원 15.6만 명</small></div>
+  <div><b>98%</b><span>AXA 적립배당 이행률 평균</span><small>연배당 94% · 종료보너스 95% (2024)</small></div>
+</div>
+<p class="say">이행률은 가입 때 보여 준 배당 예시를 실제로 얼마나 지급했는지 나타내는 숫자입니다. 이 상품은 2025년 10월 출시라 자체 실적은 아직 없습니다. <a href="https://www.axa.com.hk/fulfilment-ratios-and-total-value-ratios" target="_blank" rel="noopener">AXA 공식 이행률 공시 보기 →</a></p>
+</section>
+
+<section>
+<h2>가입 전 꼭 보셔야 할 그림</h2>
+<p class="lead">장기 상품이라 초기에 해지하거나 납입을 멈추면 손해입니다. 회색은 낸 돈, 주황은 그때 해지하면 받는 돈입니다.</p>
+<div class="cbox"><svg viewBox="0 0 760 260" class="chart" role="img" aria-label="연차별 낸 돈과 해지 시 받는 돈"><line x1="64" x2="736" y1="216.0" y2="216.0" class="grid"/><text x="56" y="220.0" class="ax" text-anchor="end">0</text><line x1="64" x2="736" y1="120.0" y2="120.0" class="grid"/><text x="56" y="124.0" class="ax" text-anchor="end">50K</text><line x1="64" x2="736" y1="24.0" y2="24.0" class="grid"/><text x="56" y="28.0" class="ax" text-anchor="end">100K</text><rect x="70.7" y="204.5" width="20.2" height="11.5" class="bar paid"/><rect x="92.9" y="216.0" width="20.2" height="0.5" class="bar loss"/><text x="92.0" y="234" class="ax" text-anchor="middle">1년</text><rect x="126.7" y="193.0" width="20.2" height="23.0" class="bar paid"/><rect x="148.9" y="216.0" width="20.2" height="0.5" class="bar loss"/><text x="148.0" y="234" class="ax" text-anchor="middle">2년</text><rect x="182.7" y="181.4" width="20.2" height="34.6" class="bar paid"/><rect x="204.9" y="212.9" width="20.2" height="3.1" class="bar loss"/><text x="204.0" y="234" class="ax" text-anchor="middle">3년</text><rect x="238.7" y="169.9" width="20.2" height="46.1" class="bar paid"/><rect x="260.9" y="209.4" width="20.2" height="6.6" class="bar loss"/><text x="260.0" y="234" class="ax" text-anchor="middle">4년</text><rect x="294.7" y="158.4" width="20.2" height="57.6" class="bar paid"/><rect x="316.9" y="203.8" width="20.2" height="12.2" class="bar loss"/><text x="316.0" y="234" class="ax" text-anchor="middle">5년</text><rect x="350.7" y="146.9" width="20.2" height="69.1" class="bar paid"/><rect x="372.9" y="195.5" width="20.2" height="20.5" class="bar loss"/><text x="372.0" y="234" class="ax" text-anchor="middle">6년</text><rect x="406.7" y="135.4" width="20.2" height="80.6" class="bar paid"/><rect x="428.9" y="155.0" width="20.2" height="61.0" class="bar loss"/><text x="428.0" y="234" class="ax" text-anchor="middle">7년</text><rect x="462.7" y="123.8" width="20.2" height="92.2" class="bar paid"/><rect x="484.9" y="129.9" width="20.2" height="86.1" class="bar loss"/><text x="484.0" y="234" class="ax" text-anchor="middle">8년</text><rect x="518.7" y="112.3" width="20.2" height="103.7" class="bar paid"/><rect x="540.9" y="112.1" width="20.2" height="103.9" class="bar"/><text x="540.0" y="234" class="ax" text-anchor="middle">9년</text><rect x="574.7" y="100.8" width="20.2" height="115.2" class="bar paid"/><rect x="596.9" y="91.6" width="20.2" height="124.4" class="bar"/><text x="596.0" y="234" class="ax" text-anchor="middle">10년</text><rect x="630.7" y="100.8" width="20.2" height="115.2" class="bar paid"/><rect x="652.9" y="79.3" width="20.2" height="136.7" class="bar"/><text x="652.0" y="234" class="ax" text-anchor="middle">11년</text><rect x="686.7" y="100.8" width="20.2" height="115.2" class="bar paid"/><rect x="708.9" y="69.6" width="20.2" height="146.4" class="bar"/><text x="708.0" y="234" class="ax" text-anchor="middle">12년</text><text x="540.0" y="34" class="lab" text-anchor="middle">9년차 원금 회복</text></svg>
+<div class="legend"><span><i style="background:var(--muted);opacity:.45"></i>누적 납입</span><span><i style="background:var(--loss)"></i>해지 시 환급 (원금보다 적음)</span><span><i style="background:var(--lime)"></i>원금 회복 이후</span></div></div>
+<div class="warn"><h3>꼭 확인하실 점</h3><ul>
+  <li><b>9년차 전 해지 = 손실</b> : 5년차에 해지하면 USD 30,000을 내고 6,362만 돌려받습니다. 10년 납입을 끝까지 할 수 있는 금액으로 시작하세요.</li>
+  <li><b>배당은 보증이 아님</b> : 받는 돈의 상당 부분이 배당이라 운용 성과에 따라 늘거나 줄 수 있습니다.</li>
+  <li><b>환율</b> : 원화가 강해지면 원화 환산액이 줄 수 있습니다.</li>
+  <li><b>세금 · 신고</b> : 해외보험 차익 과세, 해외금융계좌 신고 해당 여부는 가입 전 세무사와 함께 확인합니다.</li></ul></div>
+</section>
+
+<section>
+<h2>김동현 님께 맞춘 한마디</h2>
+<p class="lead" style="color:var(--fg)">지금의 ITA S&amp;P500 플랜은 시장을 따라 크게 움직이는 성장형, 이 플랜은 보증과 배당으로 쌓는 안정형이라 역할이 다릅니다. 화물차 할부(약 7%) 정리 계획과 겹치지 않는 금액으로 시작하고, 두 자녀의 나이 차가 7살이라 증권을 나눠 각자 필요한 때 쓰게 할 수 있습니다.</p>
+</section>
+
+<p class="src">원화 환산 1 USD = 1,342.59원(2026.11.2 XE 중간환율). 근거 : AXA 공식 설계서(Version 3.2609.09) · <a href="https://en.people.cn/n3/2026/0917/c90000-20500585.html" target="_blank" rel="noopener">GFCI 40 보도</a> · <a href="https://www.info.gov.hk/gia/general/202512/03/P2025120300262p.htm" target="_blank" rel="noopener">홍콩 재경국장 연설(2025.12)</a> · <a href="https://www.10life.com/zh-HK/blog/Comparing-Dividend-Fulfillment-Ratios-of-savings-insurance-across-Insurers" target="_blank" rel="noopener">10Life 이행률 비교</a></p>
+<footer><div><b>탑재무설계 · 고영권 컨설턴트</b><br>010-4860-3087 · www.topfp.co.kr</div>
+<div>AXA China Region Insurance Company (Hong Kong) Limited 공식 설계서를 쉽게 정리한 상담 자료입니다. 계약 내용은 보험증권과 약관을 따르며, 설계서는 출력일로부터 30일간 유효합니다.</div></footer>
+</div>
