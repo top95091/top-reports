@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>강남지사 영업 스크립트</title>
+<meta name="description" content="지노베이션 C&G 강남지사 영업이사용 상황별 대화·문자 스크립트">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap">
+<style>
+:root{--forest:#0C2A21;--deep:#071711;--emerald:#1E9E64;--lime:#A6E05A;--lime-soft:#F2FAE6;--mint:#EAF4EE;--paper:#FFFFFF;--ground:#F3F6F4;--ink:#0B1F19;--mute:#5B6B65;--line:#DCE6E1;--error:#C8372D;--sms:#FFFBEA;--sms-line:#EFE2A8;
+--font:"Noto Sans KR","Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:150px}
+body{background:var(--ground);color:var(--ink);font-family:var(--font);letter-spacing:-0.02em;-webkit-font-smoothing:antialiased;line-height:1.6;word-break:keep-all;overflow-wrap:anywhere}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+
+.hero{background:radial-gradient(120% 90% at 90% 0%,#1B5A43 0%,var(--forest) 45%,var(--deep) 100%);color:#fff;position:relative;overflow:hidden;padding-top:env(safe-area-inset-top,0px)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 56px),repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 56px)}
+.hero .wrap{position:relative;z-index:1;padding-block:22px 40px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:34px;height:34px;flex:none}
+.brand b{font-size:14.5px;font-weight:900;letter-spacing:-0.01em;display:block}
+.brand span{display:block;font-size:10.5px;opacity:.7;letter-spacing:0}
+.home{font-size:12.5px;font-weight:700;color:var(--lime);text-decoration:none;border:1px solid rgba(166,224,90,.4);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.kicker{margin-top:34px;font-size:11.5px;font-weight:700;letter-spacing:.2em;color:var(--lime)}
+h1{margin-top:10px;font-size:clamp(28px,7.4vw,44px);line-height:1.22;font-weight:900;letter-spacing:-0.045em}
+h1 em{font-style:normal;color:var(--lime)}
+.lead{margin-top:12px;font-size:14.5px;color:rgba(255,255,255,.78);max-width:34em}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pills span{font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.pills b{color:var(--lime);font-weight:900}
+
+.me{margin-top:22px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px}
+.me .t{font-size:12.5px;font-weight:800;color:var(--lime)}
+.me .t small{color:rgba(255,255,255,.6);font-weight:500;margin-left:6px}
+.me .f{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.me label{font-size:11.5px;color:rgba(255,255,255,.7);display:block}
+.me input{width:100%;margin-top:4px;font:inherit;font-size:15px;color:#fff;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:9px 11px;outline:none}
+.me input:focus{border-color:var(--lime)}
+.me .wide{grid-column:1/-1}
+
+.tools{position:sticky;top:0;z-index:20;background:rgba(243,246,244,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tools .wrap{padding-block:12px 10px}
+.sbox{position:relative}
+.sbox input{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 40px 12px 42px;outline:none}
+.sbox input::-webkit-search-cancel-button{display:none;-webkit-appearance:none}
+.sbox input:focus{border-color:var(--emerald);box-shadow:0 0 0 4px rgba(30,158,100,.12)}
+.sbox .mg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--mute);font-size:16px}
+.sbox .x{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--mute);font-size:18px;padding:6px 8px;display:none}
+.row{display:flex;gap:6px;overflow-x:auto;margin-top:9px;padding-bottom:2px;scrollbar-width:none}
+.row::-webkit-scrollbar{display:none}
+.st{flex:none;border:1.5px solid var(--line);background:#fff;color:var(--mute);border-radius:999px;padding:6px 13px;font-size:13px;font-weight:700}
+.st.on{background:var(--forest);border-color:var(--forest);color:var(--lime)}
+.kw{flex:none;border:0;background:var(--mint);color:var(--forest);border-radius:6px;padding:4px 9px;font-size:12px;font-weight:700}
+.kw:hover{background:var(--lime-soft)}
+.view{display:flex;gap:4px;margin-left:auto;flex:none}
+.vw{border:1.5px solid var(--line);background:#fff;color:var(--mute);border-radius:8px;padding:5px 10px;font-size:12.5px;font-weight:700}
+.vw.on{border-color:var(--emerald);color:var(--forest);background:var(--mint)}
+.count{font-size:12px;color:var(--mute);margin-top:6px}
+
+main .wrap{padding-block:18px 10px}
+.intro{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:16px}
+.sec-t{font-size:11.5px;font-weight:800;letter-spacing:.14em;color:var(--emerald)}
+.sec-h{font-size:19px;font-weight:900;margin-top:4px;letter-spacing:-0.035em;line-height:1.4}
+.flow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px}
+.flow span{font-size:13px;font-weight:800;background:var(--forest);color:var(--lime);border-radius:8px;padding:7px 11px}
+.flow i{font-style:normal;color:var(--mute)}
+.rules{list-style:none;display:grid;gap:8px;margin-top:10px}
+.rules li{display:flex;gap:10px;font-size:14px}
+.rules li .n{flex:none;width:24px;height:24px;border-radius:50%;background:var(--forest);color:var(--lime);font-size:11.5px;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.core{background:var(--lime-soft);border-left:4px solid var(--emerald);border-radius:10px;padding:12px 14px;font-size:14px}
+.core b{color:var(--forest)}
+
+.toc{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px}
+.toc a{display:flex;gap:8px;align-items:center;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:13.5px;font-weight:700}
+.toc a span{color:var(--emerald);font-weight:900;font-size:12px}
+.toc a:hover{border-color:var(--emerald)}
+
+.sit{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:16px}
+.sit-h{display:flex;gap:12px;align-items:flex-start}
+.sit-h .no{flex:none;width:38px;height:38px;border-radius:11px;background:var(--forest);color:var(--lime);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+.sit h2{font-size:19px;font-weight:900;letter-spacing:-0.035em;line-height:1.35}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.goal{margin-top:14px;font-size:14px;background:var(--ground);border-radius:10px;padding:10px 12px}
+.goal b{color:var(--emerald);margin-right:6px;font-weight:900}
+.block h3{font-size:14.5px;font-weight:900;margin:18px 0 10px;display:flex;align-items:center;gap:6px}
+.block h3 small{font-size:11.5px;font-weight:500;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:10px}
+.card{position:relative;border:1.5px solid var(--line);border-radius:14px;padding:14px 14px 48px;background:#fff}
+.card.m{background:var(--sms);border-color:var(--sms-line)}
+.ct{font-size:12.5px;font-weight:900;color:var(--emerald);margin-bottom:6px}
+.card.m .ct{color:#8A6A00}
+.cb{font-size:14.5px;line-height:1.75;white-space:pre-line}
+.cb .v{background:var(--lime-soft);color:var(--forest);font-weight:700;border-radius:4px;padding:0 3px}
+.cb .u{color:var(--emerald);font-weight:700;word-break:break-all}
+.cb mark{background:#FFE58A;border-radius:3px;padding:0 1px}
+.cp{position:absolute;right:10px;bottom:10px;border:0;border-radius:8px;padding:6px 12px;font-size:12.5px;font-weight:800;color:var(--forest);background:var(--lime)}
+.card.t .cp{background:var(--mint)}
+.cp.ok{background:var(--forest);color:var(--lime)}
+body.only-t .block.sms, body.only-m .block.talk{display:none}
+.empty{display:none;text-align:center;color:var(--mute);padding:50px 0;font-size:14px}
+
+.no-say{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:16px}
+.no-say ul{list-style:none;display:grid;gap:8px;margin-top:12px}
+.no-say li{font-size:14px;display:grid;grid-template-columns:1fr;gap:3px;border-top:1px dashed var(--line);padding-top:8px}
+.no-say li .x{color:var(--error);font-weight:700}
+.no-say li .o{color:var(--forest)}
+
+footer{background:var(--forest);color:rgba(255,255,255,.7);margin-top:24px}
+footer .wrap{padding-block:26px calc(30px + env(safe-area-inset-bottom,0px));display:grid;gap:12px}
+footer .tel{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.02em}
+footer .links{display:flex;gap:8px;flex-wrap:wrap}
+footer .links a{font-size:12.5px;font-weight:700;color:var(--lime);text-decoration:none;border:1px solid rgba(166,224,90,.35);border-radius:999px;padding:5px 11px}
+footer .addr{font-size:11.5px;line-height:1.7}
+footer .disc{font-size:10.5px;color:rgba(255,255,255,.45);line-height:1.6;border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--forest);color:var(--lime);font-size:13.5px;font-weight:800;border-radius:999px;padding:10px 18px;opacity:0;transition:all .2s;pointer-events:none;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (min-width:880px){
+  .intro{grid-template-columns:1.1fr 1fr}
+  .me .f{grid-template-columns:1fr 1fr 2fr}
+  .me .wide{grid-column:auto}
+}
+@media (max-width:420px){.me .f{grid-template-columns:1fr}}
+@media print{.tools,.me,.cp,.home{display:none} .sit{break-inside:avoid}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="https://gnogangnam.kals.or.kr" target="_blank" rel="noopener"><svg viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke-width="10" transform="rotate(-150 50 50)"><circle cx="50" cy="50" r="40" stroke="#3FAE49" stroke-dasharray="92 160"/><circle cx="50" cy="50" r="40" stroke="#F39A1E" stroke-dasharray="70 182" stroke-dashoffset="-100"/><circle cx="50" cy="50" r="40" stroke="#2EA3DB" stroke-dasharray="66 186" stroke-dashoffset="-178"/></g><text x="50" y="69" text-anchor="middle" font-family="Noto Sans KR,sans-serif" font-weight="900" font-size="58" fill="#E9F0FF">e</text></svg><div><b>(주)지노베이션 C&amp;G · 강남지사</b><span>전기요금 절감 컨설팅 · 설비공사 전문기업</span></div></a>
+      <a class="home" href="https://gnogangnam.kals.or.kr" target="_blank" rel="noopener">강남지사 홈페이지 ↗</a>
+    </div>
+    <p class="kicker">SALES SCRIPT · 영업이사 전용</p>
+    <h1>상황별 영업 스크립트<br><em>대화용 · 문자용 A·B·C안</em></h1>
+    <p class="lead">상황을 검색하거나 단계를 눌러 찾고, 문자용은 복사해서 그대로 보내세요. 아래에 내 이름·연락처를 넣으면 모든 문구에 자동으로 들어갑니다.</p>
+    <div class="pills"><span>상황 <b>12</b>가지</span><span>문구 <b>72</b>개</span><span>v0.2 · 2026.11</span></div>
+    <div class="me">
+      <div class="t">내 정보 넣기 <small>이 기기에만 저장돼요</small></div>
+      <div class="f">
+        <label>이름<input id="nm" type="text" placeholder="예) 김미영" maxlength="10" autocomplete="name"></label>
+        <label>연락처<input id="tl" type="tel" placeholder="010-0000-0000" maxlength="20" inputmode="tel"></label>
+        <label class="wide">내 고지서 접수 링크<input id="lk" type="url" placeholder="https://top95091.github.io/top-reports/gno-gangnam-apply.html" inputmode="url"></label>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="tools">
+  <div class="wrap">
+    <div class="sbox"><span class="mg">⌕</span><input id="q" type="search" placeholder="상황·키워드 검색 (예: 바빠요, 사기, 약정서, 소개)" autocomplete="off"><button class="x" id="qx" type="button" aria-label="지우기">×</button></div>
+    <div class="row"><button class="st on" type="button" data-s="all">전체</button><button class="st" type="button" data-s="첫연락">첫 연락</button><button class="st" type="button" data-s="고지서">고지서</button><button class="st" type="button" data-s="반론">반론 대응</button><button class="st" type="button" data-s="미팅">미팅</button><button class="st" type="button" data-s="계약">약정서</button><button class="st" type="button" data-s="사후">사후관리</button><div class="view"><button class="vw on" type="button" data-v="all">모두</button><button class="vw" type="button" data-v="t">대화</button><button class="vw" type="button" data-v="m">문자</button></div></div>
+    <div class="row"><button class="kw" type="button" data-k="고지서">고지서</button><button class="kw" type="button" data-k="링크">링크</button><button class="kw" type="button" data-k="거절">거절</button><button class="kw" type="button" data-k="바빠요">바빠요</button><button class="kw" type="button" data-k="사기">사기</button><button class="kw" type="button" data-k="한전">한전</button><button class="kw" type="button" data-k="%">%</button><button class="kw" type="button" data-k="다른업체">다른업체</button><button class="kw" type="button" data-k="미팅">미팅</button><button class="kw" type="button" data-k="약정서">약정서</button><button class="kw" type="button" data-k="소개">소개</button><button class="kw" type="button" data-k="무응답">무응답</button></div>
+    <div class="count" id="cnt"></div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <section class="intro" id="guide">
+      <div>
+        <p class="sec-t">BEFORE YOU CALL</p>
+        <h2 class="sec-h">영업이사의 목표는 계약이 아닙니다</h2>
+        <div class="flow"><span>① 고지서 1장</span><i>→</i><span>② 제안 미팅 (본사 동행)</span><i>→</i><span>③ 약정서</span></div>
+        <div class="core" style="margin-top:14px"><b>핵심 한 줄</b> — 한전 약관 안의 제도로 전기 계약 구조와 단가를 낮추는 컨설팅. 고지서 분석은 무상, 필요한 공사비는 본사가 먼저 투자, 실제로 줄어든 금액의 50%만 5년간 정산.</div>
+      </div>
+      <ol class="rules">
+        <li><span class="n">1</span><div><b>%는 약속하지 않는다</b> — "된다"가 아니라 "되는지부터 확인해 드린다"</div></li>
+        <li><span class="n">2</span><div><b>안 되면 안 된다고</b> — 이유와 언제 되는지까지 말하면 소개가 들어온다</div></li>
+        <li><span class="n">3</span><div><b>양이 질을 만든다</b> — 고지서를 몇 장 가져오느냐가 핵심</div></li>
+        <li><span class="n">4</span><div><b>모르면</b> "본사에 확인해서 바로 알려드리겠습니다"</div></li>
+        <li><span class="n">5</span><div><b>문자는 링크를 맨 뒤에</b> — 인사 → 용건 → 링크 순서</div></li>
+      </ol>
+    </section>
+    <nav class="toc" id="toc"><a href="#s1"><span>01</span>첫 전화 · 대표님 직통</a><a href="#s2"><span>02</span>첫 전화 · 직원이 받았을 때</a><a href="#s3"><span>03</span>고지서 요청 · 링크 안내</a><a href="#s4"><span>04</span>부재 · 바쁨 → 재연락</a><a href="#s5"><span>05</span>거절 · &#x27;관심 없어요&#x27; · &#x27;절감할 게 없어요&#x27;</a><a href="#s6"><span>06</span>의심 · &#x27;사기 아니에요?&#x27; &#x27;한전에서 나왔어요?&#x27; &#x27;몇 % 돼요?&#x27;</a><a href="#s7"><span>07</span>비교 · &#x27;다른 업체가 제안했어요&#x27; &#x27;이미 바꿨어요&#x27;</a><a href="#s8"><span>08</span>고지서 받은 후 · 제안 미팅 약속</a><a href="#s9"><span>09</span>약정서 · 서명을 망설일 때</a><a href="#s10"><span>10</span>절감 불가 결과 · 소개 요청</a><a href="#s11"><span>11</span>소개받은 업체 · 첫 연락</a><a href="#s12"><span>12</span>답이 없을 때 · 다시 연락</a></nav>
+
+    <section class="sit" id="s1" data-stage="첫연락" data-search="첫 전화 · 대표님 직통 첫통화 대표님 콜드콜 오프닝 인사 소개 대표님이 바로 받으셨을 때. 목표는 고지서 받기, 설명은 1분 안에 끝내기. a 기본형 대표님 안녕하세요, 지노베이션 강남지사 {n} 이사입니다. 한전 약관에 중소 사업장을 위한 요금 제도가 꽤 있는데, 내용이 복잡해서 대부분 모르고 지나치십니다. 저희는 그 약관을 분석해서 전기 계약 구조와 단가를 낮춰드리는 컨설팅 회사입니다. 대표님 회사가 해당되는지부터 무상으로 확인해 드릴 테니, 전기요금 고지서 한 장만 보내주시겠어요? 해당이 안 되면 안 된다고 정확히 말씀드리겠습니다. b 고정비형 대표님, 지노베이션 강남지사 {n} 이사입니다. 요즘 전기요금이 많이 올라서 고정비 부담 크시죠? 사용량을 줄이자는 얘기가 아니고, 지금 쓰시는 그대로 한전 계약 방식만 맞게 바꿔서 요금을 낮추는 방법입니다. 필요하면 설비 공사도 본사가 먼저 투자해서 진행합니다. 고지서 한 장이면 대상인지 바로 확인됩니다. c 질문형 대표님, 지노베이션 강남지사 {n} 이사입니다. 하나만 여쭤볼게요. 지금 공장 전기 고압으로 받아 쓰고 계시죠? (네) 그러면 한 번 볼 만합니다. 같은 양을 써도 한전 계약을 어떻게 묶느냐에 따라 요금이 달라지거든요. 고지서 한 장 주시면 무상으로 분석해서 결과 알려드리겠습니다. a 통화 직후 대표님, 방금 통화드린 지노베이션 강남지사 {n} 이사입니다.
+말씀드린 전기요금 무상 분석은 아래 링크에 고지서 사진 한 장만 올려주시면 됩니다.
+▶ {l}
+대상이 아니면 아니라고 정확히 말씀드리겠습니다. 감사합니다. b 혜택 강조 대표님, 지노베이션 강남지사 {n} 이사입니다.
+한전 약관 안에 있는 제도를 활용해서 전기요금을 낮춰드리는 컨설팅입니다.
+✔ 고지서 분석 무상
+✔ 필요한 설비 공사비는 본사가 먼저 투자
+✔ 실제로 줄어든 금액에서만 정산
+고지서 올리기 ▶ {l}
+회사 소개 ▶ {h} c 짧은 버전 대표님, 지노베이션 강남지사 {n} 이사입니다. 전기요금 고지서 한 장이면 절감 대상인지 무상으로 확인해 드립니다. 편하실 때 올려주세요 👉 {l}"><div class="sit-h"><span class="no">01</span><div><h2>첫 전화 · 대표님 직통</h2><div class="tags"><button class="kw" type="button" data-k="첫통화">#첫통화</button><button class="kw" type="button" data-k="대표님">#대표님</button><button class="kw" type="button" data-k="콜드콜">#콜드콜</button><button class="kw" type="button" data-k="오프닝">#오프닝</button><button class="kw" type="button" data-k="인사">#인사</button><button class="kw" type="button" data-k="소개">#소개</button></div></div></div><p class="goal"><b>목표</b> 대표님이 바로 받으셨을 때. 목표는 고지서 받기, 설명은 1분 안에 끝내기.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 기본형</div><div class="cb" data-tpl="대표님 안녕하세요, 지노베이션 강남지사 {N} 이사입니다. 한전 약관에 중소 사업장을 위한 요금 제도가 꽤 있는데, 내용이 복잡해서 대부분 모르고 지나치십니다. 저희는 그 약관을 분석해서 전기 계약 구조와 단가를 낮춰드리는 컨설팅 회사입니다. 대표님 회사가 해당되는지부터 무상으로 확인해 드릴 테니, 전기요금 고지서 한 장만 보내주시겠어요? 해당이 안 되면 안 된다고 정확히 말씀드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 고정비형</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다. 요즘 전기요금이 많이 올라서 고정비 부담 크시죠? 사용량을 줄이자는 얘기가 아니고, 지금 쓰시는 그대로 한전 계약 방식만 맞게 바꿔서 요금을 낮추는 방법입니다. 필요하면 설비 공사도 본사가 먼저 투자해서 진행합니다. 고지서 한 장이면 대상인지 바로 확인됩니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 질문형</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다. 하나만 여쭤볼게요. 지금 공장 전기 고압으로 받아 쓰고 계시죠? (네) 그러면 한 번 볼 만합니다. 같은 양을 써도 한전 계약을 어떻게 묶느냐에 따라 요금이 달라지거든요. 고지서 한 장 주시면 무상으로 분석해서 결과 알려드리겠습니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 통화 직후</div><div class="cb" data-tpl="대표님, 방금 통화드린 지노베이션 강남지사 {N} 이사입니다.
+말씀드린 전기요금 무상 분석은 아래 링크에 고지서 사진 한 장만 올려주시면 됩니다.
+▶ {L}
+대상이 아니면 아니라고 정확히 말씀드리겠습니다. 감사합니다."></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 혜택 강조</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다.
+한전 약관 안에 있는 제도를 활용해서 전기요금을 낮춰드리는 컨설팅입니다.
+✔ 고지서 분석 무상
+✔ 필요한 설비 공사비는 본사가 먼저 투자
+✔ 실제로 줄어든 금액에서만 정산
+고지서 올리기 ▶ {L}
+회사 소개 ▶ {H}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 짧은 버전</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다. 전기요금 고지서 한 장이면 절감 대상인지 무상으로 확인해 드립니다. 편하실 때 올려주세요 👉 {L}"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s2" data-stage="첫연락" data-search="첫 전화 · 직원이 받았을 때 교환 경리 총무 게이트키퍼 담당자 연결 대표번호 회사 대표번호로 걸었을 때. 영업 전화가 아니라 업무 전화처럼 말하기. a 연결 요청 안녕하세요, 지노베이션 강남지사 {n} 이사입니다. 회사 전기요금 계약 건으로 대표님이나 전기요금 보시는 담당자분께 안내드릴 게 있어서요. 연결 부탁드려도 될까요? b &#x27;무슨 일이세요?&#x27;에 답할 때 전기요금 고지서를 보고 지금 계약이 회사에 맞게 돼 있는지 무상으로 확인해 드리는 일입니다. 설비를 팔거나 유료 상품을 권하는 전화는 아니고요. 고지서는 어느 분이 관리하세요? c 대표님께 전달 부탁 대표님 안 계시면 전달만 부탁드릴게요. 전기요금 고정비를 줄이는 컨설팅인데, 고지서 한 장으로 대상인지 무상으로 확인해 드립니다. 이 번호로 안내 문자 하나 남겨둘 테니 대표님께 보여드려 주세요. a 담당자에게 안녕하세요, 방금 통화드린 지노베이션 강남지사 {n} 이사입니다.
+전기요금 계약 무상 점검 안내드립니다. 고지서 사진 한 장만 아래 링크로 올려주시면 검토해서 결과를 알려드리겠습니다.
+▶ {l} b 대표님 전달용 [대표님 전달 부탁드립니다]
+지노베이션 강남지사 {n} 이사입니다.
+한전 약관을 분석해 전기요금을 낮춰드리는 컨설팅입니다. 고지서 한 장으로 대상 여부를 무상으로 확인해 드립니다.
+▶ {l}
+문의: {t} c 짧은 버전 지노베이션 강남지사 {n} 이사입니다. 대표님께 전기요금 무상 분석 안내 전달 부탁드립니다 🙏 {l}"><div class="sit-h"><span class="no">02</span><div><h2>첫 전화 · 직원이 받았을 때</h2><div class="tags"><button class="kw" type="button" data-k="교환">#교환</button><button class="kw" type="button" data-k="경리">#경리</button><button class="kw" type="button" data-k="총무">#총무</button><button class="kw" type="button" data-k="게이트키퍼">#게이트키퍼</button><button class="kw" type="button" data-k="담당자">#담당자</button><button class="kw" type="button" data-k="연결">#연결</button><button class="kw" type="button" data-k="대표번호">#대표번호</button></div></div></div><p class="goal"><b>목표</b> 회사 대표번호로 걸었을 때. 영업 전화가 아니라 업무 전화처럼 말하기.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 연결 요청</div><div class="cb" data-tpl="안녕하세요, 지노베이션 강남지사 {N} 이사입니다. 회사 전기요금 계약 건으로 대표님이나 전기요금 보시는 담당자분께 안내드릴 게 있어서요. 연결 부탁드려도 될까요?"></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B &#x27;무슨 일이세요?&#x27;에 답할 때</div><div class="cb" data-tpl="전기요금 고지서를 보고 지금 계약이 회사에 맞게 돼 있는지 무상으로 확인해 드리는 일입니다. 설비를 팔거나 유료 상품을 권하는 전화는 아니고요. 고지서는 어느 분이 관리하세요?"></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 대표님께 전달 부탁</div><div class="cb" data-tpl="대표님 안 계시면 전달만 부탁드릴게요. 전기요금 고정비를 줄이는 컨설팅인데, 고지서 한 장으로 대상인지 무상으로 확인해 드립니다. 이 번호로 안내 문자 하나 남겨둘 테니 대표님께 보여드려 주세요."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 담당자에게</div><div class="cb" data-tpl="안녕하세요, 방금 통화드린 지노베이션 강남지사 {N} 이사입니다.
+전기요금 계약 무상 점검 안내드립니다. 고지서 사진 한 장만 아래 링크로 올려주시면 검토해서 결과를 알려드리겠습니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 대표님 전달용</div><div class="cb" data-tpl="[대표님 전달 부탁드립니다]
+지노베이션 강남지사 {N} 이사입니다.
+한전 약관을 분석해 전기요금을 낮춰드리는 컨설팅입니다. 고지서 한 장으로 대상 여부를 무상으로 확인해 드립니다.
+▶ {L}
+문의: {T}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 짧은 버전</div><div class="cb" data-tpl="지노베이션 강남지사 {N} 이사입니다. 대표님께 전기요금 무상 분석 안내 전달 부탁드립니다 🙏 {L}"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s3" data-stage="고지서" data-search="고지서 요청 · 링크 안내 고지서 링크 qr 사진 보안 반출 카톡 관심을 보였을 때 고지서를 실제로 받아내는 단계. a 링크 안내 제일 편한 방법은 제가 보내드리는 링크에 고지서 사진 한 장 올리시는 거예요. 1분이면 됩니다. 올라오면 바로 확인해서 2~3일 안에 결과 말씀드리겠습니다. b 카톡으로 링크가 번거로우시면 이 번호로 카톡이나 문자로 사진만 보내주셔도 됩니다. 고객번호처럼 신경 쓰이는 부분은 가리고 보내셔도 괜찮습니다. c 보안 때문에 못 보낼 때 회사 규정상 밖으로 보내기 어려우시면, 제가 찾아뵙고 그 자리에서만 보고 가겠습니다. 아니면 계약종별, 계약전력, 월 요금 세 가지만 말로 알려주셔도 1차 판단은 됩니다. a 기본 대표님, 지노베이션 강남지사 {n} 이사입니다.
+아래 링크에서 고지서 사진 한 장만 올려주세요. 1분이면 됩니다.
+▶ {l}
+접수되면 확인 후 2~3일 안에 결과 연락드리겠습니다. b 받기 전 확인 대표님, 고지서는 최근 1개월분이면 충분합니다. 민감한 정보는 가리셔도 됩니다.
+▶ {l} c 받은 후 감사 대표님, 고지서 잘 받았습니다. 감사합니다 🙏
+검토해서 2~3일 안에 결과 말씀드리겠습니다. 지노베이션 강남지사 {n} 드림"><div class="sit-h"><span class="no">03</span><div><h2>고지서 요청 · 링크 안내</h2><div class="tags"><button class="kw" type="button" data-k="고지서">#고지서</button><button class="kw" type="button" data-k="링크">#링크</button><button class="kw" type="button" data-k="QR">#QR</button><button class="kw" type="button" data-k="사진">#사진</button><button class="kw" type="button" data-k="보안">#보안</button><button class="kw" type="button" data-k="반출">#반출</button><button class="kw" type="button" data-k="카톡">#카톡</button></div></div></div><p class="goal"><b>목표</b> 관심을 보였을 때 고지서를 실제로 받아내는 단계.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 링크 안내</div><div class="cb" data-tpl="제일 편한 방법은 제가 보내드리는 링크에 고지서 사진 한 장 올리시는 거예요. 1분이면 됩니다. 올라오면 바로 확인해서 2~3일 안에 결과 말씀드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 카톡으로</div><div class="cb" data-tpl="링크가 번거로우시면 이 번호로 카톡이나 문자로 사진만 보내주셔도 됩니다. 고객번호처럼 신경 쓰이는 부분은 가리고 보내셔도 괜찮습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 보안 때문에 못 보낼 때</div><div class="cb" data-tpl="회사 규정상 밖으로 보내기 어려우시면, 제가 찾아뵙고 그 자리에서만 보고 가겠습니다. 아니면 계약종별, 계약전력, 월 요금 세 가지만 말로 알려주셔도 1차 판단은 됩니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 기본</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다.
+아래 링크에서 고지서 사진 한 장만 올려주세요. 1분이면 됩니다.
+▶ {L}
+접수되면 확인 후 2~3일 안에 결과 연락드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 받기 전 확인</div><div class="cb" data-tpl="대표님, 고지서는 최근 1개월분이면 충분합니다. 민감한 정보는 가리셔도 됩니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 받은 후 감사</div><div class="cb" data-tpl="대표님, 고지서 잘 받았습니다. 감사합니다 🙏
+검토해서 2~3일 안에 결과 말씀드리겠습니다. 지노베이션 강남지사 {N} 드림"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s4" data-stage="첫연락" data-search="부재 · 바쁨 → 재연락 부재 바빠요 나중에 재통화 재연락 시간 지금 통화가 어려울 때. 다음 연락 날짜를 꼭 정해두기. a 재통화 시간 잡기 바쁘신데 죄송합니다. 한 줄로만 말씀드리면, 고지서 한 장으로 전기요금 절감 대상인지 무상으로 확인해 드리는 내용입니다. 언제 다시 전화드리면 편하세요? 내일 오전이나 오후 중에요. b 문자로 넘기기 통화 더 안 붙잡겠습니다. 문자로 링크 하나 보내드릴 테니 시간 나실 때 고지서 사진만 올려주세요. 대표님이 쓰실 시간은 그 사진 한 장이 전부입니다. c 담당자 부재 네, 그럼 담당자분 성함이랑 통화 편한 시간만 알려주시겠어요? 그때 지노베이션 강남지사 {n} 이름으로 다시 연락드리겠습니다. a 재연락 약속 대표님, 지노베이션 강남지사 {n} 이사입니다. 말씀하신 ○일 ○시에 다시 연락드리겠습니다. 먼저 보시라고 안내 링크 보내드립니다.
+▶ {l} b 바쁘신 분용 대표님, 바쁘실 텐데 통화 대신 문자 드립니다.
+고지서 사진 한 장만 올려주시면 나머지는 저희가 다 합니다.
+▶ {l} c 메모 부탁 안녕하세요, 지노베이션 강남지사 {n} 이사입니다. 전기요금 검토 건으로 연락드렸습니다. 담당자분께 전달 부탁드립니다. {l}"><div class="sit-h"><span class="no">04</span><div><h2>부재 · 바쁨 → 재연락</h2><div class="tags"><button class="kw" type="button" data-k="부재">#부재</button><button class="kw" type="button" data-k="바빠요">#바빠요</button><button class="kw" type="button" data-k="나중에">#나중에</button><button class="kw" type="button" data-k="재통화">#재통화</button><button class="kw" type="button" data-k="재연락">#재연락</button><button class="kw" type="button" data-k="시간">#시간</button></div></div></div><p class="goal"><b>목표</b> 지금 통화가 어려울 때. 다음 연락 날짜를 꼭 정해두기.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 재통화 시간 잡기</div><div class="cb" data-tpl="바쁘신데 죄송합니다. 한 줄로만 말씀드리면, 고지서 한 장으로 전기요금 절감 대상인지 무상으로 확인해 드리는 내용입니다. 언제 다시 전화드리면 편하세요? 내일 오전이나 오후 중에요."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 문자로 넘기기</div><div class="cb" data-tpl="통화 더 안 붙잡겠습니다. 문자로 링크 하나 보내드릴 테니 시간 나실 때 고지서 사진만 올려주세요. 대표님이 쓰실 시간은 그 사진 한 장이 전부입니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 담당자 부재</div><div class="cb" data-tpl="네, 그럼 담당자분 성함이랑 통화 편한 시간만 알려주시겠어요? 그때 지노베이션 강남지사 {N} 이름으로 다시 연락드리겠습니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 재연락 약속</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다. 말씀하신 ○일 ○시에 다시 연락드리겠습니다. 먼저 보시라고 안내 링크 보내드립니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 바쁘신 분용</div><div class="cb" data-tpl="대표님, 바쁘실 텐데 통화 대신 문자 드립니다.
+고지서 사진 한 장만 올려주시면 나머지는 저희가 다 합니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 메모 부탁</div><div class="cb" data-tpl="안녕하세요, 지노베이션 강남지사 {N} 이사입니다. 전기요금 검토 건으로 연락드렸습니다. 담당자분께 전달 부탁드립니다. {L}"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s5" data-stage="반론" data-search="거절 · &#x27;관심 없어요&#x27; · &#x27;절감할 게 없어요&#x27; 거절 관심없음 절감할게없음 필요없어요 정중한 마무리 반박하지 말고 공감한 뒤 작은 부탁만. 두 번 거절이면 정중하게 끝내기. a 관심 없음 네, 충분히 이해합니다. 장비를 파는 게 아니라 지금 내시는 요금에 손볼 게 있는지만 보는 거라서요. 나중에 참고하시게 안내 문자만 하나 남겨둬도 될까요? b 절감할 게 없음 잘 관리하고 계신 것 같습니다. 다만 사용량 말고 한전 계약 쪽에서 볼 게 있는 경우가 꽤 있어서요. 고지서 한 장 보고 없으면 없다고 바로 말씀드리겠습니다. c 정중한 마무리 네, 알겠습니다. 시간 내주셔서 감사합니다. 나중에 전기요금 고민되실 때 지노베이션 강남지사 {n} 이사 기억해 주세요. 좋은 하루 되세요. a 자료만 대표님, 지노베이션 강남지사 {n} 이사입니다. 오늘 통화 감사했습니다. 나중에 필요하실 때 보시라고 안내 링크만 남겨드립니다.
+회사 소개 ▶ {h}
+고지서 접수 ▶ {l} b 없으면 없다고 대표님, 고지서 한 장 보고 해당 없으면 없다고 바로 말씀드립니다. 손해 보실 일은 없습니다.
+▶ {l} c 마무리 인사 대표님, 시간 내주셔서 감사했습니다. 필요하실 때 언제든 연락 주세요. 지노베이션 강남지사 {n} 드림 · {t}"><div class="sit-h"><span class="no">05</span><div><h2>거절 · &#x27;관심 없어요&#x27; · &#x27;절감할 게 없어요&#x27;</h2><div class="tags"><button class="kw" type="button" data-k="거절">#거절</button><button class="kw" type="button" data-k="관심없음">#관심없음</button><button class="kw" type="button" data-k="절감할게없음">#절감할게없음</button><button class="kw" type="button" data-k="필요없어요">#필요없어요</button><button class="kw" type="button" data-k="정중한 마무리">#정중한 마무리</button></div></div></div><p class="goal"><b>목표</b> 반박하지 말고 공감한 뒤 작은 부탁만. 두 번 거절이면 정중하게 끝내기.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 관심 없음</div><div class="cb" data-tpl="네, 충분히 이해합니다. 장비를 파는 게 아니라 지금 내시는 요금에 손볼 게 있는지만 보는 거라서요. 나중에 참고하시게 안내 문자만 하나 남겨둬도 될까요?"></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 절감할 게 없음</div><div class="cb" data-tpl="잘 관리하고 계신 것 같습니다. 다만 사용량 말고 한전 계약 쪽에서 볼 게 있는 경우가 꽤 있어서요. 고지서 한 장 보고 없으면 없다고 바로 말씀드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 정중한 마무리</div><div class="cb" data-tpl="네, 알겠습니다. 시간 내주셔서 감사합니다. 나중에 전기요금 고민되실 때 지노베이션 강남지사 {N} 이사 기억해 주세요. 좋은 하루 되세요."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 자료만</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다. 오늘 통화 감사했습니다. 나중에 필요하실 때 보시라고 안내 링크만 남겨드립니다.
+회사 소개 ▶ {H}
+고지서 접수 ▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 없으면 없다고</div><div class="cb" data-tpl="대표님, 고지서 한 장 보고 해당 없으면 없다고 바로 말씀드립니다. 손해 보실 일은 없습니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 마무리 인사</div><div class="cb" data-tpl="대표님, 시간 내주셔서 감사했습니다. 필요하실 때 언제든 연락 주세요. 지노베이션 강남지사 {N} 드림 · {T}"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s6" data-stage="반론" data-search="의심 · &#x27;사기 아니에요?&#x27; &#x27;한전에서 나왔어요?&#x27; &#x27;몇 % 돼요?&#x27; 사기 의심 태양광 한전 절감률 퍼센트 % 얼마나 공감 먼저, 구조가 다르다는 것만 짧게. 숫자는 끝까지 약속하지 않기. a 사기 의심 · 태양광에 데인 분 그런 경험 있으시면 당연히 조심하셔야죠. 저희는 장비를 파는 회사가 아니라서 설치비를 받지 않습니다. 필요한 공사는 본사가 먼저 돈을 대고, 실제로 줄어든 요금에서만 받습니다. 그리고 한전 실사와 승인을 통과해야만 공사가 들어갑니다. b 한전에서 나왔어요? 아닙니다. 저희는 한전 직원이 아니라 전기요금 컨설팅을 하는 민간 회사 지노베이션입니다. 한전 몰래 하는 게 아니라 한전 약관 안에서 정식으로 신청해서 바꾸는 겁니다. c 몇 % 줄어요? 솔직히 지금은 말씀드릴 수 없습니다. 고지서와 현장을 봐야 나오는 숫자라서요. 처음부터 몇 % 된다고 하는 곳은 나중에 숫자가 바뀌는 경우가 많습니다. 저희는 되는지, 된다면 얼마인지까지 확인해서 숫자로 보여드립니다. a 구조 설명 대표님, 저희 방식을 정리해 드립니다.
+① 고지서 분석 무상
+② 필요한 공사비는 본사가 먼저 투자
+③ 실제로 줄어든 금액의 절반만 5년간 정산
+④ 줄어든 게 없으면 내실 것도 없음
+▶ {l} b 한전 관련 대표님, 저희는 한전 직원이 아닌 민간 컨설팅 회사입니다. 모든 변경은 한전에 정식 신청하고, 실사·승인을 받은 뒤에만 진행합니다.
+회사 소개 ▶ {h} c 절감률 질문 대표님, 절감 금액은 고지서와 현장을 본 뒤에 정확한 숫자로 말씀드리겠습니다. 먼저 고지서로 대상인지부터 확인해 보시죠.
+▶ {l}"><div class="sit-h"><span class="no">06</span><div><h2>의심 · &#x27;사기 아니에요?&#x27; &#x27;한전에서 나왔어요?&#x27; &#x27;몇 % 돼요?&#x27;</h2><div class="tags"><button class="kw" type="button" data-k="사기">#사기</button><button class="kw" type="button" data-k="의심">#의심</button><button class="kw" type="button" data-k="태양광">#태양광</button><button class="kw" type="button" data-k="한전">#한전</button><button class="kw" type="button" data-k="절감률">#절감률</button><button class="kw" type="button" data-k="퍼센트">#퍼센트</button><button class="kw" type="button" data-k="%">#%</button><button class="kw" type="button" data-k="얼마나">#얼마나</button></div></div></div><p class="goal"><b>목표</b> 공감 먼저, 구조가 다르다는 것만 짧게. 숫자는 끝까지 약속하지 않기.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 사기 의심 · 태양광에 데인 분</div><div class="cb" data-tpl="그런 경험 있으시면 당연히 조심하셔야죠. 저희는 장비를 파는 회사가 아니라서 설치비를 받지 않습니다. 필요한 공사는 본사가 먼저 돈을 대고, 실제로 줄어든 요금에서만 받습니다. 그리고 한전 실사와 승인을 통과해야만 공사가 들어갑니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 한전에서 나왔어요?</div><div class="cb" data-tpl="아닙니다. 저희는 한전 직원이 아니라 전기요금 컨설팅을 하는 민간 회사 지노베이션입니다. 한전 몰래 하는 게 아니라 한전 약관 안에서 정식으로 신청해서 바꾸는 겁니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 몇 % 줄어요?</div><div class="cb" data-tpl="솔직히 지금은 말씀드릴 수 없습니다. 고지서와 현장을 봐야 나오는 숫자라서요. 처음부터 몇 % 된다고 하는 곳은 나중에 숫자가 바뀌는 경우가 많습니다. 저희는 되는지, 된다면 얼마인지까지 확인해서 숫자로 보여드립니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 구조 설명</div><div class="cb" data-tpl="대표님, 저희 방식을 정리해 드립니다.
+① 고지서 분석 무상
+② 필요한 공사비는 본사가 먼저 투자
+③ 실제로 줄어든 금액의 절반만 5년간 정산
+④ 줄어든 게 없으면 내실 것도 없음
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 한전 관련</div><div class="cb" data-tpl="대표님, 저희는 한전 직원이 아닌 민간 컨설팅 회사입니다. 모든 변경은 한전에 정식 신청하고, 실사·승인을 받은 뒤에만 진행합니다.
+회사 소개 ▶ {H}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 절감률 질문</div><div class="cb" data-tpl="대표님, 절감 금액은 고지서와 현장을 본 뒤에 정확한 숫자로 말씀드리겠습니다. 먼저 고지서로 대상인지부터 확인해 보시죠.
+▶ {L}"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s7" data-stage="반론" data-search="비교 · &#x27;다른 업체가 제안했어요&#x27; &#x27;이미 바꿨어요&#x27; 다른업체 경쟁사 캐피탈 대출 이미 갑 직접 한전 비교 깎아내리지 말고 비교할 기준 3가지만 알려주기. a 다른 업체와 비교 비교해 보시는 거 좋습니다. 딱 세 가지만 확인해 보세요. 공사비를 누가 내는지, 대표님 이름으로 대출이나 보증보험을 거는지. 절감이 덜 되면 누가 손해인지. 공사 끝나고도 책임지는지. 저희는 본사가 현금으로 먼저 투자하고, 절감이 덜 되면 저희 회수가 늦어질 뿐 대표님 돈이 더 나가지 않습니다. b 이미 갑으로 바꿨어요 이미 한 번 정리하셨군요. 그럼 기본 조정은 됐을 가능성이 큽니다. 다만 옆 건물이나 같은 지번에 다른 계약이 있으면 달라질 수 있어서, 더 볼 게 있는지만 확인해 드리겠습니다. c 직접 한전에 하면 되잖아요 네, 직접 하셔도 됩니다. 다만 세무 기장 맡기시는 것과 같습니다. 규정은 다 공개돼 있지만 공부하는 시간도 들고, 잘못 신청하면 책임이 고객한테 가거든요. 저희는 12년째 이 일만 해왔습니다. a 비교 체크리스트 대표님, 비교하실 때 세 가지만 보세요.
+✔ 공사비를 누가 내나 (대출·보증보험 여부)
+✔ 절감이 덜 되면 누가 손해인가
+✔ 공사 후에도 책임지나
+저희 기준으로도 검토해 드리겠습니다 ▶ {l} b 추가 확인 대표님, 이미 정리하셨더라도 추가로 볼 게 있는지만 무상으로 확인해 드립니다. 없으면 없다고 말씀드리겠습니다.
+▶ {l} c 기존 업체 존중 대표님, 지금 계약을 바꾸시라는 게 아니라 비교용 검토 의견을 드리는 겁니다. 필요하실 때 편하게 활용하세요.
+회사 소개 ▶ {h}"><div class="sit-h"><span class="no">07</span><div><h2>비교 · &#x27;다른 업체가 제안했어요&#x27; &#x27;이미 바꿨어요&#x27;</h2><div class="tags"><button class="kw" type="button" data-k="다른업체">#다른업체</button><button class="kw" type="button" data-k="경쟁사">#경쟁사</button><button class="kw" type="button" data-k="캐피탈">#캐피탈</button><button class="kw" type="button" data-k="대출">#대출</button><button class="kw" type="button" data-k="이미 갑">#이미 갑</button><button class="kw" type="button" data-k="직접 한전">#직접 한전</button><button class="kw" type="button" data-k="비교">#비교</button></div></div></div><p class="goal"><b>목표</b> 깎아내리지 말고 비교할 기준 3가지만 알려주기.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 다른 업체와 비교</div><div class="cb" data-tpl="비교해 보시는 거 좋습니다. 딱 세 가지만 확인해 보세요. 공사비를 누가 내는지, 대표님 이름으로 대출이나 보증보험을 거는지. 절감이 덜 되면 누가 손해인지. 공사 끝나고도 책임지는지. 저희는 본사가 현금으로 먼저 투자하고, 절감이 덜 되면 저희 회수가 늦어질 뿐 대표님 돈이 더 나가지 않습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 이미 갑으로 바꿨어요</div><div class="cb" data-tpl="이미 한 번 정리하셨군요. 그럼 기본 조정은 됐을 가능성이 큽니다. 다만 옆 건물이나 같은 지번에 다른 계약이 있으면 달라질 수 있어서, 더 볼 게 있는지만 확인해 드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 직접 한전에 하면 되잖아요</div><div class="cb" data-tpl="네, 직접 하셔도 됩니다. 다만 세무 기장 맡기시는 것과 같습니다. 규정은 다 공개돼 있지만 공부하는 시간도 들고, 잘못 신청하면 책임이 고객한테 가거든요. 저희는 12년째 이 일만 해왔습니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 비교 체크리스트</div><div class="cb" data-tpl="대표님, 비교하실 때 세 가지만 보세요.
+✔ 공사비를 누가 내나 (대출·보증보험 여부)
+✔ 절감이 덜 되면 누가 손해인가
+✔ 공사 후에도 책임지나
+저희 기준으로도 검토해 드리겠습니다 ▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 추가 확인</div><div class="cb" data-tpl="대표님, 이미 정리하셨더라도 추가로 볼 게 있는지만 무상으로 확인해 드립니다. 없으면 없다고 말씀드리겠습니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 기존 업체 존중</div><div class="cb" data-tpl="대표님, 지금 계약을 바꾸시라는 게 아니라 비교용 검토 의견을 드리는 겁니다. 필요하실 때 편하게 활용하세요.
+회사 소개 ▶ {H}"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s8" data-stage="미팅" data-search="고지서 받은 후 · 제안 미팅 약속 미팅 약속 방문 일정 제안서 본사 동행 1차 검토 1차 검토가 끝났을 때. 날짜는 꼭 두 개 중에서 고르게 하기. a 기본형 대표님, 보내주신 고지서로 1차 검토가 나왔습니다. 가능성이 보여서 본사 전문가와 함께 15~20분 정도 설명드리고 싶은데요. 이번 주 목요일 오전이나 금요일 오후 중 언제가 편하세요? b 결과 궁금하게 대표님, 고지서 보니까 계약 쪽에 볼 만한 부분이 있습니다. 전화로 설명드리기보다 자료 펴놓고 보시는 게 빠르실 것 같아서요. 다음 주 화요일이나 수요일 중 잠깐 찾아뵈어도 될까요? c 대상 아님 대표님, 검토해 보니 지금 구조로는 줄일 여지가 크지 않습니다. 이유는 ○○ 때문입니다. 설비를 늘리시거나 이전하실 때 다시 봐드리겠습니다. a 미팅 제안 대표님, 지노베이션 강남지사 {n} 이사입니다.
+보내주신 고지서 1차 검토 결과 가능성이 확인됐습니다.
+본사 전문가와 15~20분 설명드리고 싶습니다.
+① ○/○(목) 오전 ② ○/○(금) 오후
+편하신 시간 알려주세요. b 일정 확정 대표님, ○/○(○) ○시에 찾아뵙겠습니다. 전날 한 번 더 연락드리겠습니다. 가능하시면 최근 1년치 고지서를 준비해 주세요. c 전날 확인 대표님, 내일 ○시 방문 일정 확인차 연락드립니다. 지노베이션 강남지사 {n} 드림"><div class="sit-h"><span class="no">08</span><div><h2>고지서 받은 후 · 제안 미팅 약속</h2><div class="tags"><button class="kw" type="button" data-k="미팅">#미팅</button><button class="kw" type="button" data-k="약속">#약속</button><button class="kw" type="button" data-k="방문">#방문</button><button class="kw" type="button" data-k="일정">#일정</button><button class="kw" type="button" data-k="제안서">#제안서</button><button class="kw" type="button" data-k="본사 동행">#본사 동행</button><button class="kw" type="button" data-k="1차 검토">#1차 검토</button></div></div></div><p class="goal"><b>목표</b> 1차 검토가 끝났을 때. 날짜는 꼭 두 개 중에서 고르게 하기.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 기본형</div><div class="cb" data-tpl="대표님, 보내주신 고지서로 1차 검토가 나왔습니다. 가능성이 보여서 본사 전문가와 함께 15~20분 정도 설명드리고 싶은데요. 이번 주 목요일 오전이나 금요일 오후 중 언제가 편하세요?"></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 결과 궁금하게</div><div class="cb" data-tpl="대표님, 고지서 보니까 계약 쪽에 볼 만한 부분이 있습니다. 전화로 설명드리기보다 자료 펴놓고 보시는 게 빠르실 것 같아서요. 다음 주 화요일이나 수요일 중 잠깐 찾아뵈어도 될까요?"></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 대상 아님</div><div class="cb" data-tpl="대표님, 검토해 보니 지금 구조로는 줄일 여지가 크지 않습니다. 이유는 ○○ 때문입니다. 설비를 늘리시거나 이전하실 때 다시 봐드리겠습니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 미팅 제안</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다.
+보내주신 고지서 1차 검토 결과 가능성이 확인됐습니다.
+본사 전문가와 15~20분 설명드리고 싶습니다.
+① ○/○(목) 오전 ② ○/○(금) 오후
+편하신 시간 알려주세요."></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 일정 확정</div><div class="cb" data-tpl="대표님, ○/○(○) ○시에 찾아뵙겠습니다. 전날 한 번 더 연락드리겠습니다. 가능하시면 최근 1년치 고지서를 준비해 주세요."></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 전날 확인</div><div class="cb" data-tpl="대표님, 내일 ○시 방문 일정 확인차 연락드립니다. 지노베이션 강남지사 {N} 드림"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s9" data-stage="계약" data-search="약정서 · 서명을 망설일 때 약정서 서명 계약 50% 5년 수수료 조항 수정 비용이 생기는 계약이 아니라 정보 보호 약속이라는 점을 쉽게. a 정보 보호 이 약정서는 돈이 나가는 계약서가 아닙니다. 실사하면 대표님 회사 전기 구조를 저희가 다 분석하는데, 그 정보를 보호하기 위한 약속입니다. 실사 결과 절감이 안 되면 내실 건 없습니다. b 50% 5년이 아깝다 대표님 입장에서는 공사비 없이 시작해서 줄어든 돈의 절반은 처음부터 대표님 몫입니다. 5년 뒤에는 전부 대표님 몫이고요. 저희도 5년 동안 묶여 있으니 대충 할 수가 없습니다. c 조항 수정 요청 고치고 싶은 조항 있으시면 말씀 주세요. 정보 보호에 지장 없는 범위면 대부분 반영해 드립니다. 본사에 바로 확인해서 알려드리겠습니다. a 약정서 안내 대표님, 약정서 보내드립니다.
+비용이 생기는 계약이 아니라 실사 정보를 보호하기 위한 약속입니다. 절감이 안 되면 내실 것은 없습니다. b 수정 접수 대표님, 말씀하신 조항은 본사에 확인해서 ○일까지 답변드리겠습니다. c 서명 감사 대표님, 약정서 감사합니다. 실사 일정은 본사에서 연락드릴 예정이고, 진행 상황은 제가 계속 챙겨서 알려드리겠습니다."><div class="sit-h"><span class="no">09</span><div><h2>약정서 · 서명을 망설일 때</h2><div class="tags"><button class="kw" type="button" data-k="약정서">#약정서</button><button class="kw" type="button" data-k="서명">#서명</button><button class="kw" type="button" data-k="계약">#계약</button><button class="kw" type="button" data-k="50%">#50%</button><button class="kw" type="button" data-k="5년">#5년</button><button class="kw" type="button" data-k="수수료">#수수료</button><button class="kw" type="button" data-k="조항 수정">#조항 수정</button></div></div></div><p class="goal"><b>목표</b> 비용이 생기는 계약이 아니라 정보 보호 약속이라는 점을 쉽게.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 정보 보호</div><div class="cb" data-tpl="이 약정서는 돈이 나가는 계약서가 아닙니다. 실사하면 대표님 회사 전기 구조를 저희가 다 분석하는데, 그 정보를 보호하기 위한 약속입니다. 실사 결과 절감이 안 되면 내실 건 없습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 50% 5년이 아깝다</div><div class="cb" data-tpl="대표님 입장에서는 공사비 없이 시작해서 줄어든 돈의 절반은 처음부터 대표님 몫입니다. 5년 뒤에는 전부 대표님 몫이고요. 저희도 5년 동안 묶여 있으니 대충 할 수가 없습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 조항 수정 요청</div><div class="cb" data-tpl="고치고 싶은 조항 있으시면 말씀 주세요. 정보 보호에 지장 없는 범위면 대부분 반영해 드립니다. 본사에 바로 확인해서 알려드리겠습니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 약정서 안내</div><div class="cb" data-tpl="대표님, 약정서 보내드립니다.
+비용이 생기는 계약이 아니라 실사 정보를 보호하기 위한 약속입니다. 절감이 안 되면 내실 것은 없습니다."></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 수정 접수</div><div class="cb" data-tpl="대표님, 말씀하신 조항은 본사에 확인해서 ○일까지 답변드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 서명 감사</div><div class="cb" data-tpl="대표님, 약정서 감사합니다. 실사 일정은 본사에서 연락드릴 예정이고, 진행 상황은 제가 계속 챙겨서 알려드리겠습니다."></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s10" data-stage="사후" data-search="절감 불가 결과 · 소개 요청 절감불가 대상아님 결과보고 소개 추천 안 될 때 안 된 회사가 최고의 소개처. 이유를 분명히 말하고 소개를 부탁하기. a 결과 보고 대표님, 실사 결과 지금 구조로는 절감 방안이 없는 걸로 나왔습니다. 이유는 ○○입니다. 나중에 설비를 늘리시거나 공장을 옮기시면 그때는 가능성이 생기니 다시 봐드리겠습니다. b 소개 요청 혹시 주변에 공장 하시는 대표님 계시면 한 분만 소개 부탁드려도 될까요? 똑같이 정확하게, 안 되면 안 된다고 말씀드리겠습니다. c 짧은 버전 대표님 회사는 이번엔 해당이 안 됐지만, 주변 분들께는 도움이 될 수 있습니다. 소개해 주시면 정성껏 보겠습니다. a 결과 안내 대표님, 검토 결과 안내드립니다. 현재 구조로는 절감 방안이 없습니다(사유: ○○). 상황이 바뀌면 언제든 다시 봐드리겠습니다. b 소개 링크 대표님, 주변에 전기요금 부담 큰 대표님 계시면 이 링크만 전달해 주세요. 고지서 올리시면 무상으로 봐드립니다.
+▶ {l} c 감사 인사 대표님, 끝까지 믿고 맡겨주셔서 감사했습니다. 지노베이션 강남지사 {n} 드림"><div class="sit-h"><span class="no">10</span><div><h2>절감 불가 결과 · 소개 요청</h2><div class="tags"><button class="kw" type="button" data-k="절감불가">#절감불가</button><button class="kw" type="button" data-k="대상아님">#대상아님</button><button class="kw" type="button" data-k="결과보고">#결과보고</button><button class="kw" type="button" data-k="소개">#소개</button><button class="kw" type="button" data-k="추천">#추천</button><button class="kw" type="button" data-k="안 될 때">#안 될 때</button></div></div></div><p class="goal"><b>목표</b> 안 된 회사가 최고의 소개처. 이유를 분명히 말하고 소개를 부탁하기.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 결과 보고</div><div class="cb" data-tpl="대표님, 실사 결과 지금 구조로는 절감 방안이 없는 걸로 나왔습니다. 이유는 ○○입니다. 나중에 설비를 늘리시거나 공장을 옮기시면 그때는 가능성이 생기니 다시 봐드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 소개 요청</div><div class="cb" data-tpl="혹시 주변에 공장 하시는 대표님 계시면 한 분만 소개 부탁드려도 될까요? 똑같이 정확하게, 안 되면 안 된다고 말씀드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 짧은 버전</div><div class="cb" data-tpl="대표님 회사는 이번엔 해당이 안 됐지만, 주변 분들께는 도움이 될 수 있습니다. 소개해 주시면 정성껏 보겠습니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 결과 안내</div><div class="cb" data-tpl="대표님, 검토 결과 안내드립니다. 현재 구조로는 절감 방안이 없습니다(사유: ○○). 상황이 바뀌면 언제든 다시 봐드리겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 소개 링크</div><div class="cb" data-tpl="대표님, 주변에 전기요금 부담 큰 대표님 계시면 이 링크만 전달해 주세요. 고지서 올리시면 무상으로 봐드립니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 감사 인사</div><div class="cb" data-tpl="대표님, 끝까지 믿고 맡겨주셔서 감사했습니다. 지노베이션 강남지사 {N} 드림"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s11" data-stage="첫연락" data-search="소개받은 업체 · 첫 연락 소개 지인 협회 모임 세미나 네트워크 소개해 준 분 이름을 먼저. 그것만으로도 콜드콜이 아니게 됨. a 소개자 언급 ○○○ 대표님 소개로 연락드렸습니다. 지노베이션 강남지사 {n} 이사입니다. ○○ 대표님 회사 전기요금을 봐드렸었는데, 대표님 회사도 한번 봐드리면 좋겠다고 하셔서요. 고지서 한 장이면 대상인지 무상으로 확인됩니다. b 협회·모임 인연 지난번 ○○ 모임에서 인사드린 지노베이션 강남지사 {n} 이사입니다. 그때 말씀드린 전기요금 건, 고지서 한 장으로 확인해 드리기로 했었죠. c 모임에서 3분 소개 전기요금도 한전 약관 안에서 줄일 수 있는 방법이 있습니다. 공사비 부담 없이, 안 되면 안 된다고 정확히 말씀드리는 방식입니다. 관심 있으신 분은 고지서 한 장 주시면 따로 찾아뵙겠습니다. a 소개 연락 대표님, ○○○ 대표님 소개로 연락드리는 지노베이션 강남지사 {n} 이사입니다.
+전기요금 무상 분석 안내드립니다. 고지서 한 장만 올려주세요.
+▶ {l}
+회사 소개 ▶ {h} b 모임 후 대표님, 어제 ○○ 모임에서 인사드린 {n} 이사입니다. 말씀드린 전기요금 무상 분석 링크 보내드립니다.
+▶ {l} c 소개자에게 감사 ○○ 대표님, 소개해 주신 ○○ 대표님께 잘 연락드렸습니다. 감사합니다 🙏"><div class="sit-h"><span class="no">11</span><div><h2>소개받은 업체 · 첫 연락</h2><div class="tags"><button class="kw" type="button" data-k="소개">#소개</button><button class="kw" type="button" data-k="지인">#지인</button><button class="kw" type="button" data-k="협회">#협회</button><button class="kw" type="button" data-k="모임">#모임</button><button class="kw" type="button" data-k="세미나">#세미나</button><button class="kw" type="button" data-k="네트워크">#네트워크</button></div></div></div><p class="goal"><b>목표</b> 소개해 준 분 이름을 먼저. 그것만으로도 콜드콜이 아니게 됨.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 소개자 언급</div><div class="cb" data-tpl="○○○ 대표님 소개로 연락드렸습니다. 지노베이션 강남지사 {N} 이사입니다. ○○ 대표님 회사 전기요금을 봐드렸었는데, 대표님 회사도 한번 봐드리면 좋겠다고 하셔서요. 고지서 한 장이면 대상인지 무상으로 확인됩니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 협회·모임 인연</div><div class="cb" data-tpl="지난번 ○○ 모임에서 인사드린 지노베이션 강남지사 {N} 이사입니다. 그때 말씀드린 전기요금 건, 고지서 한 장으로 확인해 드리기로 했었죠."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 모임에서 3분 소개</div><div class="cb" data-tpl="전기요금도 한전 약관 안에서 줄일 수 있는 방법이 있습니다. 공사비 부담 없이, 안 되면 안 된다고 정확히 말씀드리는 방식입니다. 관심 있으신 분은 고지서 한 장 주시면 따로 찾아뵙겠습니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 소개 연락</div><div class="cb" data-tpl="대표님, ○○○ 대표님 소개로 연락드리는 지노베이션 강남지사 {N} 이사입니다.
+전기요금 무상 분석 안내드립니다. 고지서 한 장만 올려주세요.
+▶ {L}
+회사 소개 ▶ {H}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 모임 후</div><div class="cb" data-tpl="대표님, 어제 ○○ 모임에서 인사드린 {N} 이사입니다. 말씀드린 전기요금 무상 분석 링크 보내드립니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 소개자에게 감사</div><div class="cb" data-tpl="○○ 대표님, 소개해 주신 ○○ 대표님께 잘 연락드렸습니다. 감사합니다 🙏"></div><button class="cp" type="button">복사</button></div></div></div></section><section class="sit" id="s12" data-stage="사후" data-search="답이 없을 때 · 다시 연락 무응답 답장없음 리마인드 재연락 팔로업 읽씹 문자 보낸 뒤 답이 없을 때. 2~3일 간격, 최대 3번. a 확인 전화 대표님, 지노베이션 강남지사 {n} 이사입니다. 며칠 전 보내드린 전기요금 안내 혹시 보셨나 해서요. 고지서 올리는 게 어려우시면 제가 찾아뵙고 보고 가겠습니다. b 가볍게 대표님, 바쁘셔서 못 보셨을 것 같아 다시 연락드렸습니다. 사진 한 장이면 되니까 편하실 때 부탁드립니다. c 마지막 대표님, 이번이 마지막 연락입니다. 나중에라도 필요하시면 언제든 연락 주세요. 감사합니다. a 1차 리마인드 대표님, 지노베이션 강남지사 {n} 이사입니다. 지난번 안내드린 전기요금 무상 분석, 고지서 사진 한 장이면 됩니다 🙂
+▶ {l} b 2차 리마인드 대표님, 요즘 전기요금 부담 많으시죠. 해당 여부만이라도 확인해 보세요. 확인만 하셔도 손해 없습니다.
+▶ {l} c 마지막 안내 대표님, 마지막으로 안내드립니다. 필요하실 때 이 링크로 언제든 접수하시면 됩니다. 감사합니다.
+▶ {l}
+문의 {t}"><div class="sit-h"><span class="no">12</span><div><h2>답이 없을 때 · 다시 연락</h2><div class="tags"><button class="kw" type="button" data-k="무응답">#무응답</button><button class="kw" type="button" data-k="답장없음">#답장없음</button><button class="kw" type="button" data-k="리마인드">#리마인드</button><button class="kw" type="button" data-k="재연락">#재연락</button><button class="kw" type="button" data-k="팔로업">#팔로업</button><button class="kw" type="button" data-k="읽씹">#읽씹</button></div></div></div><p class="goal"><b>목표</b> 문자 보낸 뒤 답이 없을 때. 2~3일 간격, 최대 3번.</p><div class="block talk"><h3><span class="ic">🗣</span>대화용 <small>전화 · 대면</small></h3><div class="grid"><div class="card t"><div class="ct">A 확인 전화</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다. 며칠 전 보내드린 전기요금 안내 혹시 보셨나 해서요. 고지서 올리는 게 어려우시면 제가 찾아뵙고 보고 가겠습니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">B 가볍게</div><div class="cb" data-tpl="대표님, 바쁘셔서 못 보셨을 것 같아 다시 연락드렸습니다. 사진 한 장이면 되니까 편하실 때 부탁드립니다."></div><button class="cp" type="button">복사</button></div><div class="card t"><div class="ct">C 마지막</div><div class="cb" data-tpl="대표님, 이번이 마지막 연락입니다. 나중에라도 필요하시면 언제든 연락 주세요. 감사합니다."></div><button class="cp" type="button">복사</button></div></div></div><div class="block sms"><h3><span class="ic">💬</span>문자 · 카톡용 <small>복사해서 바로 전송</small></h3><div class="grid"><div class="card m"><div class="ct">A 1차 리마인드</div><div class="cb" data-tpl="대표님, 지노베이션 강남지사 {N} 이사입니다. 지난번 안내드린 전기요금 무상 분석, 고지서 사진 한 장이면 됩니다 🙂
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">B 2차 리마인드</div><div class="cb" data-tpl="대표님, 요즘 전기요금 부담 많으시죠. 해당 여부만이라도 확인해 보세요. 확인만 하셔도 손해 없습니다.
+▶ {L}"></div><button class="cp" type="button">복사</button></div><div class="card m"><div class="ct">C 마지막 안내</div><div class="cb" data-tpl="대표님, 마지막으로 안내드립니다. 필요하실 때 이 링크로 언제든 접수하시면 됩니다. 감사합니다.
+▶ {L}
+문의 {T}"></div><button class="cp" type="button">복사</button></div></div></div></section>
+
+    <p class="empty" id="empty">찾는 상황이 없어요. 다른 단어로 검색해 보세요.</p>
+
+    <section class="no-say" id="nosay">
+      <p class="sec-t">DON'T SAY</p>
+      <h2 class="sec-h">하지 말아야 할 말 → 이렇게 바꿔 말하기</h2>
+      <ul>
+        <li><span class="x">✕ "무조건 됩니다", "최소 ○○% 절감됩니다"</span><span class="o">○ "고지서를 보고 되는지부터 확인해 드리겠습니다"</span></li>
+        <li><span class="x">✕ "한전에서 나왔습니다", "정부 지원 사업입니다"</span><span class="o">○ "한전 약관 안에서 정식으로 신청하는 민간 컨설팅입니다"</span></li>
+        <li><span class="x">✕ "비용이 전혀 없습니다"</span><span class="o">○ "고지서 분석은 무상이고, 공사비는 본사가 먼저 투자합니다"</span></li>
+        <li><span class="x">✕ "고압 2개 받아서 나눠 쓰시면 됩니다"</span><span class="o">○ "설비를 섞어 쓰면 불법이라 실사에서 정확히 봐드립니다"</span></li>
+        <li><span class="x">✕ "오늘 결정하셔야 합니다"</span><span class="o">○ "결과 보시고 회사 내부에서 검토하시면 됩니다"</span></li>
+        <li><span class="x">✕ 모르는 질문에 추측해서 답하기</span><span class="o">○ "본사에 확인해서 바로 알려드리겠습니다"</span></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="tel">(주)지노베이션 C&amp;G 강남지사</div>
+    <div class="links"><a href="https://gnogangnam.kals.or.kr" target="_blank" rel="noopener">강남지사 홈페이지</a><a href="https://top95091.github.io/top-reports/gno-gangnam-apply.html" target="_blank" rel="noopener">고지서 접수 페이지</a><a href="tel:010-4860-3087">지사 010-4860-3087</a></div>
+    <div class="addr">서울 강남구 강남대로84길 23 한라클래식 1602-1호<br>팩스 0504-242-3087 · 대상: 계약전력 300kW 이상 산업용·일반용 사업장</div>
+    <p class="disc">※ 영업이사 내부 교육용 자료입니다. 절감률·절감액은 분석 예상치이며 사업장 전력 사용 형태와 한전 약관 적용 여부에 따라 달라질 수 있습니다. 대외 수치는 강남지사 홈페이지 최신값을 기준으로 안내합니다.</p>
+  </div>
+</footer>
+<div class="toast" id="toast">복사됐어요</div>
+
+<script>
+(function(){
+  var APPLY = "https://top95091.github.io/top-reports/gno-gangnam-apply.html", HOME = "https://gnogangnam.kals.or.kr";
+  var $ = function(id){ return document.getElementById(id); };
+  var store = {
+    get: function(k){ try{ return localStorage.getItem('gnoScript.'+k) || ''; }catch(e){ return ''; } },
+    set: function(k,v){ try{ localStorage.setItem('gnoScript.'+k, v); }catch(e){} }
+  };
+  var nm=$('nm'), tl=$('tl'), lk=$('lk');
+  nm.value = store.get('nm'); tl.value = store.get('tl'); lk.value = store.get('lk');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.cb'));
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.sit'));
+
+  function esc(s){ return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function vals(){
+    return {
+      N: nm.value.trim() || '○○○',
+      T: tl.value.trim() || '010-○○○○-○○○○',
+      L: lk.value.trim() || APPLY,
+      H: HOME
+    };
+  }
+  function plain(tpl){
+    var v = vals();
+    return tpl.replace(/\{([NTLH])\}/g, function(_,k){ return v[k]; });
+  }
+  function render(){
+    var v = vals(), q = $('q').value.trim();
+    cards.forEach(function(el){
+      var tpl = el.getAttribute('data-tpl');
+      var out = esc(tpl).replace(/\{([NTLH])\}/g, function(_,k){
+        return (k==='L'||k==='H') ? '<span class="u">'+esc(v[k])+'</span>' : '<span class="v">'+esc(v[k])+'</span>';
+      });
+      if(q){
+        q.split(/\s+/).forEach(function(w){
+          if(!w) return;
+          var re = new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')(?![^<]*>)','gi');
+          out = out.replace(re,'<mark>$1</mark>');
+        });
+      }
+      el.innerHTML = out;
+    });
+  }
+
+  var stage = 'all';
+  function filter(){
+    var q = $('q').value.trim().toLowerCase();
+    var words = q ? q.split(/\s+/) : [];
+    var n = 0;
+    secs.forEach(function(s){
+      var okS = stage==='all' || s.getAttribute('data-stage')===stage;
+      var hay = s.getAttribute('data-search');
+      var okQ = words.every(function(w){ return hay.indexOf(w) > -1; });
+      var show = okS && okQ;
+      s.style.display = show ? '' : 'none';
+      if(show) n++;
+    });
+    $('empty').style.display = n ? 'none' : 'block';
+    $('toc').style.display = (q || stage!=='all') ? 'none' : '';
+    $('guide').style.display = (q || stage!=='all') ? 'none' : '';
+    $('nosay').style.display = (q || stage!=='all') ? 'none' : '';
+    $('cnt').textContent = (q || stage!=='all') ? ('상황 '+n+'개 찾음') : '';
+    $('qx').style.display = q ? 'block' : 'none';
+    render();
+  }
+
+  [nm,tl,lk].forEach(function(inp){
+    inp.addEventListener('input', function(){ store.set(inp.id, inp.value.trim()); render(); });
+  });
+  $('q').addEventListener('input', filter);
+  $('qx').addEventListener('click', function(){ $('q').value=''; filter(); $('q').focus(); });
+  document.querySelectorAll('.st').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.st').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on'); stage = b.getAttribute('data-s'); filter();
+    });
+  });
+  document.querySelectorAll('.vw').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.vw').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      document.body.classList.remove('only-t','only-m');
+      var v = b.getAttribute('data-v'); if(v!=='all') document.body.classList.add('only-'+v);
+    });
+  });
+  document.addEventListener('click', function(ev){
+    var k = ev.target.closest('.kw');
+    if(k){ $('q').value = k.getAttribute('data-k'); filter(); window.scrollTo({top: document.querySelector('.tools').offsetTop, behavior:'smooth'}); return; }
+    var c = ev.target.closest('.cp');
+    if(c){
+      var text = plain(c.parentNode.querySelector('.cb').getAttribute('data-tpl'));
+      var done = function(){
+        c.textContent='복사됨'; c.classList.add('ok');
+        var t=$('toast'); t.classList.add('on');
+        setTimeout(function(){ c.textContent='복사'; c.classList.remove('ok'); t.classList.remove('on'); },1300);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done, function(){ fallback(text); done(); });
+      } else { fallback(text); done(); }
+    }
+  });
+  function fallback(text){
+    var ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta);
+  }
+  filter();
+})();
+</script>
+</body>
+</html>
