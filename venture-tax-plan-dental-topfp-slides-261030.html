@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>벤처투자 소득공제 설계</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111;--lime:#8DC63F;--lime-t:#4E7F1A;--lime-l:#F1F8E6;--sub:#5f6360;--line:#e3e6df;--red:#b4432f;--red-l:#fbeeea;--gray:#9a9a9a}
+*{box-sizing:border-box}
+html,body{margin:0;background:#2a2a2a;font-family:'Noto Sans KR',sans-serif;color:var(--ink)}
+.deck{max-width:1280px;margin:0 auto;padding:24px 16px 40px;display:flex;flex-direction:column;gap:24px}
+.s{position:relative;width:100%;aspect-ratio:16/9;background:#fff;container-type:inline-size;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.in{position:absolute;inset:0;padding:5cqw 6cqw 4.5cqw;display:flex;flex-direction:column}
+.k{font-size:1.15cqw;font-weight:700;letter-spacing:.2em;color:var(--lime-t)}
+h2{font-size:3cqw;margin:.6cqw 0 .4cqw;font-weight:900;letter-spacing:-.02em;line-height:1.25}
+.lead{font-size:1.55cqw;color:var(--sub);margin:0 0 2cqw;line-height:1.55}
+.lead b{color:var(--ink)}
+.foot{position:absolute;left:6cqw;right:6cqw;bottom:1.8cqw;display:flex;justify-content:space-between;font-size:.95cqw;color:#a3a6a0}
+.foot b{color:var(--lime-t)}
+.bar-top{position:absolute;left:0;top:0;width:100%;height:.6cqw;background:var(--lime)}
+/* cover */
+.cover{background:#0e0e0e;color:#fff}
+.cover .in{justify-content:center}
+.cover .brand{font-size:1.3cqw;letter-spacing:.25em;color:var(--lime);font-weight:700}
+.cover h1{font-size:4.6cqw;line-height:1.25;margin:1.6cqw 0 1.4cqw;font-weight:900;letter-spacing:-.02em}
+.cover h1 em{font-style:normal;color:var(--lime)}
+.cover p{font-size:1.7cqw;color:#cfcfcf;margin:0}
+.cover .meta{margin-top:3.5cqw;font-size:1.15cqw;color:#9a9a9a;line-height:1.7}
+.cover .stripe{position:absolute;right:0;top:0;bottom:0;width:1.2cqw;background:var(--lime)}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;flex:1}
+.c{border:1px solid var(--line);border-radius:1.2cqw;padding:2.2cqw;display:flex;flex-direction:column;justify-content:center}
+.c .l{font-size:1.3cqw;color:var(--sub);font-weight:500}
+.c .v{font-size:3.6cqw;font-weight:900;margin:.6cqw 0;letter-spacing:-.02em}
+.c .d{font-size:1.3cqw;color:var(--sub);line-height:1.5}
+.c.hero{border:.25cqw solid var(--lime);background:var(--lime-l)}
+.c.hero .v{color:var(--lime-t)}
+.c.red .v{color:var(--red)}
+.note{font-size:1.05cqw;color:var(--sub);margin-top:1.2cqw;line-height:1.5}
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:1.4cqw}
+th,td{padding:.85cqw 1.2cqw;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th{background:#111;color:#fff;font-weight:700;font-size:1.25cqw}
+th:first-child,td:first-child{text-align:left}
+tr.hl td{background:var(--lime-l);font-weight:900}
+tr.mx td{background:#eef0ec;font-weight:700}
+.pill{display:inline-block;padding:.1cqw .8cqw;border-radius:99px;font-size:1cqw;font-weight:700;background:var(--lime-l);color:var(--lime-t);border:1px solid #cfe5ae;margin-left:.4cqw}
+.pill.r{background:var(--red-l);color:var(--red);border-color:#efc6bd}
+/* stacks */
+.stk{display:flex;height:5cqw;border-radius:.8cqw;overflow:hidden;font-size:1.3cqw;font-weight:700;color:#fff;margin:.8cqw 0 2.2cqw}
+.stk div{display:flex;align-items:center;justify-content:center;text-align:center}
+.lab{font-size:1.5cqw;font-weight:700}
+.lgd{display:flex;gap:2cqw;font-size:1.2cqw;color:var(--sub)}
+.lgd span:before{content:"";display:inline-block;width:1cqw;height:1cqw;border-radius:.2cqw;margin-right:.5cqw;vertical-align:-.1cqw;background:var(--c)}
+.callout{border-left:.5cqw solid var(--lime);background:#f7f8f5;padding:1.4cqw 1.8cqw;border-radius:0 1cqw 1cqw 0;font-size:1.45cqw;line-height:1.6}
+.callout.red{border-color:var(--red);background:var(--red-l)}
+.callout b{font-weight:900}
+/* bars */
+.two{display:grid;grid-template-columns:1.05fr 1fr;gap:3cqw;flex:1;align-items:center}
+.bars{display:flex;flex-direction:column;gap:1.3cqw}
+.br{display:grid;grid-template-columns:8cqw 1fr 6cqw;align-items:center;gap:1.2cqw;font-size:1.4cqw}
+.br .t{height:2.2cqw;background:#eef0ea;border-radius:1.1cqw;overflow:hidden}
+.br .t i{display:block;height:100%;background:var(--lime);border-radius:1.1cqw}
+.br .t i.g{background:#555}
+.br b{text-align:right}
+.big-n{font-size:6cqw;font-weight:900;color:var(--lime-t);line-height:1;letter-spacing:-.03em}
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;margin-bottom:1.8cqw}
+.st{border:1px solid var(--line);border-top:.5cqw solid var(--ink);border-radius:1cqw;padding:1.8cqw}
+.st .y{font-size:1.2cqw;font-weight:900;color:var(--lime-t);letter-spacing:.12em}
+.st h4{font-size:1.9cqw;margin:.5cqw 0 .6cqw}
+.st p{font-size:1.3cqw;color:var(--sub);margin:0;line-height:1.55}
+/* checklist */
+.chk{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1.3cqw 2.4cqw}
+.chk li{position:relative;padding-left:3cqw;font-size:1.35cqw;line-height:1.55;color:var(--sub)}
+.chk li b{color:var(--ink);display:block;font-size:1.5cqw}
+.chk li:before{content:"✓";position:absolute;left:0;top:.2cqw;width:2cqw;height:2cqw;border-radius:50%;background:var(--lime);color:#111;font-size:1.1cqw;font-weight:900;display:flex;align-items:center;justify-content:center}
+.chk li.w:before{content:"!";background:var(--red);color:#fff}
+.src{font-size:1.2cqw;color:var(--sub);line-height:1.7;margin:0;padding-left:1.6cqw}
+.end{background:#0e0e0e;color:#fff}
+.end .in{justify-content:center;align-items:flex-start}
+.end .who{font-size:3cqw;font-weight:900;margin:1.2cqw 0 .6cqw}
+.end .ct{font-size:1.6cqw;color:#cfcfcf}
+.end .msg{font-size:1.5cqw;color:#9a9a9a;margin-top:3cqw;line-height:1.7}
+@media print{
+  @page{size:13.333in 7.5in;margin:0}
+  html,body{background:#fff}
+  .deck{max-width:none;padding:0;gap:0}
+  .s{width:13.333in;height:7.5in;aspect-ratio:auto;box-shadow:none;page-break-after:always;break-after:page}
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 1 Cover -->
+<section class="s cover"><div class="stripe"></div><div class="in">
+  <div class="brand">T.O.P FINANCIAL PLANNING · 탑재무설계</div>
+  <h1>원장님 부부<br><em>벤처투자 소득공제</em> 투자금액 설계</h1>
+  <p>"얼마를 넣어야 실제로 세금이 줄어드는가" — 최저한세까지 반영한 2026년 귀속 정밀 설계</p>
+  <div class="meta">기준자료 · 2025년 귀속 소득금액증명(국세청, 2026.10.21 발급) · 세무대리인 2026년 연간 추정표<br>작성 2026.10.30 · 탑재무설계 고영권 컨설턴트</div>
+</div></section>
+
+<!-- 2 Summary -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">01 · 결론부터</div>
+  <h2>투자는 1번 원장님 명의로, 5,000만원</h2>
+  <p class="lead">2번 원장님은 올해 투자하셔도 <b>줄어드는 세금이 사실상 없습니다.</b></p>
+  <div class="cards">
+    <div class="c hero"><div class="l">권장 투자액 · 1번 원장님</div><div class="v">5,000만원</div><div class="d">절세 약 <b>2,033만원</b><br>투자금 대비 40.7%</div></div>
+    <div class="c"><div class="l">최대 실효 투자액 · 1번 원장님</div><div class="v">약 7.37억</div><div class="d">절세 약 1억 1,559만원<br>이 금액을 넘으면 추가 효과 0원</div></div>
+    <div class="c red"><div class="l">2026년 투자 효과 · 2번 원장님</div><div class="v">0원</div><div class="d">이미 최저한세(세금 바닥선)에<br>닿아 있음</div></div>
+  </div>
+  <div class="note">※ 절세액 = 종합소득세 감소분 + 지방소득세(소득세의 10% 가정). 벤처기업 직접투자·개인투자조합 경유 투자(조특법 §16 공제율 100/70/30%) 기준.</div>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>02</span></div>
+</div></section>
+
+<!-- 3 Status -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">02 · 현황 진단</div>
+  <h2>두 분의 소득과 세금 구조 (2026년 추정)</h2>
+  <p class="lead">세무대리인 추정표 수치를 그대로 쓰고, 산출세액은 세율표로 다시 계산해 일치함을 확인했습니다.</p>
+  <table>
+    <tr><th>구분</th><th>1번 원장님</th><th>2번 원장님</th></tr>
+    <tr><td>종합소득금액 · 세율 구간</td><td>7억 6,390만 · 42%</td><td>4억 9,988만 · 40%</td></tr>
+    <tr><td>산출세액</td><td>2억 8,070만</td><td>1억 7,221만</td></tr>
+    <tr><td>최저한세 (세금 바닥선)</td><td>1억 2,631만</td><td>7,750만</td></tr>
+    <tr><td>통합고용세액공제 사용 가능액</td><td>4,930만</td><td>2억 490만 <small>(이월 포함)</small></td></tr>
+    <tr><td>실제 반영된 고용공제</td><td>4,930만<span class="pill">전액 사용</span></td><td>9,472만<span class="pill r">1.1억 이월</span></td></tr>
+    <tr><td>결정세액 (소득세)</td><td>2억 2,983만</td><td>7,623만</td></tr>
+    <tr class="hl"><td>바닥선까지 남은 여유 = 벤처투자로 줄일 수 있는 세금</td><td>약 1억 508만</td><td>0원</td></tr>
+  </table>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>03</span></div>
+</div></section>
+
+<!-- 4 Principle -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">03 · 핵심 원리</div>
+  <h2>최저한세 = "세금의 바닥선"</h2>
+  <p class="lead">공제를 아무리 많이 받아도 원래 세금의 약 45% 밑으로는 내려가지 않습니다. 벤처투자 소득공제도 이 규칙을 적용받습니다(조특법 §132②).</p>
+  <div class="lab">1번 원장님 — 세금 2억 8,070만원</div>
+  <div class="stk">
+    <div style="flex:126.3;background:#111">바닥선 1.26억</div>
+    <div style="flex:105.1;background:var(--lime);color:#111">벤처공제로 줄일 수 있는 칸 1.05억</div>
+    <div style="flex:49.3;background:var(--gray)">고용공제 0.49억</div>
+  </div>
+  <div class="lab">2번 원장님 — 세금 1억 7,221만원</div>
+  <div class="stk">
+    <div style="flex:77.5;background:#111">바닥선 0.77억</div>
+    <div style="flex:94.7;background:var(--gray)">고용공제가 이미 꽉 채움 0.95억</div>
+  </div>
+  <div class="lgd"><span style="--c:#111">반드시 내는 세금</span><span style="--c:#8DC63F">벤처투자로 줄일 수 있는 칸</span><span style="--c:#9a9a9a">고용공제가 쓰는 칸</span></div>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>04</span></div>
+</div></section>
+
+<!-- 5 Table A -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">04 · 1번 원장님 투자금액별 효과</div>
+  <h2>얼마를 넣으면 얼마가 줄어드나</h2>
+  <p class="lead">공제율이 3천만원까지 100%, 5천만원까지 70%, 그 이상은 30% — <b>처음 5천만원의 효율이 압도적</b>입니다.</p>
+  <table>
+    <tr><th>투자금액</th><th>소득공제액</th><th>소득세 감소</th><th>지방세 포함 절세</th><th>투자금 대비</th></tr>
+    <tr><td>3,000만원</td><td>3,000만</td><td>1,260만</td><td>1,386만</td><td>46.2%</td></tr>
+    <tr class="hl"><td>5,000만원 ★ 권장</td><td>4,400만</td><td>1,848만</td><td>2,033만</td><td>40.7%</td></tr>
+    <tr><td>1억원</td><td>5,900만</td><td>2,478만</td><td>2,726만</td><td>27.3%</td></tr>
+    <tr><td>3억원</td><td>1억 1,900만</td><td>4,998만</td><td>5,498만</td><td>18.3%</td></tr>
+    <tr><td>5억원</td><td>1억 7,900만</td><td>7,518만</td><td>8,270만</td><td>16.5%</td></tr>
+    <tr class="mx"><td>약 7.37억 (최대)</td><td>2억 5,020만</td><td>1억 508만</td><td>1억 1,559만</td><td>15.7%</td></tr>
+    <tr><td>10억원</td><td>3억 2,900만</td><td>1억 508만</td><td>1억 1,559만</td><td>11.6% ↓</td></tr>
+  </table>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>05</span></div>
+</div></section>
+
+<!-- 6 Efficiency -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">05 · 효율 비교</div>
+  <h2>5천만원을 넘는 돈은 "투자"로 판단하세요</h2>
+  <div class="two">
+    <div class="bars">
+      <div class="br"><span>3,000만</span><div class="t"><i style="width:92%"></i></div><b>46.2%</b></div>
+      <div class="br"><span>5,000만</span><div class="t"><i style="width:81%"></i></div><b>40.7%</b></div>
+      <div class="br"><span>1억</span><div class="t"><i class="g" style="width:55%"></i></div><b>27.3%</b></div>
+      <div class="br"><span>3억</span><div class="t"><i class="g" style="width:37%"></i></div><b>18.3%</b></div>
+      <div class="br"><span>7.37억</span><div class="t"><i class="g" style="width:31%"></i></div><b>15.7%</b></div>
+      <div class="br"><span>10억</span><div class="t"><i class="g" style="width:23%"></i></div><b>11.6%</b></div>
+    </div>
+    <div>
+      <div class="lab" style="color:var(--sub)">5천만원 초과분의 실제 절세율</div>
+      <div class="big-n">13.86%</div>
+      <div class="callout" style="margin-top:2cqw">초과분 1억원당 절세는 약 1,386만원입니다. 7.37억을 넘으면 바닥선에 닿아 <b>추가 절세 0원</b>이고, 오히려 고용공제를 밀어냅니다.</div>
+      <div class="note">법정 공제한도(종합소득 50%)로는 약 11.8억까지 신청 가능하지만, 실제로 세금이 줄어드는 상한은 약 7.37억입니다.</div>
+    </div>
+  </div>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>06</span></div>
+</div></section>
+
+<!-- 7 B -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">06 · 2번 원장님</div>
+  <h2>올해는 투자하지 않는 것이 정답입니다</h2>
+  <p class="lead">물컵이 이미 가득 찬 상태 — 벤처공제를 부어도 고용공제가 내년으로 넘쳐 나갈 뿐입니다.</p>
+  <div class="callout red" style="margin-bottom:1.8cqw"><b style="color:var(--red)">2026년: 5천만원이든 5억원이든 절세 효과 0원</b><br>통합고용세액공제가 약 2억원 쌓여 있어, 이미 최저한세 바닥선까지 세금이 내려가 있습니다.</div>
+  <div class="callout"><b>작년(2025년) 투자공제 4,400만원 점검</b><br>저희 재계산 기준, 실제 줄어든 소득세는 약 <b>394만원</b>(공제액의 약 9%)으로 추정됩니다. 근로소득분이 있었기 때문에 생긴 효과이며, 근로소득이 없는 올해는 이 효과도 사라집니다.</div>
+  <div class="note">※ 이월된 고용공제는 10년간 이월되므로 소멸 걱정은 크지 않습니다. 다만 매년 1억원 이상 새로 발생하는 구조라 당분간 2번 원장님 명의의 벤처투자는 효과가 낮습니다.</div>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>07</span></div>
+</div></section>
+
+<!-- 8 Roadmap -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">07 · 실행 설계</div>
+  <h2>권장 로드맵 — 매년 5천만원, 1번 원장님 명의</h2>
+  <p class="lead">100%·70% 공제 구간을 해마다 새로 쓰는 것이 가장 효율적입니다.</p>
+  <div class="road">
+    <div class="st"><div class="y">2026 · 연내</div><h4>5,000만원</h4><p>12월 31일 이전 납입·투자확인서 확보.<br>절세 약 2,033만원 (2027년 5월 신고 반영)</p></div>
+    <div class="st"><div class="y">2027</div><h4>5,000만원</h4><p>그해 실적이 확정되면<br>금액을 다시 조정</p></div>
+    <div class="st"><div class="y">2028</div><h4>5,000만원</h4><p>현행 제도 기한(2028년 말)까지 3회.<br>2029년부터 2026년분 회수 가능</p></div>
+  </div>
+  <div class="callout"><b>공제 연도 선택권:</b> 투자한 해부터 2년 뒤 해까지 중 <b>원하는 1개 연도</b>를 골라 공제받을 수 있습니다. 소득이 높고 바닥선 여유가 큰 해에 몰아 받는 것이 핵심입니다.</div>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>08</span></div>
+</div></section>
+
+<!-- 9 Checklist -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">08 · 체크포인트</div>
+  <h2>투자 전 반드시 확인할 것</h2>
+  <ul class="chk" style="margin-top:1.4cqw">
+    <li><b>3년 보유 의무</b>투자일부터 3년 안에 지분을 팔거나 회수하면 공제받은 세금이 추징됩니다.</li>
+    <li><b>투자 방식</b>벤처확인기업 신규 발행 주식·무담보 전환사채 직접투자, 또는 개인투자조합 경유여야 합니다. 구주 매입과 일반 벤처펀드(10%)는 해당되지 않습니다.</li>
+    <li><b>출자·투자확인서</b>종합소득세 신고 때 꼭 필요한 서류이므로, 연내 발급 일정을 투자처와 미리 확정해야 합니다.</li>
+    <li><b>원금 손실 완충폭</b>5천만원 투자 시 원금의 40%까지 손실이 나도 세후 손해가 없습니다. 5천만원 초과분은 그 완충폭이 약 14%로 줄어듭니다.</li>
+    <li class="w"><b>세무대리인 확인 요청</b>2026 추정표는 최저한세를 산출세액×45%로 일률 계산했습니다. 법정 산식(3천만원 이하 35%)으로 하면 각 300만원이 낮아져, 1번 원장님 최대 실효액이 7.62억(절세 1.19억)으로 늘어납니다.</li>
+    <li><b>보수적 기준 적용</b>본 설계는 추정표 기준(더 불리한 쪽)으로 계산했습니다. 실제 결과는 이보다 같거나 유리합니다.</li>
+  </ul>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>09</span></div>
+</div></section>
+
+<!-- 10 Basis -->
+<section class="s"><div class="bar-top"></div><div class="in">
+  <div class="k">09 · 계산 근거와 가정</div>
+  <h2>근거</h2>
+  <ul class="src">
+    <li>조세특례제한법 §16 — 벤처기업 직접투자·개인투자조합: 3천만원 이하 100%, 3천~5천만원 70%, 5천만원 초과 30% 공제. 종합소득금액 50% 한도, 3년 보유. 적용기한은 2025년 세제개편으로 2028년까지 연장.</li>
+    <li>조세특례제한법 §132② — 개인 사업소득 최저한세(감면 전 산출세액의 35%/45%) 대상에 §16 소득공제 포함.</li>
+    <li>소득세법 §55 종합소득세율. 통합고용세액공제는 최저한세 대상으로, 성실신고확인비용·자녀·표준세액공제는 추정표 처리 방식대로 대상 외로 반영.</li>
+    <li>가정: 2026년 소득·공제는 세무대리인 추정표 그대로, 지방소득세는 소득세의 10%, 투자분은 2026년 귀속으로 공제 신청.</li>
+  </ul>
+  <div class="callout" style="margin-top:2.4cqw">본 자료는 의사결정 지원용 시뮬레이션입니다. 최종 세액은 2026년 확정 실적과 신고 시점의 세법에 따라 달라질 수 있으며, 실제 신고는 담당 세무대리인과 최종 확인하시기 바랍니다.</div>
+  <div class="foot"><span><b>탑재무설계</b> · 벤처투자 소득공제 설계</span><span>10</span></div>
+</div></section>
+
+<!-- 11 End -->
+<section class="s end"><div class="stripe" style="position:absolute;right:0;top:0;bottom:0;width:1.2cqw;background:var(--lime)"></div><div class="in">
+  <div class="brand" style="font-size:1.3cqw;letter-spacing:.25em;color:var(--lime);font-weight:700">T.O.P · TRUST · ORACLE · PEOPLE</div>
+  <div class="who">탑재무설계 · 고영권 컨설턴트</div>
+  <div class="ct">010-4860-3087 · top95091@gmail.com</div>
+  <div class="msg">숫자로 먼저 확인하고, 그다음 제안합니다.<br>궁금하신 점은 언제든 편하게 연락 주십시오.</div>
+</div></section>
+
+</div>
+</body>
+</html>
